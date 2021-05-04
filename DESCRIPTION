@@ -1,0 +1,26 @@
+Package: ameld
+Title: Data and Model of End-Stage Liver Disease used in the AMPEL Project
+Version: 0.0.1
+Description:
+    A dataset of patients evaluated for liver transplantation at the
+    University Hospital Leipzig from November 2012 to June 2015.
+    Additional the model used to predict survival in patients with
+    end-stage liver disease in the AMPEL (Analysis and Reporting System for the
+    Improvement of Patient Safety through Real-Time Integration of Laboratory
+    Findings, \url{http://ampel.care}) is provided.
+Authors@R: person(given = "Sebastian", family = "Gibb",
+                  email = "mail@sebastiangibb.de",
+                  role = c("aut", "cre"),
+		          comment = c(ORCID = "0000-0001-7406-4443"))
+Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
+Depends:
+    R (>= 4.1.0)
+Suggests:
+    lubridate,
+    testthat (>= 3.0.0)
+License: Artistic-2.0
+LazyData: yes
+Roxygen: list(markdown=TRUE)
+RoxygenNote: 7.1.1
+Encoding: UTF-8
+Config/testthat/edition: 3
