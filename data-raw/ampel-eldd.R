@@ -69,9 +69,6 @@ eldd <- eldd[
 ]
 rownames(eldd) <- NULL
 
-## convert data types
-#toInt <- names(eldd) %in% c("LTx", "Cirrhosis",
-
 ## remove columns with more missing data than cases
 keep <- colMeans(is.na(eldd)) < mean(eldd$Deceased) # 0.16
 
@@ -82,6 +79,9 @@ names(eldd)[!keep]
 # [10] "FE_S"                 "FERR_S"               "LDH_S"
 # [13] "LDLC_S"               "HDLC_S"               "DaysSinceHCC"
 eldd <- eldd[keep]
+
+## exclude CHOL_S because it is the same as CHOLG_S
+eldd$CHOL_S <- NULL
 
 ## reorder columns
 eldd <- eldd[match(
@@ -102,7 +102,7 @@ eldd <- eldd[match(
 
 ## reclass columns
 eldd$Sex <- factor(
-    as.integer(eldd$Sex == "M"), levels = c(0, 1), labels = c("W", "M")
+    as.integer(eldd$Sex == "M"), levels = c(0, 1), labels = c("female", "male")
 )
 toInt <- names(eldd) %in% c(
     "LTx", "Cirrhosis", "ALF", "Ethyltoxic", "HBV", "HBC", "AIH", "PBC", "PSC",

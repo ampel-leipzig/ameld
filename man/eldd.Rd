@@ -49,8 +49,8 @@ else \code{0}.}
 \item{ASAT_S}{\code{numeric}, serum level of ASAT, aspartate aminotransferase in
 µkat/l.}
 \item{B_MPV_E}{\code{numeric}, mean platelet volume in fl.}
-\item{B_PLT_E}{\code{numeric}, platelet cell count in ^9/l.}
-\item{B_WBC_E}{\code{numeric}, white blood cell count in ^9/l.}
+\item{B_PLT_E}{\code{numeric}, platelet cell count in exp 9/l.}
+\item{B_WBC_E}{\code{numeric}, white blood cell count in exp 9/l.}
 \item{BILI_S}{\code{numeric}, total bilirubin in µmol/l.}
 \item{BILID_S}{\code{numeric}, direct bilirubin in µmol/l.}
 \item{CA_S}{\code{numeric}, calcium in mmol/l.}

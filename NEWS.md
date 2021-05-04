@@ -2,4 +2,4 @@
 
 ## Changes in 0.0.1
 
-- Initial version with `eldd` dataset.
+- Initial version with `eldd` (data) and `eldr` (reference) dataset.

@@ -182,3 +182,43 @@
        Max.   :180.500   Max.   :111.80  
        NA's   :8         NA's   :47      
 
+# eldr
+
+    Code
+      head(eldr)
+    Output
+          Code   Unit            LongDescription ShortDescription LowerLimit
+      1 ALAT_S µkat/l   alanine aminotransferase             ALAT       0.17
+      2 ALAT_S µkat/l   alanine aminotransferase             ALAT       0.17
+      3  ALB_S    g/l                    albumin              Alb      35.00
+      4   AP_S µkat/l       alkaline phosphatase               AP       0.67
+      5   AP_S µkat/l       alkaline phosphatase               AP       0.58
+      6 ASAT_S µkat/l aspartate aminotransferase             ASAT       0.17
+        UpperLimit AgeDays    Sex
+      1       0.85    6574   male
+      2       0.58    6574 female
+      3      52.00    6574   both
+      4       2.15    6574   male
+      5       1.74    6574 female
+      6       0.85    6574   male
+
+---
+
+    Code
+      tail(eldr)
+    Output
+             Code   Unit      LongDescription ShortDescription LowerLimit UpperLimit
+      31      P_S mmol/l            phosphate                P       0.84       1.45
+      32   PALB_S    g/l          pre-albumin             PAlb       0.20       0.40
+      33   PROT_S    g/l        total protein             Prot      64.00      83.00
+      34    PTH_S pmol/l parathyreoid hormone              PTH       1.60       6.90
+      35 VDT_OH_S  ng/ml      vitamin D 25-OH              VDT       4.90      42.70
+      36 VDT_OH_S  ng/ml      vitamin D 25-OH              VDT       6.20      49.90
+         AgeDays    Sex
+      31    6574   both
+      32       0   both
+      33    6574   both
+      34       0   both
+      35    7305   male
+      36    7305 female
+

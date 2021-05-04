@@ -47,16 +47,15 @@
 #' \item{ASAT_S}{`numeric`, serum level of ASAT, aspartate aminotransferase in
 #' µkat/l.}
 #' \item{B_MPV_E}{`numeric`, mean platelet volume in fl.}
-#' \item{B_PLT_E}{`numeric`, platelet cell count in ^9/l.}
-#' \item{B_WBC_E}{`numeric`, white blood cell count in ^9/l.}
+#' \item{B_PLT_E}{`numeric`, platelet cell count in exp 9/l.}
+#' \item{B_WBC_E}{`numeric`, white blood cell count in exp 9/l.}
 #' \item{BILI_S}{`numeric`, total bilirubin in µmol/l.}
 #' \item{BILID_S}{`numeric`, direct bilirubin in µmol/l.}
 #' \item{CA_S}{`numeric`, calcium in mmol/l.}
 #' \item{CHE_S}{`numeric`, cholinesterase in µkat/l.}
-#' \item{CHOL_S}{`numeric`, total cholesterine in mmol/l.}
 #' \item{CHOLF_Q}{`numeric`, TODO.}
 #' \item{CHOLF_S}{`numeric`, TODO.}
-#' \item{CHOLG_S}{`numeric`, TODO.}
+#' \item{CHOLG_S}{`numeric`, total cholesterine in mmol/l.}
 #' \item{CL_S}{`numeric`, chloride in mmol/l.}
 #' \item{CRE_S}{`numeric`, creatinine in µmol/l.}
 #' \item{CRP_S}{`numeric`, C-reactive protein in mg/l.}
@@ -83,3 +82,29 @@
 #' University Hospital Leipzig,
 #' Paul-List-Str. 13-15, D-04103 Leipzig, Germany.
 "eldd"
+
+#' End-stage Liver Disease Reference
+#'
+#' A dataset of reference limits of the University Hospital Leipzig for
+#' laboratory measurements used in [`eldd`].
+#'
+#' @format A `data.frame` with 36 rows and 8 columns. Each row describes a
+#' laboratory measurement/method.
+#' \describe{
+#' \item{Code}{`character`, name.}
+#' \item{Unit}{`character`, unit.}
+#' \item{LongDescription}{`character`, full name.}
+#' \item{ShortDescription}{`character`, abbreviation.}
+#' \item{LowerLimit}{`numeric`, lower limit.}
+#' \item{UpperLimit}{`numeric`, upper limit.}
+#' \item{AgeDays}{`integer`, the method is only valid for patients older than
+#' `AgeDays` days.}
+#' \item{Sex}{`factor`, the method is only valid for "male" or "female"
+#' patients. Or the sex doesn't matter ("both").}
+#' }
+#' @source
+#' Institute of Laboratory Medicine,
+#' Clinical Chemistry and Molecular Diagnostics,
+#' University Hospital Leipzig,
+#' Paul-List-Str. 13-15, D-04103 Leipzig, Germany.
+"eldr"
