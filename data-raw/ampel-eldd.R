@@ -83,6 +83,11 @@ eldd <- eldd[keep]
 ## exclude CHOL_S because it is the same as CHOLG_S
 eldd$CHOL_S <- NULL
 
+## exclude research laboratory measurement "free cholesterine" (because there
+## are no reference measurements available); CHOLF_Q was the quotient of
+## CHOLF_S to CHOLG_S
+eldd$CHOLF_S <- eldd$CHOLF_Q <- NULL
+
 ## reorder columns
 eldd <- eldd[match(
     c(
