@@ -20,7 +20,7 @@ Suggests:
     rmarkdown,
     survival,
     testthat (>= 3.0.0)
-License: Artistic-2.0
+License: GPL (>= 3)
 LazyData: yes
 Roxygen: list(markdown=TRUE)
 RoxygenNote: 7.1.1
