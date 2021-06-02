@@ -3,6 +3,10 @@
 #' A dataset of patients evaluated for liver transplantation at the University
 #' Hospital of Leipzig from November 2012 to June 2015.
 #'
+#' The Ethics Committee at the Leipzig University Faculty of
+#' Medicine approved the retrospective usage of the data for our study
+#' (reference number: 039/14ff).
+#'
 #' @format A `data.frame` with 654 rows and 48 columns:
 #' \describe{
 #' \item{Age}{`integer`, patient's age in years.}

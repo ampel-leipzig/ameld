@@ -55,10 +55,9 @@ else \code{0}.}
 \item{BILID_S}{\code{numeric}, direct bilirubin in µmol/l.}
 \item{CA_S}{\code{numeric}, calcium in mmol/l.}
 \item{CHE_S}{\code{numeric}, cholinesterase in µkat/l.}
-\item{CHOL_S}{\code{numeric}, total cholesterine in mmol/l.}
 \item{CHOLF_Q}{\code{numeric}, TODO.}
 \item{CHOLF_S}{\code{numeric}, TODO.}
-\item{CHOLG_S}{\code{numeric}, TODO.}
+\item{CHOLG_S}{\code{numeric}, total cholesterine in mmol/l.}
 \item{CL_S}{\code{numeric}, chloride in mmol/l.}
 \item{CRE_S}{\code{numeric}, creatinine in µmol/l.}
 \item{CRP_S}{\code{numeric}, C-reactive protein in mg/l.}
@@ -92,5 +91,10 @@ eldd
 \description{
 A dataset of patients evaluated for liver transplantation at the University
 Hospital of Leipzig from November 2012 to June 2015.
+}
+\details{
+The Ethics Committee at the Leipzig University Faculty of
+Medicine approved the retrospective usage of the data for our study
+(reference number: 039/14ff).
 }
 \keyword{datasets}
