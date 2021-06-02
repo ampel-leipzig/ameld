@@ -14,7 +14,7 @@ Authors@R: person(given = "Sebastian", family = "Gibb",
 		          comment = c(ORCID = "0000-0001-7406-4443"))
 Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
 Depends:
-    R (>= 4.1.0)
+    R (>= 4.0.4)
 Suggests:
     lubridate,
     testthat (>= 3.0.0)
