@@ -17,10 +17,13 @@ Depends:
     R (>= 4.0.4)
 Suggests:
     lubridate,
+    rmarkdown,
+    survival,
     testthat (>= 3.0.0)
 License: Artistic-2.0
 LazyData: yes
 Roxygen: list(markdown=TRUE)
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr
 Encoding: UTF-8
 Config/testthat/edition: 3

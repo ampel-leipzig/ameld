@@ -1,0 +1,95 @@
+---
+title: Introduction to ameld
+output:
+    rmarkdown::html_vignette:
+        toc_float: true
+vignette: >
+    %\VignetteIndexEntry{Introduction to ameld}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+Sys.setenv(LANGUAGE = "en")
+library("ameld")
+library("survival")
+
+data(eldd)
+data(eldr)
+```
+
+**Authors**: `r packageDescription("ameld")[["Author"]] `<br />
+**Last modified:** `r file.info("ameld.Rmd")$mtime`<br />
+**Compiled**: `r date()`
+
+# The `ameld` Package
+
+The `ameld` R package provides a dataset, `eldd`,
+of patients evaluated for liver transplantation at the
+University Hospital of Leipzig from
+`r paste(strftime(attr(eldd, "period"), "%B %Y"), collapse = " to ")`.
+`eldr` contains the reference limits for the laboratory measurements used in
+`eldd`.
+
+# Access the Data
+
+The datasets could be loaded as follows:
+
+```{r}
+library("ameld")
+data(eldd)
+data(eldr)
+```
+
+# Survival Estimates
+
+```{r}
+library("survival")
+
+srv <- Surv(eldd$DaysAtRisk, eldd$Deceased)
+
+srvfit <- survfit(srv ~ 1)
+
+plot(
+    srvfit,
+    mark.time = TRUE,
+    main = "Kaplan-Meier Survival Estimate"
+)
+
+plot(
+    srvfit,
+    mark.time = TRUE,
+    cumhaz = TRUE,
+    main = "Cumulative Hazard"
+)
+
+plot(
+    srvfit,
+    mark.time = TRUE,
+    main = "Kaplan-Meier Survival Estimate to day 90",
+    xmax = 90
+)
+
+plot(
+    srvfit,
+    mark.time = TRUE,
+    cumhaz = TRUE,
+    main = "Cumulative Hazard to day 90",
+    xmax = 90
+)
+```
+
+# Acknowledgment
+
+This work is part of the [AMPEL](https://ampel.care/en/)
+(Analysis and Reporting System for the Improvement of Patient Safety through
+Real-Time Integration of Laboratory Findings) project.
+
+This measure is co-funded with tax revenues based on the budget adopted by
+the members of the Saxon State Parliament.
+
+# Session Information
+
+```{r sessionInfo}
+sessionInfo()
+```
