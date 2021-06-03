@@ -50,22 +50,19 @@ srv <- Surv(eldd$DaysAtRisk, eldd$Deceased)
 
 srvfit <- survfit(srv ~ 1)
 
-plot(
+plot_surv(
     srvfit,
-    mark.time = TRUE,
     main = "Kaplan-Meier Survival Estimate"
 )
 
-plot(
+plot_surv(
     srvfit,
-    mark.time = TRUE,
     cumhaz = TRUE,
     main = "Cumulative Hazard"
 )
 
-plot(
+plot_surv(
     srvfit,
-    mark.time = TRUE,
     main = "Kaplan-Meier Survival Estimate to day 90",
     xmax = 90
 )
