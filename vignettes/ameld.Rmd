@@ -93,12 +93,12 @@ plot_surv(
 par(mar = c(2.1, 4.1, 4.1, 2.1))
 plot_table(
     nrisk, at = times, main = "Number at risk",
-    xaxis = FALSE, cex.text = 1.5
+    xaxis = FALSE, cex.text = 1.5, ylabels = FALSE
 )
 par(mar = c(5.1, 4.1, 1.1, 2.1))
 plot_table(
     ncumevents, at = times, main = "Cumulative number of events",
-    cex.text = 1.5
+    cex.text = 1.5, cex.xaxis = 1.1, ylabels = FALSE
 )
 
 par(old.par)
