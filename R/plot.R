@@ -130,8 +130,8 @@ plot_table <- function(
         for (i in seq_len(nc)) {
             axis(
                 side = 2L,
-                at = (i - 1L), labels = nm[i], col.axis = col[i],
-                cex.axis = cex.yaxis, tick = FALSE, las = 1L
+                at = (i - 1L), padj = -1L, las = 1L, labels = nm[i],
+                col.axis = col[i], cex.axis = cex.yaxis, tick = FALSE
             )
         }
     }
