@@ -12,7 +12,7 @@ plot_table(
   at = seq_len(nrow(x)) - 1L,
   xlim = range(at),
   ylim = c(0L, ncol(x)),
-  ylabels = FALSE,
+  ylabels = TRUE,
   col = rep_len(1L, ncol(x)),
   xaxis = TRUE,
   cex.xaxis = 3/4,
