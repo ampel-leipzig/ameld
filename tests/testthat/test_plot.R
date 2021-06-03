@@ -15,5 +15,5 @@ test_that("plot_table", {
         dimnames = list(c(0, 30, 90, 365), LETTERS[1:2])
     )
     vdiffr::expect_doppelganger("plot_table", function()
-        plot_table(m, main = "main"))
+        plot_table(m, main = "main", col = 2:3))
 })
