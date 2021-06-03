@@ -19,6 +19,7 @@ Depends:
 Imports:
     viridisLite
 Suggests:
+    zlog (> 1.0.0),
     lubridate,
     knitr,
     rmarkdown,

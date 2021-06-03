@@ -7,6 +7,7 @@ vignette: >
     %\VignetteIndexEntry{Introduction to ameld}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
+bibliography: bibliography.bib
 ---
 
 ```{r setup, include = FALSE}
@@ -39,6 +40,10 @@ The datasets could be loaded as follows:
 library("ameld")
 data(eldd)
 data(eldr)
+
+colnames(eldd)
+knitr::kable(head(eldd[, 1:10]))
+knitr::kable(head(eldr))
 ```
 
 # Survival Estimates
@@ -104,6 +109,76 @@ plot_table(
 par(old.par)
 ```
 
+# Z(log) Transformation
+
+The $z(log)$-transformation was suggested in @hoffmann2017. It is similar to
+common $z$-transformation but standardizes laboratory measurements by their
+respective reference or normal values. An R implementation is provided by the
+`zlog` package [@zlog].
+
+```{r zlog, fig.width = 7, fig.height = 5}
+library("zlog")
+
+## transform reference data.frame for zlog
+r <- eldr[c("Code", "AgeDays", "Sex", "LowerLimit", "UpperLimit")]
+names(r) <- c("param", "age", "sex", "lower", "upper")
+r$age <- r$age / 365.25
+r <- set_missing_limits(r)
+
+## we just want to standardize laboratory values
+cn <- colnames(eldd)
+cnlabs <- cn[grepl("_[SCEFQ1]$", cn)]
+zeldd <- eldd
+zeldd[c("Age", "Sex", cnlabs)] <- zlog_df(eldd[, c("Age", "Sex", cnlabs)], r)
+```
+
+We could use the (mean) $z(log)$ values to get a first impression of the
+influence of these values on survival/non-survival:
+
+```{r zlogmeanplot, fig.width = 7, fig.height = 5}
+## divide data.frame by dead/alive
+s <- split(zeldd[cnlabs], zeldd$Deceased)
+names(s) <- c("survived", "dead")
+
+## calculate mean standardized lab values
+s <- lapply(s, colMeans, na.rm = TRUE)
+o <- order(s$dead)
+
+## comparison plot
+col <- viridisLite::cividis(2)
+
+## keep old graphic parameters and restore them afterwards
+old.par <- par(no.readonly = TRUE)
+
+par(mar = c(7.1, 4.1, 4.1, 2.1))
+
+plot(
+    s$dead[o], type = "b", pch = 20, lwd = 2, col = col[1],
+    axes = FALSE, ann = FALSE
+)
+lines(s$survived[o], type = "b", pch = 20, lwd = 2, col = col[2])
+legend(
+    "bottomright",
+    legend = c("dead", "survived"),
+    col = col, lwd = 2, pch = 20, bty = "n"
+)
+title(
+    main = "Mortality Status vs Mean Standardized Laboratory Values", adj = 0
+)
+title(xlab = "Laboratory Measurements", adj = 1L, line = 5)
+title(ylab = "Mean Standardized Values", adj = 1L)
+r <- range(unlist(s))
+axis(
+    2, at = seq(from = floor(r[1]), to = ceiling(r[2])),
+    lwd.ticks = 0, col = "#808080"
+)
+axis(
+    1, at = seq_along(o), labels = names(s$dead[o]), las = 2,
+    lwd.ticks = 0L, col = "#808080"
+)
+par(old.par)
+```
+
 # Acknowledgment
 
 This work is part of the [AMPEL](https://ampel.care/en/)
@@ -118,3 +193,5 @@ the members of the Saxon State Parliament.
 ```{r sessionInfo}
 sessionInfo()
 ```
+
+# References
