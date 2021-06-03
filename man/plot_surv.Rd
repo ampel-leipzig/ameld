@@ -12,6 +12,7 @@ plot_surv(
   mark.time = TRUE,
   conf.int = FALSE,
   col = cividis(max(1L, length(x$strata))),
+  times,
   ...
 )
 }
@@ -32,6 +33,8 @@ plot_surv(
 
 \item{col}{integer/character, specifying colors for each curve.}
 
+\item{times}{integer, vector of times to print on the x-axis.}
+
 \item{\dots}{further arguments passed to \code{\link[survival:plot.survfit]{survival::plot.survfit()}}.}
 }
 \value{
@@ -46,4 +49,7 @@ custom defaults.
 library("survival")
 srvfit <- survfit(Surv(time, status) ~ x, data = aml)
 plot_surv(srvfit)
+}
+\seealso{
+\code{\link[survival:plot.survfit]{survival::plot.survfit()}}
 }

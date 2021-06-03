@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.3
+
+- Add `plot_table`.
+
 ## Changes in 0.0.2
 
 - Add `plot_surv`.
