@@ -7,7 +7,7 @@ Description:
     Additional the model used to predict survival in patients with
     end-stage liver disease in the AMPEL (Analysis and Reporting System for the
     Improvement of Patient Safety through Real-Time Integration of Laboratory
-    Findings, \url{http://ampel.care}) is provided.
+    Findings, \url{https://ampel.care}) is provided.
 Authors@R: person(given = "Sebastian", family = "Gibb",
                   email = "mail@sebastiangibb.de",
                   role = c("aut", "cre"),
