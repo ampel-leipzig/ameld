@@ -145,7 +145,7 @@ s <- lapply(s, colMeans, na.rm = TRUE)
 o <- order(s$dead)
 
 ## comparison plot
-col <- viridisLite::cividis(2)
+col <- palette.colors(2)
 
 ## keep old graphic parameters and restore them afterwards
 old.par <- par(no.readonly = TRUE)

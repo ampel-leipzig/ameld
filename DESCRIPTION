@@ -16,8 +16,6 @@ Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
 Depends:
     R (>= 4.1),
     survival
-Imports:
-    viridisLite
 Suggests:
     zlog (> 1.0.0),
     lubridate,

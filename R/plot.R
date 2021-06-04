@@ -22,7 +22,7 @@
 #'
 #' @import survival
 #' @importFrom graphics axTicks axis text title
-#' @importFrom viridisLite cividis
+#' @importFrom grDevices palette.colors
 #' @export
 #' @examples
 #' library("survival")
@@ -35,7 +35,7 @@ plot_surv <- function(
     ylab = "Overall survival probability",
     mark.time = TRUE,
     conf.int = FALSE,
-    col = cividis(max(1L, length(x$strata))),
+    col = palette.colors(max(1L, length(x$strata))),
     times,
     ...) {
 

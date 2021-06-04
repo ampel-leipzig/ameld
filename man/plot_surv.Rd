@@ -11,7 +11,7 @@ plot_surv(
   ylab = "Overall survival probability",
   mark.time = TRUE,
   conf.int = FALSE,
-  col = cividis(max(1L, length(x$strata))),
+  col = palette.colors(max(1L, length(x$strata))),
   times,
   ...
 )
