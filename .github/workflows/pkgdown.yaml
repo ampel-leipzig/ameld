@@ -36,6 +36,8 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
+          ## install latest zlog from github
+          remotes::install_github("ampel-leipzig/zlog")
         shell: Rscript {0}
 
       - name: Install package
