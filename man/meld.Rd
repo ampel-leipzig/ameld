@@ -76,10 +76,10 @@ In contrast to \code{meld} and \code{meldNa}, \code{meldPlus7} returns a probabi
 \examples{
 meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 
-meldNa(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
-meldNa(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
-       type = "UNOS")
-meldPlus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
+meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
+meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
+        type = "UNOS")
+meld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 }
 \references{
 Michael Malinchoc et al. 2000.

@@ -58,9 +58,9 @@ meld <- function(creatinine, bilirubin, inr, dialysis = FALSE,
 #' @export
 #' @examples
 #'
-#' meldNa(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
-#' meldNa(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
-#'        type = "UNOS")
+#' meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
+#' meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
+#'         type = "UNOS")
 meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
                     type = c("Kim2008", "UNOS"),
                     cause = "other", round = FALSE) {
@@ -106,7 +106,7 @@ meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
 #' \doi{10.1371/journal.pone.0186301}
 #' @export
 #' @examples
-#' meldPlus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
+#' meld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 meld_plus7 <- function(creatinine, bilirubin, inr, sodium, albumin, wbc, age,
                        round = FALSE) {
     score <- 8.53499496 + 2.59679650 * log10(1 + creatinine) +

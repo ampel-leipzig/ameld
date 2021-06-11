@@ -9,7 +9,7 @@
 #' @rdname si
 #' @export
 #' @examples
-#' asSI(4.2, "creatinine")
+#' as_si(4.2, "creatinine")
 as_si <- function(x, type = c("bilirubin", "creatinine")) {
     type <- match.arg(type)
     x * switch(type,
@@ -22,7 +22,7 @@ as_si <- function(x, type = c("bilirubin", "creatinine")) {
 #'
 #' @export
 #' @examples
-#' asMetric(175, "creatinine")
+#' as_metric(175, "creatinine")
 as_metric <- function(x, type = c("bilirubin", "creatinine")) {
     x / as_si(1L, type)
 }

@@ -21,6 +21,6 @@ as_metric(x, type = c("bilirubin", "creatinine"))
 Converts some laboratory metric to SI units.
 }
 \examples{
-asSI(4.2, "creatinine")
-asMetric(175, "creatinine")
+as_si(4.2, "creatinine")
+as_metric(175, "creatinine")
 }
