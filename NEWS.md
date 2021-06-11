@@ -1,5 +1,10 @@
 # ameld 0.0
 
+## Changes in 0.0.4
+
+- Add MELD score calculation: `meld`, `meld_na`, `meld_plus7`
+- Add `as_metric`, `as_si` to convert between different units.
+
 ## Changes in 0.0.3
 
 - Add `plot_table`.
