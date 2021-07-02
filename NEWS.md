@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.5
+
+- Add `plot_dots`.
+
 ## Changes in 0.0.4
 
 - Add MELD score calculation: `meld`, `meld_na`, `meld_plus7`

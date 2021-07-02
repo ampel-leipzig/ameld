@@ -1,3 +1,52 @@
+#' Plot dotchart
+#'
+#' This is a simplified and customized version of [`graphics::dotchart()`].
+#'
+#' @param x `numeric`, values to plot.
+#' @param xlim `numeric(2)`, limits of the x-axis.
+#' @param main `character(1)`, plot title.
+#' @param xlab `character(1)`, x-axis label.
+#' @param col `integer`/`character`, color of the dots.
+#' @param pch `integer`/`character`, point character/symbol of the dots.
+#'
+#' @return nothing, used for its side-effects (plotting).
+#'
+#' @seealso [`graphics::dotchart()`]
+#' @importFrom graphics abline mtext par points strwidth
+#' @export
+#' @examples
+#' x <- c(Foo = 3, Bar = 5)
+#' plot_dots(x, xlim = c(0, 8))
+plot_dots <- function(x, xlim = c(0, max(x)),
+                      main = "Dotchart", xlab = "Frequency",
+                      col = palette.colors(2L)[2L], pch = 19L) {
+    old.par <- par(no.readonly = TRUE)
+    on.exit(par(old.par))
+
+    n <- length(x)
+
+    mai <- par("mai")
+    w <- max(strwidth(names(x), "inch"), na.rm = TRUE) + 1/16
+    if (mai[2L] < w)
+        mai[2L] <- mai[4L] + w # taken from dotchart
+    par(mai = mai)
+
+    plot(NA, xlim = xlim, ylim = c(0L, n + 1L),
+        axes = FALSE, ann = FALSE
+    )
+    title(main = main, adj = 0L)
+    title(xlab = xlab, adj = 1L)
+    y <- seq_len(n)
+    mtext(
+        names(x), at = y, adj = 0L, side = 2L, las = 2L,
+        line = (w + 0.1) / par("csi"), cex = 0.8
+    )
+    abline(h = y, col = "#808080", lty = "dotted", lwd = 1L)
+    points(x, y, col = col, pch = pch)
+    axis(1L, lwd.ticks = 0L, col = "#808080")
+    invisible(NULL)
+}
+
 #' Plot method for 'survfit' objects
 #'
 #' This is just a wrapper method around [`survival::plot.survfit()`] with

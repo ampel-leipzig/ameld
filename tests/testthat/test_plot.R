@@ -1,3 +1,8 @@
+test_that("plot_dots", {
+    vdiffr::expect_doppelganger("plot_dots", function()
+        plot_dots(c(Foo = 3, Bar = 5), xlim = c(0, 8), main = "FooBar"))
+})
+
 test_that("plot_surv", {
     expect_error(plot_surv(1:3), "'survfit' class")
 
