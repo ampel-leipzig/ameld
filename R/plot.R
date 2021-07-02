@@ -4,15 +4,15 @@
 #' custom defaults.
 #'
 #' @param x `survfit` object.
-#' @param main character, plot title.
-#' @param xlab character, x-axis label.
-#' @param ylab character, y-axis label.
-#' @param mark.time logical, if `TRUE` censoring times are marked, see
+#' @param main `character(1)`, plot title.
+#' @param xlab `character(1)`, x-axis label.
+#' @param ylab `character(1)`, y-axis label.
+#' @param mark.time `logical(1)`, if `TRUE` censoring times are marked, see
 #' [`survival::plot.survfit()`] for details.
-#' @param conf.int logical, if `TRUE` confidence interval is plotted, see
+#' @param conf.int `logical(1)`, if `TRUE` confidence interval is plotted, see
 #' [`survival::plot.survfit()`] for details.
-#' @param col integer/character, specifying colors for each curve.
-#' @param times integer, vector of times to print on the x-axis.
+#' @param col `integer`/`character`, specifying colors for each curve.
+#' @param times `integer`, vector of times to print on the x-axis.
 #' @param \dots further arguments passed to [`survival::plot.survfit()`].
 #'
 #' @return a list with `x` and `y` containing the coordinates of the last point
@@ -62,23 +62,24 @@ plot_surv <- function(
 #'
 #' Plot a table on the current graphic device. Useful for risk tables.
 #'
-#' @param x matrix, it is transposed on the graphic device. The column names
+#' @param x `matrix`, it is transposed on the graphic device. The column names
 #' correspond to the y labels and the row names to the x labels.
-#' @param main character(1), plot title.
-#' @param xlab character(1), x-axis label.
-#' @param ylab character(1), y-axis label.
-#' @param at numeric, where to plot the rows of `x`.
-#' @param xlim numeric(2), limits of the x-axis.
-#' @param ylim numeric(2), limits of the y-axis.
-#' @param ylabels logical(1), should the column names used to labels the y-axis
-#' (default: `TRUE`)?
-#' @param col integer/character, specifying the color for each y/column label.
-#' @param xaxis logical(1), should the x-axis be plotted (default: `TRUE`)?
-#' @param cex.xaxis numeric(1), character expansion factor for the x-axis
+#' @param main `character(1)`, plot title.
+#' @param xlab `character(1)`, x-axis label.
+#' @param ylab `character(1)`, y-axis label.
+#' @param at `numeric, where to plot the rows of `x`.
+#' @param xlim `numeric(2)`, limits of the x-axis.
+#' @param ylim `numeric(2)`, limits of the y-axis.
+#' @param ylabels `logical(1)`, should the column names used to labels the
+#' y-axis (default: `TRUE`)?
+#' @param col `integer`/`character`, specifying the color for each y/column
+#' label.
+#' @param xaxis `logical(1)`, should the x-axis be plotted (default: `TRUE`)?
+#' @param cex.xaxis `numeric(1)`, character expansion factor for the x-axis
 #' labels, see [`par()`] for details.
-#' @param cex.yaxis numeric(1), character expansion factor for the y-axis
+#' @param cex.yaxis `numeric(1)`, character expansion factor for the y-axis
 #' labels, see [`par()`] for details.
-#' @param cex.text numeric(1), character expansion factor for the cell content
+#' @param cex.text `numeric(1)`, character expansion factor for the cell content
 #' labels, see [`par()`] for details.
 #' @param \dots further arguments passed to [`plot.default()`].
 #'

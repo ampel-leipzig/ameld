@@ -22,35 +22,36 @@ plot_table(
 )
 }
 \arguments{
-\item{x}{matrix, it is transposed on the graphic device. The column names
+\item{x}{\code{matrix}, it is transposed on the graphic device. The column names
 correspond to the y labels and the row names to the x labels.}
 
-\item{main}{character(1), plot title.}
+\item{main}{\code{character(1)}, plot title.}
 
-\item{xlab}{character(1), x-axis label.}
+\item{xlab}{\code{character(1)}, x-axis label.}
 
-\item{ylab}{character(1), y-axis label.}
+\item{ylab}{\code{character(1)}, y-axis label.}
 
-\item{at}{numeric, where to plot the rows of \code{x}.}
+\item{at}{\verb{numeric, where to plot the rows of }x`.}
 
-\item{xlim}{numeric(2), limits of the x-axis.}
+\item{xlim}{\code{numeric(2)}, limits of the x-axis.}
 
-\item{ylim}{numeric(2), limits of the y-axis.}
+\item{ylim}{\code{numeric(2)}, limits of the y-axis.}
 
-\item{ylabels}{logical(1), should the column names used to labels the y-axis
-(default: \code{TRUE})?}
+\item{ylabels}{\code{logical(1)}, should the column names used to labels the
+y-axis (default: \code{TRUE})?}
 
-\item{col}{integer/character, specifying the color for each y/column label.}
+\item{col}{\code{integer}/\code{character}, specifying the color for each y/column
+label.}
 
-\item{xaxis}{logical(1), should the x-axis be plotted (default: \code{TRUE})?}
+\item{xaxis}{\code{logical(1)}, should the x-axis be plotted (default: \code{TRUE})?}
 
-\item{cex.xaxis}{numeric(1), character expansion factor for the x-axis
+\item{cex.xaxis}{\code{numeric(1)}, character expansion factor for the x-axis
 labels, see \code{\link[=par]{par()}} for details.}
 
-\item{cex.yaxis}{numeric(1), character expansion factor for the y-axis
+\item{cex.yaxis}{\code{numeric(1)}, character expansion factor for the y-axis
 labels, see \code{\link[=par]{par()}} for details.}
 
-\item{cex.text}{numeric(1), character expansion factor for the cell content
+\item{cex.text}{\code{numeric(1)}, character expansion factor for the cell content
 labels, see \code{\link[=par]{par()}} for details.}
 
 \item{\dots}{further arguments passed to \code{\link[=plot.default]{plot.default()}}.}

@@ -19,21 +19,21 @@ plot_surv(
 \arguments{
 \item{x}{\code{survfit} object.}
 
-\item{main}{character, plot title.}
+\item{main}{\code{character(1)}, plot title.}
 
-\item{xlab}{character, x-axis label.}
+\item{xlab}{\code{character(1)}, x-axis label.}
 
-\item{ylab}{character, y-axis label.}
+\item{ylab}{\code{character(1)}, y-axis label.}
 
-\item{mark.time}{logical, if \code{TRUE} censoring times are marked, see
+\item{mark.time}{\code{logical(1)}, if \code{TRUE} censoring times are marked, see
 \code{\link[survival:plot.survfit]{survival::plot.survfit()}} for details.}
 
-\item{conf.int}{logical, if \code{TRUE} confidence interval is plotted, see
+\item{conf.int}{\code{logical(1)}, if \code{TRUE} confidence interval is plotted, see
 \code{\link[survival:plot.survfit]{survival::plot.survfit()}} for details.}
 
-\item{col}{integer/character, specifying colors for each curve.}
+\item{col}{\code{integer}/\code{character}, specifying colors for each curve.}
 
-\item{times}{integer, vector of times to print on the x-axis.}
+\item{times}{\code{integer}, vector of times to print on the x-axis.}
 
 \item{\dots}{further arguments passed to \code{\link[survival:plot.survfit]{survival::plot.survfit()}}.}
 }
