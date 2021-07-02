@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>End-stage Liver Disease Reference — eldr • ameld</title>
+<title>Plot dotchart — plot_dots • ameld</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="End-stage Liver Disease Reference — eldr" />
-<meta property="og:description" content="A dataset of reference limits of the University Hospital Leipzig for
-laboratory measurements used in eldd." />
+<meta property="og:title" content="Plot dotchart — plot_dots" />
+<meta property="og:description" content="This is a simplified and customized version of graphics::dotchart()." />
 
 
 
@@ -115,43 +114,64 @@ laboratory measurements used in eldd." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>End-stage Liver Disease Reference</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ampel-leipzig/ameld/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>eldr.Rd</code></div>
+    <h1>Plot dotchart</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ampel-leipzig/ameld/blob/master/R/plot.R'><code>R/plot.R</code></a></small>
+    <div class="hidden name"><code>plot_dots.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A dataset of reference limits of the University Hospital Leipzig for
-laboratory measurements used in <code><a href='eldd.html'>eldd</a></code>.</p>
+    <p>This is a simplified and customized version of <code><a href='https://rdrr.io/r/graphics/dotchart.html'>graphics::dotchart()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='va'>eldr</span></pre>
+    <pre class="usage"><span class='fu'>plot_dots</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
+  main <span class='op'>=</span> <span class='st'>"Dotchart"</span>,
+  xlab <span class='op'>=</span> <span class='st'>"Frequency"</span>,
+  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palette.html'>palette.colors</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2L</span><span class='op'>]</span>,
+  pch <span class='op'>=</span> <span class='fl'>19L</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code>numeric</code>, values to plot.</p></td>
+    </tr>
+    <tr>
+      <th>xlim</th>
+      <td><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(2)</a></code>, limits of the x-axis.</p></td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, plot title.</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, x-axis label.</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p><code>integer</code>/<code>character</code>, color of the dots.</p></td>
+    </tr>
+    <tr>
+      <th>pch</th>
+      <td><p><code>integer</code>/<code>character</code>, point character/symbol of the dots.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> with 36 rows and 8 columns. Each row describes a
-laboratory measurement/method.</p><dl>
-<dt>Code</dt><dd><p><code>character</code>, name.</p></dd>
-<dt>Unit</dt><dd><p><code>character</code>, unit.</p></dd>
-<dt>LongDescription</dt><dd><p><code>character</code>, full name.</p></dd>
-<dt>ShortDescription</dt><dd><p><code>character</code>, abbreviation.</p></dd>
-<dt>LowerLimit</dt><dd><p><code>numeric</code>, lower limit.</p></dd>
-<dt>UpperLimit</dt><dd><p><code>numeric</code>, upper limit.</p></dd>
-<dt>AgeDays</dt><dd><p><code>integer</code>, the method is only valid for patients older than
-<code>AgeDays</code> days.</p></dd>
-<dt>Sex</dt><dd><p><code>factor</code>, the method is only valid for "male" or "female"
-patients. Or the sex doesn't matter ("both").</p></dd>
+    <p>nothing, used for its side-effects (plotting).</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-</dl>
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/graphics/dotchart.html'>graphics::dotchart()</a></code></p></div>
 
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>Institute of Laboratory Medicine,
-Clinical Chemistry and Molecular Diagnostics,
-University Hospital Leipzig,
-Paul-List-Str. 13-15, D-04103 Leipzig, Germany.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Foo <span class='op'>=</span> <span class='fl'>3</span>, Bar <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='fu'>plot_dots</span><span class='op'>(</span><span class='va'>x</span>, xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_dots-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
