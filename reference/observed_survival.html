@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot method for 'survfit' objects — plot_surv • ameld</title>
+<title>Calculate observed survival informations — observed_survival • ameld</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Plot method for 'survfit' objects — plot_surv" />
-<meta property="og:description" content="This is just a wrapper method around survival::plot.survfit() with
-custom defaults." />
+<meta property="og:title" content="Calculate observed survival informations — observed_survival" />
+<meta property="og:description" content="This functions calculate some survival information (e.g. survival rate,
+mortality rate)." />
 
 
 
@@ -115,84 +115,67 @@ custom defaults." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot method for 'survfit' objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ampel-leipzig/ameld/blob/master/R/plot.R'><code>R/plot.R</code></a></small>
-    <div class="hidden name"><code>plot_surv.Rd</code></div>
+    <h1>Calculate observed survival informations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ampel-leipzig/ameld/blob/master/R/utils-survival.R'><code>R/utils-survival.R</code></a></small>
+    <div class="hidden name"><code>observed_survival.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is just a wrapper method around <code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code> with
-custom defaults.</p>
+    <p>This functions calculate some survival information (e.g. survival rate,
+mortality rate).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_surv</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  main <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>,
-  xlab <span class='op'>=</span> <span class='st'>"Time"</span>,
-  ylab <span class='op'>=</span> <span class='st'>"Overall survival probability"</span>,
-  mark.time <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  conf.int <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palette.html'>palette.colors</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>strata</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
-  <span class='va'>times</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>observed_survival</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>f</span>, <span class='va'>times</span><span class='op'>)</span>
+
+<span class='fu'>observed_mortality</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>f</span>, <span class='va'>times</span><span class='op'>)</span>
+
+<span class='fu'>observed_events</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>f</span>, <span class='va'>times</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code>survfit</code> object.</p></td>
+      <td><p><code>Surv</code>, object</p></td>
     </tr>
     <tr>
-      <th>main</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, plot title.</p></td>
-    </tr>
-    <tr>
-      <th>xlab</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, x-axis label.</p></td>
-    </tr>
-    <tr>
-      <th>ylab</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, y-axis label.</p></td>
-    </tr>
-    <tr>
-      <th>mark.time</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>, if <code>TRUE</code> censoring times are marked, see
-<code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code> for details.</p></td>
-    </tr>
-    <tr>
-      <th>conf.int</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>, if <code>TRUE</code> confidence interval is plotted, see
-<code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code> for details.</p></td>
-    </tr>
-    <tr>
-      <th>col</th>
-      <td><p><code>integer</code>/<code>character</code>, specifying colors for each curve.</p></td>
+      <th>f</th>
+      <td><p><code>factor</code>, strata/splitting factor</p></td>
     </tr>
     <tr>
       <th>times</th>
-      <td><p><code>integer</code>, vector of times to print on the x-axis.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>further arguments passed to <code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code>.</p></td>
+      <td><p><code>numeric</code>, information at times</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list with <code>x</code> and <code>y</code> containing the coordinates of the last point
-of each curves.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p><code>double</code>, with an element for each level in <code>f</code>,
+if times is a <code>numeric</code> of length 1;  or a <code>matrix</code> with
+as much rows as elements in <code>times</code> and a column for each level in <code>f</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code></p></div>
+    <p>In contrast to <code><a href='https://rdrr.io/pkg/survival/man/summary.survfit.html'>survival::summary.survfit()</a></code> these functions do not remove
+empty strata (e.g. important for bootstrapping).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/therneau/survival'>"survival"</a></span><span class='op'>)</span>
-<span class='va'>srvfit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/survival/man/survfit.html'>survfit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>status</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>aml</span><span class='op'>)</span>
-<span class='fu'>plot_surv</span><span class='op'>(</span><span class='va'>srvfit</span><span class='op'>)</span>
-</div><div class='img'><img src='plot_surv-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='va'>sv</span> <span class='op'>&lt;-</span> <span class='fu'>Surv</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span><span class='op'>)</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>observed_survival</span><span class='op'>(</span><span class='va'>sv</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.3333333</div><div class='input'><span class='fu'>observed_survival</span><span class='op'>(</span><span class='va'>sv</span>, f <span class='op'>=</span> <span class='va'>f</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   a   b   c 
+#&gt; 0.0  NA 0.5 </div><div class='input'><span class='fu'>observed_survival</span><span class='op'>(</span><span class='va'>sv</span>, f <span class='op'>=</span> <span class='va'>f</span>, times <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   a  b   c
+#&gt; 1 1 NA 1.0
+#&gt; 2 1 NA 0.5
+#&gt; 3 0 NA 0.5
+#&gt; 4 0 NA 0.5</div><div class='input'>
+<span class='fu'>observed_mortality</span><span class='op'>(</span><span class='va'>sv</span>, f <span class='op'>=</span> <span class='va'>f</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   a   b   c 
+#&gt; 1.0  NA 0.5 </div><div class='input'>
+<span class='fu'>observed_events</span><span class='op'>(</span><span class='va'>sv</span>, f <span class='op'>=</span> <span class='va'>f</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  a  b  c 
+#&gt;  1 NA  1 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
