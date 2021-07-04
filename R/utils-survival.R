@@ -45,6 +45,43 @@ observed_events <- function(x, f, times) {
     .summary_per_strata(x, f, times, "n.event")[,,1L]
 }
 
+#' Calculate observed vs expected mortality
+#'
+#' This function creates a table to compare the observed and the expected
+#' mortality.
+#'
+#' @inheritParams observed_survival
+#' @param time `numeric(1)`, observed/expected survival at `time` timepoint.
+#' @param expected `numeric`, expected mortality rate, has to be of the same
+#' length as levels in `f`.
+#' @return `data.frame`, with observed/expected mortality rates and events.
+#' @export
+#' @examples
+#' sv <- Surv(1:8, c(0, 1, 1, 0, 1, 1, 1, 0))
+#' f <- factor(rep(c("a", "c"), 4), levels = c("a", "b", "c"))
+#' observed_vs_expected_mortality(sv, f, time = 3, expected = c(0.5, 0.3, 0.2))
+observed_vs_expected_mortality <- function(x, f, time, expected) {
+    if (length(time) != 1L || !is.numeric(time))
+        stop("'time' has to be a numeric of length 1.")
+
+    y <- .summary_per_strata(x, f, time, c("surv", "n.event", "n.censor"))
+
+    if (ncol(y) != length(expected))
+        stop("Length of 'expected' has to be the same as the levels of 'f'.")
+
+    nexpected <- (as.vector(table(f)) - y[,, "n.censor"]) * expected
+
+    data.frame(
+        ObservedDeaths = y[,, "n.event"],
+        ExpectedDeaths = nexpected,
+        StandardizedMortalityRatio = y[,, "n.event"] / nexpected,
+        ObservedMortality = 1 - y[,, "surv"],
+        ExpectedMortality = expected,
+        row.names = colnames(y),
+        stringsAsFactors = FALSE
+    )
+}
+
 #' Calculate observed survival summary per strata
 #'
 #' This function uses [`survival::summary.survfit()`] to calculate survival data

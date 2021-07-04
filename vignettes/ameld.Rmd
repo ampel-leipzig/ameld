@@ -179,6 +179,60 @@ axis(
 par(old.par)
 ```
 
+# Observed vs Expected Mortality
+
+We divide our cohort into 5 MELD-score risk categories as described in
+@wiesner2003. Our observed 90 day mortality is higher than the predicted one,
+except in the lowest category.
+
+```{r observed-vs-meld-mortality-table, results = "asis"}
+eldd$MELD <- meld(
+    creatinine = as_metric(eldd$CRE_S, "creatinine"),
+    bilirubin = as_metric(eldd$BILI_S, "bilirubin"),
+    inr = eldd$INR_C,
+    dialysis = eldd$Dialysis,
+    cause = "other"
+)
+
+# Mortality rates and categories as reported in Wiesner et al. 2013
+mr <- c(1.9, 6.0, 19.6, 52.6, 71.3) / 100
+
+mcat <- cut(
+    eldd$MELD,
+    breaks = c(-Inf, seq(10, 40, by=10), Inf),
+    labels = c(
+        paste0("[", floor(min(eldd$MELD, na.rm = TRUE)), ",9]"),
+        "[10,20)", "[20,30)", "[30,40)",
+        paste0( "[40,", ceiling(max(eldd$MELD, na.rm = TRUE)), ")")
+    ),
+    right = FALSE
+)
+
+tbl <- observed_vs_expected_mortality(srv, time = 90, f = mcat, expected = mr)
+tbl[c("ObservedMortality", "ExpectedMortality")] <-
+    tbl[c("ObservedMortality", "ExpectedMortality")] * 100
+
+knitr::kable(
+    tbl,
+    col.names =
+        c(
+            "Observed deaths (n)",
+            "Expected deaths (n)",
+            "Standardized mortality ratio (SMR)",
+            "Observed mortality (%)",
+            "Expected mortality (%)"
+        ),
+    caption = paste0(
+        "Observed vs MELD-expected 90 day mortality. ",
+        "MELD mortality values are taken from @wiesner2003. ",
+        "All patients censored before day 90 are ignored for ",
+        " the calculation of the MELD-expected deaths. ",
+        "SMR, Standardized mortality ratio = observed deaths/expected deaths."
+    ),
+    digits = 1
+)
+```
+
 # Acknowledgment
 
 This work is part of the [AMPEL](https://ampel.care/en/)

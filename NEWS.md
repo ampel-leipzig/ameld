@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.7
+
+- Add `observed_vs_expected_mortality`.
+
 ## Changes in 0.0.6
 
 - Add `observed_survival`, `observed_mortality`, and `observed_events`.
