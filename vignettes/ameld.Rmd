@@ -194,7 +194,7 @@ eldd$MELD <- meld(
     cause = "other"
 )
 
-# Mortality rates and categories as reported in Wiesner et al. 2013
+# Mortality rates and categories as reported in Wiesner et al. 2003
 mr <- c(1.9, 6.0, 19.6, 52.6, 71.3) / 100
 
 mcat <- cut(
