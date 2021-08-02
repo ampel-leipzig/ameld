@@ -1,5 +1,10 @@
 # ameld 0.0
 
+## Changes in 0.0.8
+
+- Rename "calcium, total" and "bilirubin, total" to
+  "total calcium" and "total bilirubin" in `eldr$LongDescription`
+
 ## Changes in 0.0.7
 
 - Add `observed_vs_expected_mortality`.
