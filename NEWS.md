@@ -1,5 +1,10 @@
 # ameld 0.0
 
+## Changes in 0.0.9
+
+- `observed_events` gains a `cumulative` argument to calculate cumulative
+  events over time periods.
+
 ## Changes in 0.0.8
 
 - Rename "calcium, total" and "bilirubin, total" to

@@ -36,13 +36,23 @@ observed_mortality <- function(x, f, times) {
     1 - .summary_per_strata(x, f, times, "surv")[,,1L]
 }
 
+#' @param cumulative `logical`, if `TRUE` (default `FALSE`) and multiple `times`
+#' are given the cumulative events are reported instead of the events in the
+#' time periods.
 #' @rdname observed_survival
 #' @export
 #' @examples
 #'
 #' observed_events(sv, f = f, times = 3)
-observed_events <- function(x, f, times) {
-    .summary_per_strata(x, f, times, "n.event")[,,1L]
+#' observed_events(sv, f = f, times = 1:4)
+#' observed_events(sv, f = f, times = 1:4, cumulative = TRUE)
+observed_events <- function(x, f, times, cumulative = FALSE) {
+    e <- .summary_per_strata(x, f, times, "n.event")[,,1L]
+
+    if (isTRUE(cumulative))
+        drop(apply(as.matrix(e), 2, cumsum))
+    else
+        e
 }
 
 #' Calculate observed vs expected mortality

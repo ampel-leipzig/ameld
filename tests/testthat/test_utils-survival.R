@@ -3,7 +3,7 @@ f <- factor(c("a", "c", "a", "c"), levels = c("a", "b", "c"))
 
 test_that("observed_survival", {
     expect_equal(observed_survival(sv, times = 2), 2/3)
-    expect_equal(observed_survival(sv, f, times = 2), c(a=1, b=NA, c=0.5))
+    expect_equal(observed_survival(sv, f, times = 2), c(a = 1, b = NA, c = 0.5))
     expect_equal(
         observed_survival(sv, f, times = 2:3),
         matrix(
@@ -30,12 +30,30 @@ test_that("observed_mortality", {
 
 test_that("observed_events", {
     expect_equal(observed_events(sv, times = 2), 1)
-    expect_equal(observed_events(sv, f, times = 2), c(a=0, b=NA, c=1))
+    expect_equal(observed_events(sv, f, times = 2), c(a = 0, b = NA, c = 1))
     expect_equal(
         observed_events(sv, f, times = 2:3),
         matrix(
             c(0, 1, NA, NA, 1, 0), nrow = 2, ncol = 3,
             dimnames = list(2:3, c("a", "b", "c"))
+        )
+    )
+})
+
+test_that("observed_events cumulative events", {
+    svcum <- Surv(c(rep(1:5, 4)), rep(0:1, 10))
+    fcum <- factor(rep(letters[1:4], 5), levels = letters[1:5])
+    expect_equal(observed_events(svcum, times = 2, cumulative = TRUE), 4)
+    expect_equal(
+        observed_events(svcum, times = c(2, 4, 6), cumulative = TRUE),
+        c("2" = 4, "4" = 8, "6" = 10)
+    )
+    expect_equal(
+        observed_events(svcum, fcum, times = c(2, 4, 6), cumulative = TRUE),
+        matrix(
+            c(0, 0, 0, 2, 4, 5, 0, 0, 0, 2, 4, 5, NA, NA, NA),
+            nrow = 3, ncol = 5,
+            dimnames = list(c(2, 4, 6), letters[1:5])
         )
     )
 })

@@ -10,7 +10,7 @@ observed_survival(x, f, times)
 
 observed_mortality(x, f, times)
 
-observed_events(x, f, times)
+observed_events(x, f, times, cumulative = FALSE)
 }
 \arguments{
 \item{x}{\code{Surv}, object}
@@ -18,6 +18,10 @@ observed_events(x, f, times)
 \item{f}{\code{factor}, strata/splitting factor}
 
 \item{times}{\code{numeric}, information at times}
+
+\item{cumulative}{\code{logical}, if \code{TRUE} (default \code{FALSE}) and multiple \code{times}
+are given the cumulative events are reported instead of the events in the
+time periods.}
 }
 \value{
 \code{double}, with an element for each level in \code{f},
@@ -42,4 +46,6 @@ observed_survival(sv, f = f, times = 1:4)
 observed_mortality(sv, f = f, times = 3)
 
 observed_events(sv, f = f, times = 3)
+observed_events(sv, f = f, times = 1:4)
+observed_events(sv, f = f, times = 1:4, cumulative = TRUE)
 }
