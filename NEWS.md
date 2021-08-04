@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.10
+
+- Add `enum` function.
+
 ## Changes in 0.0.9
 
 - `observed_events` gains a `cumulative` argument to calculate cumulative

@@ -2,6 +2,7 @@
 
 export(as_metric)
 export(as_si)
+export(enum)
 export(meld)
 export(meld_na)
 export(meld_plus7)
@@ -25,3 +26,5 @@ importFrom(graphics,text)
 importFrom(graphics,title)
 importFrom(survival,Surv)
 importFrom(survival,survfit)
+importFrom(utils,head)
+importFrom(utils,tail)
