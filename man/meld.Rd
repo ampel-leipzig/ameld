@@ -21,7 +21,7 @@ meld_na(
   inr,
   sodium,
   dialysis = FALSE,
-  type = c("Kim2008", "UNOS"),
+  type = c("kim2008", "unos"),
   cause = "other",
   round = FALSE
 )
@@ -79,7 +79,7 @@ meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 
 meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
 meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
-        type = "UNOS")
+        type = "unos")
 meld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 }
 \references{

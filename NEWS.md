@@ -2,6 +2,7 @@
 
 ## Changes in 0.0.11
 
+- Use lower case `"type"` argument in `meld_na` ("unos" instead of "UNOS").
 - Restrict `meld(..., cause)` argument to
   `c("other", "unos", "ethyltoxic", "cholestatic")`.
 

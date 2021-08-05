@@ -62,12 +62,12 @@ meld <- function(creatinine, bilirubin, inr, dialysis = FALSE,
 #'
 #' meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
 #' meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
-#'         type = "UNOS")
+#'         type = "unos")
 meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
-                    type = c("Kim2008", "UNOS"),
+                    type = c("kim2008", "unos"),
                     cause = "other", round = FALSE) {
     type <- match.arg(type)
-    if (type == "Kim2008") {
+    if (type == "kim2008") {
         sodium <- pmax(pmin(sodium, 140), 125)
         score <- meld(
             creatinine = creatinine, bilirubin = bilirubin, inr = inr,

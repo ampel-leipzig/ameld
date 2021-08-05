@@ -42,35 +42,35 @@ test_that("meld_na", {
     ## NA 125-137
     expect_equal(
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 137,
-                type = "UNOS"),
+                type = "unos"),
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 138,
-                type = "UNOS")
+                type = "unos")
     )
     expect_equal(
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 125,
-                type = "UNOS"),
+                type = "unos"),
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 124,
-                type = "UNOS")
+                type = "unos")
     )
 
     expect_equal(
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 125,
-                type = "UNOS", round = TRUE), 28
+                type = "unos", round = TRUE), 28
     )
     ## below 11
     expect_equal(
         meld_na(creatinine = c(1.9, 1.0), bilirubin = c(4.2, 1.0),
-                c(inr = 1.2, 1.0), sodium = c(137, 125), type = "UNOS"),
+                c(inr = 1.2, 1.0), sodium = c(137, 125), type = "unos"),
         c(meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 137,
-                  type = "UNOS"),
+                  type = "unos"),
           meld_na(creatinine = 1.0, bilirubin = 1.0, inr = 1.0, sodium = 125,
-                  type = "UNOS"))
+                  type = "unos"))
     )
     expect_equal(
         meld_na(creatinine = 1.0, bilirubin = 1.0, inr = 1.0, sodium = 137,
-                type = "UNOS"),
+                type = "unos"),
         meld_na(creatinine = 1.0, bilirubin = 1.0, inr = 1.0, sodium = 125,
-                type = "UNOS")
+                type = "unos")
     )
     ## NA
     expect_equal(
@@ -79,21 +79,21 @@ test_that("meld_na", {
     )
     expect_equal(
         meld_na(creatinine = 1.0, bilirubin = 1.0, inr = 1.0, sodium = NA,
-                type = "UNOS"), 6.43 # below 11
+                type = "unos"), 6.43 # below 11
     )
     expect_equal(
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = NA,
-                type = "UNOS"), NA_real_
+                type = "unos"), NA_real_
     )
     expect_equal(
         meld_na(creatinine = 1.9, bilirubin = 4.2, inr = NA, sodium = 125,
-                type = "UNOS"), NA_real_
+                type = "unos"), NA_real_
     )
     expect_equal(
         meld_na(creatinine = 1.0, bilirubin = 1.0, inr = 1.0, sodium = 137,
-                dialysis = TRUE, type = "UNOS"),
+                dialysis = TRUE, type = "unos"),
         meld_na(creatinine = 4.0, bilirubin = 1.0, inr = 1.0, sodium = 137,
-                type = "UNOS")
+                type = "unos")
     )
 })
 
