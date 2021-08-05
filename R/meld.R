@@ -34,7 +34,6 @@ meld <- function(creatinine, bilirubin, inr, dialysis = FALSE,
     cause <- as.integer(cause == "other" | cause == "unos")
     ## if dialysis == TRUE => creatinine == 4.0 mg/dl
     creatinine <- creatinine + as.integer(dialysis) * 4.0
-    creatinine <- pmax(pmin(creatinine, 4), 1)
     score <- (0.957 * log(pmax(pmin(creatinine, 4), 1)) +
               0.378 * log(pmax(bilirubin, 1)) +
               1.12 * log(pmax(inr, 1)) + 0.643 * cause)
