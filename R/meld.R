@@ -7,7 +7,8 @@
 #' @param inr `numeric`
 #' @param dialysis `logical`, had dialysis twice, or 24 hours of CVVHD, within
 #' a week prior to the serum creatinine test?
-#' @param cause `character`
+#' @param cause `character`, cause of cirrhosis. Use `"unos"` for the United
+#' Network for Organ Sharing definition of the score.
 #' @param round `logical`, round to nearest integer?
 #' @return `numeric`
 #'
@@ -30,7 +31,9 @@
 #' @examples
 #' meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 meld <- function(creatinine, bilirubin, inr, dialysis = FALSE,
-                 cause = "other", round = FALSE) {
+                 cause = c("other", "unos", "ethyltoxic", "cholestatic"),
+                 round = FALSE) {
+    cause <- match.arg(cause)
     cause <- as.integer(cause == "other" | cause == "unos")
     ## if dialysis == TRUE => creatinine == 4.0 mg/dl
     creatinine <- creatinine + as.integer(dialysis) * 4.0

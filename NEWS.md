@@ -1,5 +1,10 @@
 # ameld 0.0
 
+## Changes in 0.0.11
+
+- Restrict `meld(..., cause)` argument to
+  `c("other", "unos", "ethyltoxic", "cholestatic")`.
+
 ## Changes in 0.0.10
 
 - Add `enum` function.

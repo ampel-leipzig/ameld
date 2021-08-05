@@ -1,5 +1,9 @@
 test_that("meld", {
     expect_equal(
+        meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "ethyltoxic"),
+        13.6091626
+    )
+    expect_equal(
         meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other"),
         20.0391626
     )
