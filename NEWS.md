@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.12
+
+- Allow vectorized `cause` argument in `meld` (again).
+
 ## Changes in 0.0.11
 
 - Use lower case `"type"` argument in `meld_na` ("unos" instead of "UNOS").

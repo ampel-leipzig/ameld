@@ -11,7 +11,7 @@ meld(
   bilirubin,
   inr,
   dialysis = FALSE,
-  cause = c("other", "unos", "ethyltoxic", "cholestatic"),
+  cause = "other",
   round = FALSE
 )
 
@@ -47,8 +47,10 @@ meld_plus7(
 \item{dialysis}{\code{logical}, had dialysis twice, or 24 hours of CVVHD, within
 a week prior to the serum creatinine test?}
 
-\item{cause}{\code{character}, cause of cirrhosis. Use \code{"unos"} for the United
-Network for Organ Sharing definition of the score.}
+\item{cause}{\code{character}, cause of cirrhosis. Has to be of the same length as
+\code{creatinine}, \code{bilirubin}, \code{inr} and \code{dialysis}. Just \code{"ethyltoxic"},
+\code{"cholestatic"}, \code{"unos"} and \code{"other"} are supported.
+Use \code{"unos"} for the United Network for Organ Sharing definition of the score.}
 
 \item{round}{\code{logical}, round to nearest integer?}
 

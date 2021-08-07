@@ -7,8 +7,10 @@
 #' @param inr `numeric`
 #' @param dialysis `logical`, had dialysis twice, or 24 hours of CVVHD, within
 #' a week prior to the serum creatinine test?
-#' @param cause `character`, cause of cirrhosis. Use `"unos"` for the United
-#' Network for Organ Sharing definition of the score.
+#' @param cause `character`, cause of cirrhosis. Has to be of the same length as
+#' `creatinine`, `bilirubin`, `inr` and `dialysis`. Just `"ethyltoxic"`,
+#' `"cholestatic"`, `"unos"` and `"other"` are supported.
+#' Use `"unos"` for the United Network for Organ Sharing definition of the score.
 #' @param round `logical`, round to nearest integer?
 #' @return `numeric`
 #'
@@ -30,10 +32,17 @@
 #' @export
 #' @examples
 #' meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
-meld <- function(creatinine, bilirubin, inr, dialysis = FALSE,
-                 cause = c("other", "unos", "ethyltoxic", "cholestatic"),
+meld <- function(creatinine, bilirubin, inr, dialysis = FALSE, cause = "other",
                  round = FALSE) {
-    cause <- match.arg(cause)
+    cause <- tolower(cause)
+    is_valid <- cause %in% c("other", "unos", "ethyltoxic", "cholestatic")
+    if (any(!is_valid)) {
+        warning(
+            "Found unknown cause(s): ", enum(cause[!is_valid]), ".\n",
+            "Using \"other\" instead."
+        )
+        cause[!is_valid] <- "other"
+    }
     cause <- as.integer(cause == "other" | cause == "unos")
     ## if dialysis == TRUE => creatinine == 4.0 mg/dl
     creatinine <- creatinine + as.integer(dialysis) * 4.0

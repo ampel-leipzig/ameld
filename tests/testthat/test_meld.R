@@ -27,6 +27,26 @@ test_that("meld", {
         meld(creatinine = 1.0, bilirubin = 1, inr = 1, dialysis = TRUE),
         meld(creatinine = 4, bilirubin = 1, inr = 1)
     )
+    ## vectorized arguments
+    expect_equal(
+        meld(
+            creatinine = c(0.9, 1.9), bilirubin = c(0.9, 4.2), inr = c(1, 1.2),
+            cause = c("other", "ethyltoxic")
+        ), c(6.43, 13.6091626)
+    )
+    ## unkown cause argument
+    expect_warning(
+        meld(
+            creatinine = c(0.9, 1.9), bilirubin = c(0.9, 4.2), inr = c(1, 1.2),
+            cause = c("other", "foobar")
+        ), "unknown cause"
+    )
+    expect_equal(
+        suppressWarnings(
+            meld(creatinine = 0.9, bilirubin = 0.9, inr = 0.9, cause = "foobar")
+        ),
+        meld(creatinine = 0.9, bilirubin = 0.9, inr = 0.9, cause = "OTHER")
+    )
 })
 
 test_that("meld_na", {
