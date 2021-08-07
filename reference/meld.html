@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.12</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
   <span class='va'>bilirubin</span>,
   <span class='va'>inr</span>,
   dialysis <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  cause <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"other"</span>, <span class='st'>"unos"</span>, <span class='st'>"ethyltoxic"</span>, <span class='st'>"cholestatic"</span><span class='op'>)</span>,
+  cause <span class='op'>=</span> <span class='st'>"other"</span>,
   round <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -176,8 +176,10 @@ a week prior to the serum creatinine test?</p></td>
     </tr>
     <tr>
       <th>cause</th>
-      <td><p><code>character</code>, cause of cirrhosis. Use <code>"unos"</code> for the United
-Network for Organ Sharing definition of the score.</p></td>
+      <td><p><code>character</code>, cause of cirrhosis. Has to be of the same length as
+<code>creatinine</code>, <code>bilirubin</code>, <code>inr</code> and <code>dialysis</code>. Just <code>"ethyltoxic"</code>,
+<code>"cholestatic"</code>, <code>"unos"</code> and <code>"other"</code> are supported.
+Use <code>"unos"</code> for the United Network for Organ Sharing definition of the score.</p></td>
     </tr>
     <tr>
       <th>round</th>
