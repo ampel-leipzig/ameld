@@ -3,6 +3,7 @@
 #' @param y `factor`, classes
 #' @param nfolds `integer(1)`, number of folds
 #' @param balanced `logical`, should classes be balanced in the folds?
+#' @return integer(length(y))
 #' @noRd
 .bfolds <- function(y, nfolds = 3L) {
     grpn <- table(y)
@@ -22,11 +23,24 @@
 #' @param y `factor`, classes
 #' @param nfolds `integer(1)`, number of folds
 #' @param balanced `logical`, should classes be balanced in the folds?
+#' @return integer(length(y))
 #' @noRd
 .folds <- function(y, nfolds = 3L) {
     if (nfolds < 3L)
         stop("'nfolds' has to be >= 3.")
     sample(rep_len(seq_len(nfolds), length(y)))
+}
+
+#' Create (balanced) CV fold id matrix
+#'
+#' @param y `factor`, classes
+#' @param nfold `integer(1)`, number of folds
+#' @param nrep `integer(1)`, repititions
+#' @param balanced `logical(1)`, balanced folds?
+#' @return matrix, nrows == nrep, ncol == length(y)
+.mfolds <- function(y, nfolds = 3L, nrep = 5L, balanced = FALSE) {
+    f <- if (isTRUE(balanced)) .bfolds else .folds
+    do.call(rbind, lapply(integer(nrep), function(i)f(y, nfolds = nfolds)))
 }
 
 #' Convert s into its numeric equivalent
