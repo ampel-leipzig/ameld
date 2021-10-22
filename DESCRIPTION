@@ -1,6 +1,6 @@
 Package: ameld
 Title: Data and Model of End-Stage Liver Disease used in the AMPEL Project
-Version: 0.0.12
+Version: 0.0.13
 Description:
     A dataset of patients evaluated for liver transplantation at the
     University Hospital Leipzig from November 2012 to June 2015.
@@ -15,20 +15,27 @@ Authors@R: person(given = "Sebastian", family = "Gibb",
 Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
 Depends:
     R (>= 4.1),
+    glmnet,
+    methods,
     survival
 Suggests:
     zlog (> 1.0.0),
+    future,
+    future.apply,
+    doFuture,
+    progressr,
     lubridate,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
+    viridisLite,
     vdiffr
 License: GPL (>= 3)
 LazyData: yes
 URL: https://github.com/ampel-leipzig/ameld/
 BugReports: https://github.com/ampel-leipzig/ameld/issues/
 Roxygen: list(markdown=TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Encoding: UTF-8
 Config/testthat/edition: 3

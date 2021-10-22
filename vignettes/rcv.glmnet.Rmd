@@ -1,0 +1,109 @@
+---
+title: Introduction to (a)rcv.gmlnet
+output:
+    rmarkdown::html_vignette:
+        toc_float: true
+vignette: >
+    %\VignetteIndexEntry{Introduction to (a)rcv.glmnet}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+bibliography:
+    - bibliography.bib
+    - rpackages.bib
+---
+
+```{r setup, include = FALSE}
+Sys.setenv(LANGUAGE = "en")
+library("ameld")
+
+knitr::write_bib("glmnet", "rpackages.bib")
+```
+
+**Authors**: `r packageDescription("ameld")[["Author"]] `<br />
+**Last modified:** `r file.info("ameld.Rmd")$mtime`<br />
+**Compiled**: `r date()`
+
+# Introduction
+
+The `ameld` R package extends `glmnet::cv.glmnet` [@R-glmnet; @glmnet2010].
+It supports a repeated cross-validation (`rcv.glmnet`) and
+a repeated cross-validation to tune *alpha* and *lambda* simultaneously
+(`arcv.glmnet`).
+
+# Dataset
+
+The example data set is taken from `?"glmnet::cv.glmnet"`:
+
+```{r dataset}
+set.seed(1010)
+n <- 1000
+p <- 100
+nzc <- trunc(p/10)
+x <- matrix(rnorm(n * p), n, p)
+beta <- rnorm(nzc)
+fx <- x[, seq(nzc)] %*% beta
+eps <- rnorm(n) * 5
+y <- drop(fx + eps)
+```
+
+# Repeated Cross-Validation
+
+`rcv.glmnet` is used to run a repeated cross-validation.
+The interface is the same as in `cv.glmnet`.
+
+```{r rcv}
+set.seed(1011)
+# nrepcv should usually be higher but to keep the runtime of the example low
+# we choose 2 here
+rcvob <- rcv.glmnet(x, y, nrepcv = 2, nfolds = 3)
+plot(rcvob)
+```
+
+Accessing coefficients or predicting works exactly as with `cv.glmnet`:
+```{r rcv-coef}
+coef(rcvob)
+predict(rcvob, newx = x[1:5, ], s = "lambda.min")
+```
+
+# Simultaneously tune *alpha* and *lambda*
+
+`arcv.glmnet` is used to run a repeated cross-validation and tune *alpha* and
+*lambda*.
+
+```{r arcv}
+set.seed(1011)
+# nrepcv should usually be higher but to keep the runtime of the example low
+# we choose 2 here
+# in similar manner we just evaluate a few alpha values
+arcvob <- arcv.glmnet(x, y, alpha = c(0, 0.5, 1), nrepcv = 2, nfolds = 3)
+```
+
+We could visualise the effect of different *alpha*s across all *lambda*s in
+a plot.
+
+```{r arcv-plot}
+plot(arcvob)
+```
+
+Alternatively we could just look at the "best" *lambda*.
+
+```{r arcv-plot-lambda.1se}
+plot(arcvob, what = "lambda.1se")
+```
+
+# Acknowledgment
+
+This work is part of the [AMPEL](https://ampel.care/en/)
+(Analysis and Reporting System for the Improvement of Patient Safety through
+Real-Time Integration of Laboratory Findings) project.
+
+This measure is co-funded with tax revenues based on the budget adopted by
+the members of the Saxon State Parliament.
+
+# Session Information
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+# References

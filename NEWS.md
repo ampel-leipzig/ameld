@@ -1,5 +1,11 @@
 # ameld 0.0
 
+## Changes in 0.0.13
+
+- Add `arcv.glmnet`.
+- Integrate `rcv.glmnet` from https://github.com/ampel-leipzig/glmnettools.
+- Use `future` backend for parallelisation.
+
 ## Changes in 0.0.12
 
 - Allow vectorized `cause` argument in `meld` (again).

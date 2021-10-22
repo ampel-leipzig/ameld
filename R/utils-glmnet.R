@@ -34,10 +34,11 @@
 #' Create (balanced) CV fold id matrix
 #'
 #' @param y `factor`, classes
-#' @param nfold `integer(1)`, number of folds
+#' @param nfolds `integer(1)`, number of folds
 #' @param nrep `integer(1)`, repititions
 #' @param balanced `logical(1)`, balanced folds?
 #' @return matrix, nrows == nrep, ncol == length(y)
+#' @noRd
 .mfolds <- function(y, nfolds = 3L, nrep = 5L, balanced = FALSE) {
     f <- if (isTRUE(balanced)) .bfolds else .folds
     do.call(rbind, lapply(integer(nrep), function(i)f(y, nfolds = nfolds)))
