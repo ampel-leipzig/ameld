@@ -73,7 +73,7 @@ custom defaults." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.14</span>
       </span>
     </div>
 
@@ -158,24 +158,24 @@ custom defaults.</p>
     </tr>
     <tr>
       <th>main</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, plot title.</p></td>
+      <td><p><code>character(1)</code>, plot title.</p></td>
     </tr>
     <tr>
       <th>xlab</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, x-axis label.</p></td>
+      <td><p><code>character(1)</code>, x-axis label.</p></td>
     </tr>
     <tr>
       <th>ylab</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>, y-axis label.</p></td>
+      <td><p><code>character(1)</code>, y-axis label.</p></td>
     </tr>
     <tr>
       <th>mark.time</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>, if <code>TRUE</code> censoring times are marked, see
+      <td><p><code>logical(1)</code>, if <code>TRUE</code> censoring times are marked, see
 <code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code> for details.</p></td>
     </tr>
     <tr>
       <th>conf.int</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>, if <code>TRUE</code> confidence interval is plotted, see
+      <td><p><code>logical(1)</code>, if <code>TRUE</code> confidence interval is plotted, see
 <code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code> for details.</p></td>
     </tr>
     <tr>
@@ -201,10 +201,11 @@ of each curves.</p>
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/survival/man/plot.survfit.html'>survival::plot.survfit()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/therneau/survival'>"survival"</a></span><span class='op'>)</span>
-<span class='va'>srvfit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/survival/man/survfit.html'>survfit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>status</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>aml</span><span class='op'>)</span>
-<span class='fu'>plot_surv</span><span class='op'>(</span><span class='va'>srvfit</span><span class='op'>)</span>
-</div><div class='img'><img src='plot_surv-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/therneau/survival'>"survival"</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>srvfit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/survival/man/survfit.html'>survfit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>status</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>x</span>, data <span class='op'>=</span> <span class='va'>aml</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>plot_surv</span><span class='op'>(</span><span class='va'>srvfit</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='plot_surv-1.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

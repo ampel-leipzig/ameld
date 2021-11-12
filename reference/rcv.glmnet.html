@@ -73,7 +73,7 @@ calls." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.14</span>
       </span>
     </div>
 
@@ -163,7 +163,7 @@ calls.</p>
     </tr>
     <tr>
       <th>nrepcv</th>
-      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>, number of repeated cross-validations (outer
+      <td><p><code>integer(1)</code>, number of repeated cross-validations (outer
 loop).</p></td>
     </tr>
     <tr>
@@ -173,7 +173,7 @@ loop).</p></td>
     <tr>
       <th>foldid</th>
       <td><p><code>matrix</code>, an optional matrix with <code>nrepcv</code> rows and
-<code><a href='https://rdrr.io/r/base/nrow.html'>nrow(x)</a></code> columns containing ids from 1 to <code>nfolds</code> identifying what fold
+<code>nrow(x)</code> columns containing ids from 1 to <code>nfolds</code> identifying what fold
 each observation is in. If given <code>nrepcv</code> and <code>nfolds</code> are ignored.</p></td>
     </tr>
     <tr>
@@ -214,132 +214,135 @@ Coordinate Descent. Journal of Statistical Software, 39(5), 1-13. URL
     <p>Sebastian Gibb</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Examples taken from ?"glmnet::cv.glmnet"</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1010</span><span class='op'>)</span>
-<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>1000</span>
-<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
-<span class='va'>nzc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>trunc</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>/</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>p</span><span class='op'>)</span>, <span class='va'>n</span>, <span class='va'>p</span><span class='op'>)</span>
-<span class='va'>beta</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>nzc</span><span class='op'>)</span>
-<span class='va'>fx</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>nzc</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>%*%</span> <span class='va'>beta</span>
-<span class='va'>eps</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>5</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/drop.html'>drop</a></span><span class='op'>(</span><span class='va'>fx</span> <span class='op'>+</span> <span class='va'>eps</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1011</span><span class='op'>)</span>
-<span class='co'># nrepcv should usually be higher but to keep the runtime of the example low</span>
-<span class='co'># we choose 2 here</span>
-<span class='va'>rcvob</span> <span class='op'>&lt;-</span> <span class='fu'>rcv.glmnet</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, nrepcv <span class='op'>=</span> <span class='fl'>2</span>, nfolds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>rcvob</span><span class='op'>)</span>
-</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span><span class='st'>"Gaussian Family"</span>, line <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span>
-</div><div class='img'><img src='rcv.glmnet-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>rcvob</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 101 x 1 sparse Matrix of class "dgCMatrix"
-#&gt;                     s1
-#&gt; (Intercept) -0.1162737
-#&gt; V1          -0.2171531
-#&gt; V2           0.3237422
-#&gt; V3           .        
-#&gt; V4          -0.2190339
-#&gt; V5          -0.1856601
-#&gt; V6           0.2530652
-#&gt; V7           0.1874832
-#&gt; V8          -1.3574323
-#&gt; V9           1.0162046
-#&gt; V10          0.1558299
-#&gt; V11          .        
-#&gt; V12          .        
-#&gt; V13          .        
-#&gt; V14          .        
-#&gt; V15          .        
-#&gt; V16          .        
-#&gt; V17          .        
-#&gt; V18          .        
-#&gt; V19          .        
-#&gt; V20          .        
-#&gt; V21          .        
-#&gt; V22          .        
-#&gt; V23          .        
-#&gt; V24          .        
-#&gt; V25          .        
-#&gt; V26          .        
-#&gt; V27          .        
-#&gt; V28          .        
-#&gt; V29          .        
-#&gt; V30          .        
-#&gt; V31          .        
-#&gt; V32          .        
-#&gt; V33          .        
-#&gt; V34          .        
-#&gt; V35          .        
-#&gt; V36          .        
-#&gt; V37          .        
-#&gt; V38          .        
-#&gt; V39          .        
-#&gt; V40          .        
-#&gt; V41          .        
-#&gt; V42          .        
-#&gt; V43          .        
-#&gt; V44          .        
-#&gt; V45          .        
-#&gt; V46          .        
-#&gt; V47          .        
-#&gt; V48          .        
-#&gt; V49          .        
-#&gt; V50          .        
-#&gt; V51          .        
-#&gt; V52          .        
-#&gt; V53          .        
-#&gt; V54          .        
-#&gt; V55          .        
-#&gt; V56          .        
-#&gt; V57          .        
-#&gt; V58          .        
-#&gt; V59          .        
-#&gt; V60          .        
-#&gt; V61          .        
-#&gt; V62          .        
-#&gt; V63          .        
-#&gt; V64          .        
-#&gt; V65          .        
-#&gt; V66          .        
-#&gt; V67          .        
-#&gt; V68          .        
-#&gt; V69          .        
-#&gt; V70          .        
-#&gt; V71          .        
-#&gt; V72          .        
-#&gt; V73          .        
-#&gt; V74          .        
-#&gt; V75         -0.1420966
-#&gt; V76          .        
-#&gt; V77          .        
-#&gt; V78          .        
-#&gt; V79          .        
-#&gt; V80          .        
-#&gt; V81          .        
-#&gt; V82          .        
-#&gt; V83          .        
-#&gt; V84          .        
-#&gt; V85          .        
-#&gt; V86          .        
-#&gt; V87          .        
-#&gt; V88          .        
-#&gt; V89          .        
-#&gt; V90          .        
-#&gt; V91          .        
-#&gt; V92          .        
-#&gt; V93          .        
-#&gt; V94          .        
-#&gt; V95          .        
-#&gt; V96          .        
-#&gt; V97          .        
-#&gt; V98          .        
-#&gt; V99          .        
-#&gt; V100         .        </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>rcvob</span>, newx <span class='op'>=</span> <span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>, s <span class='op'>=</span> <span class='st'>"lambda.min"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      lambda.min
-#&gt; [1,] -1.3447658
-#&gt; [2,]  0.9443441
-#&gt; [3,]  0.6989746
-#&gt; [4,]  1.8698290
-#&gt; [5,] -4.7372693</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Examples taken from ?"glmnet::cv.glmnet"</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1010</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>1000</span></span>
+<span class='r-in'><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fl'>100</span></span>
+<span class='r-in'><span class='va'>nzc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>trunc</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>/</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>p</span><span class='op'>)</span>, <span class='va'>n</span>, <span class='va'>p</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>beta</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>nzc</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fx</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>nzc</span><span class='op'>)</span><span class='op'>]</span> <span class='op'><a href='https://rdrr.io/r/base/matmult.html'>%*%</a></span> <span class='va'>beta</span></span>
+<span class='r-in'><span class='va'>eps</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>5</span></span>
+<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/drop.html'>drop</a></span><span class='op'>(</span><span class='va'>fx</span> <span class='op'>+</span> <span class='va'>eps</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1011</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># nrepcv should usually be higher but to keep the runtime of the example low</span></span>
+<span class='r-in'><span class='co'># we choose 2 here</span></span>
+<span class='r-in'><span class='va'>rcvob</span> <span class='op'>&lt;-</span> <span class='fu'>rcv.glmnet</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, nrepcv <span class='op'>=</span> <span class='fl'>2</span>, nfolds <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>rcvob</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span><span class='st'>"Gaussian Family"</span>, line <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='rcv.glmnet-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>rcvob</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 101 x 1 sparse Matrix of class "dgCMatrix"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                     s1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> (Intercept) -0.1162737</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V1          -0.2171531</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V2           0.3237422</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V3           .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V4          -0.2190339</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V5          -0.1856601</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V6           0.2530652</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V7           0.1874832</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V8          -1.3574323</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V9           1.0162046</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V10          0.1558299</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V11          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V12          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V13          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V14          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V15          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V16          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V17          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V18          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V19          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V20          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V21          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V22          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V23          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V24          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V25          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V26          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V27          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V28          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V29          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V30          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V31          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V32          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V33          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V34          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V35          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V36          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V37          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V38          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V39          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V40          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V41          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V42          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V43          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V44          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V45          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V46          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V47          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V48          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V49          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V50          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V51          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V52          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V53          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V54          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V55          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V56          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V57          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V58          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V59          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V60          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V61          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V62          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V63          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V64          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V65          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V66          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V67          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V68          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V69          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V70          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V71          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V72          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V73          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V74          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V75         -0.1420966</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V76          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V77          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V78          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V79          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V80          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V81          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V82          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V83          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V84          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V85          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V86          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V87          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V88          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V89          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V90          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V91          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V92          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V93          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V94          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V95          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V96          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V97          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V98          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V99          .        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> V100         .        </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>rcvob</span>, newx <span class='op'>=</span> <span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span>, s <span class='op'>=</span> <span class='st'>"lambda.min"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      lambda.min</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] -1.3447658</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]  0.9443441</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]  0.6989746</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]  1.8698290</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5,] -4.7372693</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
