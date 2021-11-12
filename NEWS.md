@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in 0.0.14
+
+- Add `groupmean`.
+
 ## Changes in 0.0.13
 
 - Add `arcv.glmnet`.
