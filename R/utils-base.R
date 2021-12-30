@@ -10,5 +10,5 @@
 #' @examples
 #' groupmean(1:9, rep(1:3, 3))
 groupmean <- function(x, f, na.rm = TRUE) {
-    vapply(split(x, f), mean, NA_real_, na.rm = na.rm)
+    vapply(split(x, f), mean.default, NA_real_, na.rm = na.rm)
 }
