@@ -61,3 +61,22 @@
     else
         s
 }
+
+#' find selected variables in a list of glmnet models
+#' @param x `list` of glmnet objects.
+#' @param s `character`/`numeric`, value(s) of the penality parameter `lambda`.
+#' See [`glmnet::predict.cv.glmnet()`] for details.
+#' @return `table` of selected variables
+#' @noRd
+.selvars <- function(x, s = "lambda.1se") {
+    table(unlist(lapply(x, function(m) {
+        fit <- m$fit
+        rownames(fit$glmnet.fit$beta)[
+            predict(
+                fit$glmnet.fit,
+                type = "nonzero",
+                s = .s2numeric(fit, s)
+            )[, 1L]
+        ]
+    })))
+}

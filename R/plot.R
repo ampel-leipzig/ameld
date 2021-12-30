@@ -191,3 +191,19 @@ plot_table <- function(
         labels = x, cex = cex.text
     )
 }
+
+#' helper function to plot error bars
+#'
+#' @param x `double`, x coordinates.
+#' @param lower `double`, lower y coordinates.
+#' @param upper `double`, upper y coordinates.
+#' @param width `double`, width of the error bars as ratio of the range of data.
+#' @return nothing, used for its sideeffects.
+#' @noRd
+.errorbars <- function(x, lower, upper, width = 0.01, ...) {
+    w <- diff(range(x)) * width
+    segments(x, upper, x, lower, ...)
+    segments(x - w, upper, x + w, upper, ...)
+    segments(x - w, lower, x + w, lower, ...)
+    invisible(NULL)
+}

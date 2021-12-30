@@ -3,6 +3,7 @@
 ## Changes in development
 
 - Add `.prediction_error`, `.cutpoints` and `.cut`.
+- Add `bootstrap` and `plot.boot.glmnet`.
 
 ## Changes in 0.0.14
 

@@ -139,7 +139,6 @@ print.arcv.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
     invisible()
 }
 
-
 #' Plot the elastic net cross-validation curves
 #'
 #' This functions plots the aggregated cross-validation curves produced by
