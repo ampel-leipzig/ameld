@@ -1,5 +1,9 @@
 # ameld 0.0
 
+## Changes in development
+
+- Add `.prediction_error`, `.cutpoints` and `.cut`.
+
 ## Changes in 0.0.14
 
 - Add `groupmean`.
