@@ -1,5 +1,9 @@
 test_that(".bfolds", {
     expect_error(.bfolds(1:3, nfolds = 2), ">= 3")
+    expect_warning(
+        .bfolds(rep(1:3, each = 2), nfolds = 5),
+        "reducing to minimal group size"
+    )
 
     set.seed(1)
     cl <- factor(rep(c("a", "b"), c(8, 4)))
