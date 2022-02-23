@@ -199,6 +199,7 @@ plot_table <- function(
 #' @param upper `double`, upper y coordinates.
 #' @param width `double`, width of the error bars as ratio of the range of data.
 #' @return nothing, used for its sideeffects.
+#' @importFrom graphics segments
 #' @noRd
 .errorbars <- function(x, lower, upper, width = 0.01, ...) {
     w <- diff(range(x)) * width

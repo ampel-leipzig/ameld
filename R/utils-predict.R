@@ -34,6 +34,7 @@
 #' @param x `double` predicted survival
 #' @param n `integer(1)` number of patients/observation per interval
 #' @return `double`, cutpoints
+#' @importFrom stats quantile
 #' @noRd
 #' @examples
 #' x <- seq(0, 1, length.out = 10)

@@ -23,6 +23,7 @@
 #' \doi{10.1002/(SICI)1097-0258(19960229)15:4<361::AID-SIM168>3.0.CO;2-4}
 #'
 #' @rdname boot.glmnet
+#' @importFrom stats predict
 #' @export
 #' @examples
 #' # nboot should usually be higher but to keep the runtime of the example low
@@ -157,7 +158,7 @@ print.boot.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
 #'
 #' @author Sebastian Gibb
 #' @seealso [`rcv.glmnet()`], [`glmnet::cv.glmnet()`]
-#' @importFrom graphics legend lines title
+#' @importFrom graphics legend lines plot.new plot.window title
 #' @method plot boot.glmnet
 #' @export
 plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
