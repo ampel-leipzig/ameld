@@ -1,8 +1,7 @@
-#' Create (balanced) CV folds
+#' Create balanced CV folds
 #'
 #' @param y `factor`, classes
 #' @param nfolds `integer(1)`, number of folds
-#' @param balanced `logical`, should classes be balanced in the folds?
 #' @return integer(length(y))
 #' @noRd
 .bfolds <- function(y, nfolds = 3L) {
