@@ -19,6 +19,11 @@ test_that("arcv.glmnet", {
         x, y, alpha = c(0, 1), nrepcv = 2, nfolds = 3, trace.it = FALSE
     )
 
+    expect_equal(
+        .collect.measures.arcv.glmnet(arcv),
+        .collect.measures.arcv.glmnet(list(models = cv))
+    )
+
     ## calls are obviously different
     cv[[1]]$call <- cv[[2]]$call <- NULL
     cv[[1]]$glmnet.fit$call <- cv[[2]]$glmnet.fit$call <- NULL

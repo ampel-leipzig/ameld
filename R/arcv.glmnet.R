@@ -108,6 +108,32 @@ arcv.glmnet <- function(x, y, lambda = NULL,
     out
 }
 
+#' Collect Measurement Data
+#'
+#' Helper function to fetch measurement data from all models
+#' @param x `arcv.glmnet` object.
+#' @return `list` for with two elements (min, 1se) each containing a matrix with
+#' 5 columns (Lambda, Index, Measure, SE, Nonzero).
+#'
+#' @noRd
+.collect.measures.arcv.glmnet <- function(x) {
+    m <- lapply(x$models, function(m) {
+        l <- c(m$lambda.min, m$lambda.1se)
+        i <- match(l, m$lambda)
+        m <- cbind(
+            Lambda = l, Index = i,
+            Measure = m$cvm[i], SE = m$cvsd[i],
+            Nonzero = m$nzero[i]
+        )
+        rownames(m) <- c("lambda.min", "lambda.1se")
+        m
+    })
+    lapply(
+        c("lambda.min", "lambda.1se"),
+        function(w)do.call(rbind, lapply(m, "[", w,))
+    )
+}
+
 #' @rdname arcv.glmnet
 #' @method print arcv.glmnet
 #' @param digits `integer(1)`, number of digits shown in table.
@@ -120,18 +146,7 @@ print.arcv.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
     cat("\nNumber of CV for Lambda:", x$nfolds)
     cat("\nNumber of repeated CV for Lambda:", x$nrepcv)
     cat("\n\n\nMeasure:", x$models[[1L]]$name, "\n\n")
-    m <- lapply(x$models, function(m) {
-        l <- c(m$lambda.min, m$lambda.1se)
-        i <- match(l, m$lambda)
-        m <- cbind(
-            Lambda = l, Index = i,
-            Measure = m$cvm[i], SE = m$cvsd[i],
-            Nonzero = m$nzero[i]
-        )
-        rownames(m) <- c("min", "1se")
-        m
-    })
-    m <- lapply(c("min", "1se"), function(w)do.call(rbind, lapply(m, "[", w,)))
+    m <- .collect.measures.arcv.glmnet(x)
     cat("Lambda min:\n")
     print(cbind(Alpha = x$alpha, m[[1L]]), digits = digits)
     cat("\nLambda 1se:\n")
