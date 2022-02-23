@@ -39,8 +39,7 @@
 bootstrap <- function(x, y, fun = rcv.glmnet,
                       nboot = 200L, m = 50, times = 90,
                       ..., s = "lambda.1se", verbose = interactive()) {
-    #fit <- do.call(match.fun(fun), list(x = x, y = y, ...))
-    fit <- do.call(match.fun(fun), list(x = x, y = y, family = "cox", nrepcv = 2, nfolds = 3))
+    fit <- do.call(match.fun(fun), list(x = x, y = y, ...))
     ps <- predict(
         fit, x = x, y = y, newx = x, type = "survival", times = times, s = s
     )
