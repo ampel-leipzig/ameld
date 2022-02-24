@@ -4,6 +4,7 @@
 
 - Add `.prediction_error`, `.cutpoints` and `.cut`.
 - Add `bootstrap` and `plot.boot.glmnet`.
+- Add `predict.arcv.glmnet`.
 
 ## Changes in 0.0.14
 
