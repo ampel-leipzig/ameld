@@ -21,7 +21,7 @@ test_that("arcv.glmnet", {
 
     expect_equal(
         .collect.measures.arcv.glmnet(arcv),
-        .collect.measures.arcv.glmnet(list(models = cv))
+        .collect.measures.arcv.glmnet(list(alpha = c(0, 1), models = cv))
     )
 
     ## calls are obviously different
@@ -54,4 +54,16 @@ test_that("arcv.glmnet", {
     future::plan(sequential)
 
     expect_equal(arcv, arcv.mc)
+
+    expect_warning(
+        .which.min.error(arcv, s = "lambda.min", maxnnzero = 10),
+        "Lowest number of non-zero coefficients is larger"
+    )
+    expect_equal(.which.min.error(arcv, s = "lambda.1se", maxnnzero = 11), 2)
+    expect_equal(
+        suppressWarnings(
+            .which.min.error(arcv, s = "lambda.1se", maxnnzero = 8)
+        ),
+        2
+    )
 })

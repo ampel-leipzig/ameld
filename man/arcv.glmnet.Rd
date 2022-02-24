@@ -2,6 +2,7 @@
 % Please edit documentation in R/arcv.glmnet.R
 \name{arcv.glmnet}
 \alias{arcv.glmnet}
+\alias{predict.arcv.glmnet}
 \alias{print.arcv.glmnet}
 \title{Elastic Net with Repeated Cross-Validation for cv.glmnet}
 \usage{
@@ -13,6 +14,8 @@ arcv.glmnet(
     ...,
     trace.it = interactive()
 )
+
+\method{predict}{arcv.glmnet}(object, newx, s = c("lambda.1se", "lambda.min"), maxnnzero = Inf, ...)
 
 \method{print}{arcv.glmnet}(x, digits = max(3L, getOption("digits") - 3L), ...)
 }
@@ -39,20 +42,42 @@ each observation is in. If given \code{nrepcv} and \code{nfolds} are ignored.}
 \item{balanced}{\code{logical}, should classes/status be balanced in the folds
 (default: FALSE)?}
 
-\item{\dots}{further arguments passed to \code{cv.glmnet}.}
+\item{\dots}{further arguments passed to \code{predict.rcv.glmnet}.}
 
 \item{trace.it}{\code{integer}, if \code{trace.it = 1}, then a progress bar is
 displayed.}
+
+\item{object}{\code{arcv.glmnet} object.}
+
+\item{newx}{\code{matrix}, of new values for \code{x} at which predictions are to be
+made.}
+
+\item{s}{\code{character}/\code{numeric}, value(s) of the penality parameter \code{lambda}.
+See \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet()}} for details.}
+
+\item{maxnnzero}{\code{numeric(1)}, maximum number of allowed non-zero beta
+coefficients. Default is \code{Inf} which selects the model with the minimal error
+(the measurement error is chosen from all \code{"lambda.min"} or \code{"lambda.1se"}
+results depending on \code{s}). If a number is given the model with the lowest
+(local) error that has at the most \code{maxnnzero} non-zero beta coefficents
+is chosen (also based on the given \code{s}, as described above). If no model has
+less than \code{maxnnzero} coefficients the simplest model is chosen and a warning
+given.}
 
 \item{digits}{\code{integer(1)}, number of digits shown in table.}
 }
 \value{
 An object of class \code{arcv.glmnet} that extends the \code{rcv.glmnet} and
 \code{cv.glmnet} class.
+
+The object returned depends on the \dots arguments.
+See \code{\link[=predict.rcv.glmnet]{predict.rcv.glmnet()}} for details.
 }
 \description{
 This functions evaluates elastic net repeated cross validation for alpha and
 lambda based on \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}.
+
+Compute fitted values for a model fitted by \code{arcv.glmnet}.
 }
 \examples{
 # Examples taken from ?"glmnet::cv.glmnet"
@@ -86,7 +111,11 @@ Coordinate Descent. Journal of Statistical Software, 39(5), 1-13. URL
 }
 \seealso{
 \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
+
+\code{\link[=predict.rcv.glmnet]{predict.rcv.glmnet()}}, \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet()}},
 }
 \author{
+Sebastian Gibb
+
 Sebastian Gibb
 }

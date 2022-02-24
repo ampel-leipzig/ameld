@@ -114,6 +114,7 @@ arcv.glmnet <- function(x, y, lambda = NULL,
 #' @param x `arcv.glmnet` object.
 #' @return `list` for with two elements (min, 1se) each containing a matrix with
 #' 5 columns (Lambda, Index, Measure, SE, Nonzero).
+#' @importFrom stats setNames
 #'
 #' @noRd
 .collect.measures.arcv.glmnet <- function(x) {
@@ -128,10 +129,82 @@ arcv.glmnet <- function(x, y, lambda = NULL,
         rownames(m) <- c("lambda.min", "lambda.1se")
         m
     })
-    lapply(
+    setNames(lapply(
         c("lambda.min", "lambda.1se"),
-        function(w)do.call(rbind, lapply(m, "[", w,))
-    )
+        function(w)
+            cbind(Alpha = x$alpha, do.call(rbind, lapply(m, "[", w,)))
+    ), c("lambda.min", "lambda.1se"))
+}
+
+#' Find Minimal Measurement Error
+#'
+#' @param x `arcv.glmnet` object.
+#' @param s `character`/`numeric`, value(s) of the penality parameter `lambda`.
+#' See [`glmnet::predict.cv.glmnet()`] for details.
+#' @param maxnnzero `numeric(1)`, maximum number of allowed non-zero beta
+#' coefficients. Default is `Inf` which selects the model with the minimal error
+#' (the measurement error is chosen from all `"lambda.min"` or `"lambda.1se"`
+#' results depending on `s`). If a number is given the model with the lowest
+#' (local) error that has at the most `maxnnzero` non-zero beta coefficents
+#' is chosen (also based on the given `s`, as described above). If no model has
+#' less than `maxnnzero` coefficients the simplest model is chosen and a warning
+#' given.
+#' @return `numeric` index of model with minimal error.
+#' @noRd
+.which.min.error <- function(x, s = c("lambda.1se", "lambda.min"),
+                             maxnnzero = Inf) {
+    s <- match.arg(s)
+    m <- .collect.measures.arcv.glmnet(x)[[s]]
+    minnnzero <- min(m[, "Nonzero"])
+
+    if (minnnzero > maxnnzero) {
+        warning(
+            "Lowest number of non-zero coefficients is larger than ",
+            "'maxnnzero'. Setting 'maxnnzero' to minimal number of non-zero ",
+            "coefficents."
+        )
+        maxnnzero <- minnnzero
+    }
+
+    m[, "Index"] <- seq_len(nrow(m))
+    m <- m[m[, "Nonzero"] <= maxnnzero, c("Index", "Measure"), drop = FALSE]
+    ## reverse matrix to choose smallest nnzero if multiple minima exists
+    m <- m[rev(seq_len(nrow(m))),, drop = FALSE]
+    unname(m[which.min(m[, "Measure"]), "Index"])
+}
+
+#' Predictions for a `arcv.glmnet` object
+#'
+#' Compute fitted values for a model fitted by `arcv.glmnet`.
+#'
+#' @param object `arcv.glmnet` object.
+#' @param newx `matrix`, of new values for `x` at which predictions are to be
+#' made.
+#' @param s `character`/`numeric`, value(s) of the penality parameter `lambda`.
+#' See [`glmnet::predict.cv.glmnet()`] for details.
+#' @param maxnnzero `numeric(1)`, maximum number of allowed non-zero beta
+#' coefficients. Default is `Inf` which selects the model with the minimal error
+#' (the measurement error is chosen from all `"lambda.min"` or `"lambda.1se"`
+#' results depending on `s`). If a number is given the model with the lowest
+#' (local) error that has at the most `maxnnzero` non-zero beta coefficents
+#' is chosen (also based on the given `s`, as described above). If no model has
+#' less than `maxnnzero` coefficients the simplest model is chosen and a warning
+#' given.
+#' @param \dots further arguments passed to `predict.rcv.glmnet`.
+#'
+#' @return The object returned depends on the \dots arguments.
+#' See [`predict.rcv.glmnet()`] for details.
+#' @author Sebastian Gibb
+#' @seealso [`predict.rcv.glmnet()`], [`glmnet::predict.cv.glmnet()`],
+#' @method predict arcv.glmnet
+#' @rdname arcv.glmnet
+#' @export
+predict.arcv.glmnet <- function(object,
+                                newx,
+                                s = c("lambda.1se", "lambda.min"),
+                                maxnnzero = Inf, ...) {
+    sel <- .which.min.error(object, s = s, maxnnzero = maxnnzero)
+    predict(object$models[[sel]], newx = newx, s = s, ...)
 }
 
 #' @rdname arcv.glmnet
@@ -148,9 +221,9 @@ print.arcv.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
     cat("\n\n\nMeasure:", x$models[[1L]]$name, "\n\n")
     m <- .collect.measures.arcv.glmnet(x)
     cat("Lambda min:\n")
-    print(cbind(Alpha = x$alpha, m[[1L]]), digits = digits)
+    print(m[["lambda.min"]], digits = digits)
     cat("\nLambda 1se:\n")
-    print(cbind(Alpha = x$alpha, m[[2L]]), digits = digits)
+    print(m[["lambda.1se"]], digits = digits)
     invisible()
 }
 
