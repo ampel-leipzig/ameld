@@ -1,5 +1,6 @@
 ^README\.md$
 ^data-raw$
+^playground$
 ^\.editorconfig$
 ^\.git$
 ^\.gitignore$
