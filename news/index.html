@@ -29,12 +29,15 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/boot.html">Introduction to bootstraping with (a)rcv.gmlnet</a>
+    </li>
+    <li>
       <a href="../articles/rcv.glmnet.html">Introduction to (a)rcv.gmlnet</a>
     </li>
   </ul></li>
@@ -64,72 +67,75 @@
 <h2 class="page-header" data-toc-text="0.0" id="ameld-00">ameld 0.0<a class="anchor" aria-label="anchor" href="#ameld-00"></a></h2>
 <div class="section level3">
 <h3 id="changes-in-development-0-0">Changes in development<a class="anchor" aria-label="anchor" href="#changes-in-development-0-0"></a></h3>
+</div>
+<div class="section level3">
+<h3 id="changes-in-0-0">Changes in 0.0.15<a class="anchor" aria-label="anchor" href="#changes-in-0-0"></a></h3>
 <ul><li>Add <code>.prediction_error</code>, <code>.cutpoints</code> and <code>.cut</code>.</li>
 <li>Add <code>bootstrap</code> and <code>plot.boot.glmnet</code>.</li>
-<li>Add <code>predict.arcv.glmnet</code>.</li>
+<li>Add <code>which.min.error</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0">Changes in 0.0.14<a class="anchor" aria-label="anchor" href="#changes-in-0-0"></a></h3>
+<h3 id="changes-in-0-0-1">Changes in 0.0.14<a class="anchor" aria-label="anchor" href="#changes-in-0-0-1"></a></h3>
 <ul><li>Add <code>groupmean</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-1">Changes in 0.0.13<a class="anchor" aria-label="anchor" href="#changes-in-0-0-1"></a></h3>
+<h3 id="changes-in-0-0-2">Changes in 0.0.13<a class="anchor" aria-label="anchor" href="#changes-in-0-0-2"></a></h3>
 <ul><li>Add <code>arcv.glmnet</code>.</li>
 <li>Integrate <code>rcv.glmnet</code> from <a href="https://github.com/ampel-leipzig/glmnettools" class="external-link uri">https://github.com/ampel-leipzig/glmnettools</a>.</li>
 <li>Use <code>future</code> backend for parallelisation.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-2">Changes in 0.0.12<a class="anchor" aria-label="anchor" href="#changes-in-0-0-2"></a></h3>
+<h3 id="changes-in-0-0-3">Changes in 0.0.12<a class="anchor" aria-label="anchor" href="#changes-in-0-0-3"></a></h3>
 <ul><li>Allow vectorized <code>cause</code> argument in <code>meld</code> (again).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-3">Changes in 0.0.11<a class="anchor" aria-label="anchor" href="#changes-in-0-0-3"></a></h3>
+<h3 id="changes-in-0-0-4">Changes in 0.0.11<a class="anchor" aria-label="anchor" href="#changes-in-0-0-4"></a></h3>
 <ul><li>Use lower case <code>"type"</code> argument in <code>meld_na</code> (“unos” instead of “UNOS”).</li>
 <li>Restrict <code>meld(..., cause)</code> argument to <code>c("other", "unos", "ethyltoxic", "cholestatic")</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-4">Changes in 0.0.10<a class="anchor" aria-label="anchor" href="#changes-in-0-0-4"></a></h3>
+<h3 id="changes-in-0-0-5">Changes in 0.0.10<a class="anchor" aria-label="anchor" href="#changes-in-0-0-5"></a></h3>
 <ul><li>Add <code>enum</code> function.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-5">Changes in 0.0.9<a class="anchor" aria-label="anchor" href="#changes-in-0-0-5"></a></h3>
+<h3 id="changes-in-0-0-6">Changes in 0.0.9<a class="anchor" aria-label="anchor" href="#changes-in-0-0-6"></a></h3>
 <ul><li>
 <code>observed_events</code> gains a <code>cumulative</code> argument to calculate cumulative events over time periods.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-6">Changes in 0.0.8<a class="anchor" aria-label="anchor" href="#changes-in-0-0-6"></a></h3>
+<h3 id="changes-in-0-0-7">Changes in 0.0.8<a class="anchor" aria-label="anchor" href="#changes-in-0-0-7"></a></h3>
 <ul><li>Rename “calcium, total” and “bilirubin, total” to “total calcium” and “total bilirubin” in <code>eldr$LongDescription</code>
 </li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-7">Changes in 0.0.7<a class="anchor" aria-label="anchor" href="#changes-in-0-0-7"></a></h3>
+<h3 id="changes-in-0-0-8">Changes in 0.0.7<a class="anchor" aria-label="anchor" href="#changes-in-0-0-8"></a></h3>
 <ul><li>Add <code>observed_vs_expected_mortality</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-8">Changes in 0.0.6<a class="anchor" aria-label="anchor" href="#changes-in-0-0-8"></a></h3>
+<h3 id="changes-in-0-0-9">Changes in 0.0.6<a class="anchor" aria-label="anchor" href="#changes-in-0-0-9"></a></h3>
 <ul><li>Add <code>observed_survival</code>, <code>observed_mortality</code>, and <code>observed_events</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-9">Changes in 0.0.5<a class="anchor" aria-label="anchor" href="#changes-in-0-0-9"></a></h3>
+<h3 id="changes-in-0-0-10">Changes in 0.0.5<a class="anchor" aria-label="anchor" href="#changes-in-0-0-10"></a></h3>
 <ul><li>Add <code>plot_dots</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-10">Changes in 0.0.4<a class="anchor" aria-label="anchor" href="#changes-in-0-0-10"></a></h3>
+<h3 id="changes-in-0-0-11">Changes in 0.0.4<a class="anchor" aria-label="anchor" href="#changes-in-0-0-11"></a></h3>
 <ul><li>Add MELD score calculation: <code>meld</code>, <code>meld_na</code>, <code>meld_plus7</code>
 </li>
 <li>Add <code>as_metric</code>, <code>as_si</code> to convert between different units.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-11">Changes in 0.0.3<a class="anchor" aria-label="anchor" href="#changes-in-0-0-11"></a></h3>
+<h3 id="changes-in-0-0-12">Changes in 0.0.3<a class="anchor" aria-label="anchor" href="#changes-in-0-0-12"></a></h3>
 <ul><li>Add <code>plot_table</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-12">Changes in 0.0.2<a class="anchor" aria-label="anchor" href="#changes-in-0-0-12"></a></h3>
+<h3 id="changes-in-0-0-13">Changes in 0.0.2<a class="anchor" aria-label="anchor" href="#changes-in-0-0-13"></a></h3>
 <ul><li>Add <code>plot_surv</code>.</li>
 <li>Increment minimal R dependency to R 4.1.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-0-0-13">Changes in 0.0.1<a class="anchor" aria-label="anchor" href="#changes-in-0-0-13"></a></h3>
+<h3 id="changes-in-0-0-14">Changes in 0.0.1<a class="anchor" aria-label="anchor" href="#changes-in-0-0-14"></a></h3>
 <ul><li>Initial version with <code>eldd</code> (data) and <code>eldr</code> (reference) dataset.</li>
 </ul></div>
 </div>

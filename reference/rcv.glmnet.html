@@ -30,12 +30,15 @@ calls."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/math
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/boot.html">Introduction to bootstraping with (a)rcv.gmlnet</a>
+    </li>
+    <li>
       <a href="../articles/rcv.glmnet.html">Introduction to (a)rcv.gmlnet</a>
     </li>
   </ul></li>
@@ -70,7 +73,7 @@ calls.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rcv.glmnet</span><span class="op">(</span>
     <span class="va">x</span>, <span class="va">y</span>,
-    lambda <span class="op">=</span> <span class="cn">NULL</span>,
+    lambda <span class="op">=</span> <span class="cn">NULL</span>, alpha <span class="op">=</span> <span class="fl">1</span>,
     nrepcv <span class="op">=</span> <span class="fl">100L</span>, nfolds <span class="op">=</span> <span class="fl">10L</span>, foldid <span class="op">=</span> <span class="cn">NULL</span>, balanced <span class="op">=</span> <span class="cn">FALSE</span>,
     <span class="va">...</span>,
     trace.it <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>
@@ -86,6 +89,9 @@ calls.</p>
 <dt>lambda</dt>
 <dd><p><code>numeric</code>, optional user-supplied lambda sequence; default is
 <code>NULL</code> and <code>glmnet</code> chooses its own sequence.</p></dd>
+<dt>alpha</dt>
+<dd><p><code>numeric(1)</code>, the elasticnet mixing parameter, default is <code>1</code>
+(lasso penality); see <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet::glmnet()</a></code> for details.</p></dd>
 <dt>nrepcv</dt>
 <dd><p><code>integer(1)</code>, number of repeated cross-validations (outer
 loop).</p></dd>

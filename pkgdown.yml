@@ -3,6 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   ameld: ameld.html
+  boot: boot.html
   rcv.glmnet: rcv.glmnet.html
-last_built: 2022-02-24T15:20Z
+last_built: 2022-03-09T14:18Z
 
