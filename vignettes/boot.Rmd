@@ -1,10 +1,10 @@
 ---
-title: Introduction to bootstraping with (a)rcv.gmlnet
+title: Introduction to bootstrapping with (a)rcv.gmlnet
 output:
     rmarkdown::html_vignette:
         toc_float: true
 vignette: >
-    %\VignetteIndexEntry{Introduction to (a)rcv.glmnet}
+    %\VignetteIndexEntry{Introduction to bootstrapping (a)rcv.glmnet}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 bibliography:
