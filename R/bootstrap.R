@@ -164,9 +164,6 @@ print.boot.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
 plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
                              what = c("calibration", "selected"),
                              pch = 19L, ...) {
-    old.par <- par(no.readonly = TRUE)
-    on.exit(par(old.par))
-
     what <- match.arg(what)
 
     if (what == "calibration")
@@ -224,9 +221,11 @@ plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
     plot.new()
     w <- max(strwidth(names(var.boot), "inch"), na.rm = TRUE) + 1/16
     mai <- par("mai")
-    if (mai[2L] < w)
+    if (mai[2L] < w) {
         mai[2L] <- mai[4L] + w # taken from dotchart
-    par(mai = mai)
+        old.par <- par(mai = mai, no.readonly = TRUE)
+        on.exit(par(old.par))
+    }
 
     nboot <- length(x$models)
     plot.window(xlim = c(0L, nboot), ylim = c(0L, n + 1L))
