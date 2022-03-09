@@ -1,0 +1,134 @@
+---
+title: Introduction to bootstraping with (a)rcv.gmlnet
+output:
+    rmarkdown::html_vignette:
+        toc_float: true
+vignette: >
+    %\VignetteIndexEntry{Introduction to (a)rcv.glmnet}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+bibliography:
+    - bibliography.bib
+    - rpackages.bib
+---
+
+```{r setup, include = FALSE}
+Sys.setenv(LANGUAGE = "en")
+library("ameld")
+
+knitr::write_bib("glmnet", "rpackages.bib")
+```
+
+**Authors**: `r packageDescription("ameld")[["Author"]] `<br />
+**Last modified:** `r file.info("ameld.Rmd")$mtime`<br />
+**Compiled**: `r date()`
+
+# Introduction
+
+The `ameld` R package extends `glmnet::cv.glmnet` [@R-glmnet; @glmnet2010].
+It supports a repeated cross-validation (`rcv.glmnet`) and
+a repeated cross-validation to tune *alpha* and *lambda* simultaneously
+(`arcv.glmnet`). Additionally it provides a `bootstrap` function that could
+utilize both functions and supports survival data as described in @harrell1996.
+
+# Dataset
+
+We use the `eldd` dataset provided by `ameld` (see `?eldd` for details) and
+standardize it using the `zlog` [@hoffmann2017] method.
+
+```{r dataset}
+library("ameld")
+library("zlog")
+data(eldd)
+data(eldr)
+
+# transform reference data.frame for zlog
+r <- eldr[c("Code", "AgeDays", "Sex", "LowerLimit", "UpperLimit")]
+names(r) <- c("param", "age", "sex", "lower", "upper")
+r$age <- r$age / 365.25
+r <- set_missing_limits(r)
+
+## we just want to standardize laboratory values
+cn <- colnames(eldd)
+cnlabs <- cn[grepl("_[SCEFQ1]$", cn)]
+zeldd <- eldd
+zeldd[c("Age", "Sex", cnlabs)] <- zlog_df(eldd[, c("Age", "Sex", cnlabs)], r)
+zeldd[c("Age", "Sex", cnlabs)] <- impute_df(zeldd[c("Age", "Sex", cnlabs)], r)
+zeldd <- na.omit(zeldd)
+```
+
+# Bootstrapping
+
+Next we apply the bootstrapping. In general the number of bootstrap samples
+`nboot` should be equal or larger than 100.
+We use a much smaller number here to keep the runtime low.
+
+```{r boot}
+library("future")
+srv <- Surv(zeldd$DaysAtRisk, zeldd$Deceased)
+zeldd$DaysAtRisk <- zeldd$Deceased <- NULL
+x <- data.matrix(zeldd)
+
+bt <- bootstrap(
+    x, srv,
+    fun = rcv.glmnet,
+    family = "cox",
+    nboot = 3,
+    nfolds = 3,
+    nrep = 2
+)
+```
+
+We could show an optimism corrected calibration curve.
+
+```{r plotcal}
+plot(bt, what = "calibration")
+```
+
+Additionally we could see which variables are selected in each bootstrap step.
+
+```{r plotsel}
+plot(bt, what = "selected")
+```
+
+## Automatically select best alpha in each Bootstrapping Step.
+
+It is possible to use `arcv.glmnet` to automatically select the best alpha in
+each bootstrap step.
+
+```{r eval = FALSE}
+selarcv <- function(...) {
+    dots <- list(...)
+    a <- arcv.glmnet(...)
+    i <- which.min.error(a, s = dots$s, maxnnzero = dots$maxnnzero)
+    a$models[[i]]
+}
+
+bt <- bootstrap(
+    x, srv,
+    fun = selarcv,
+    family = "cox",
+    alpha = seq(0, 1, len = 11)^3,
+    s = "lambda.1se",
+    maxnnzero = 9,
+    nboot = 10L, nfolds = 3, nrep = 5,
+    m = 50, times = 90
+)
+```
+
+# Acknowledgment
+
+This work is part of the [AMPEL](https://ampel.care/en/)
+(Analysis and Reporting System for the Improvement of Patient Safety through
+Real-Time Integration of Laboratory Findings) project.
+
+This measure is co-funded with tax revenues based on the budget adopted by
+the members of the Saxon State Parliament.
+
+# Session Information
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+# References

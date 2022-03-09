@@ -2,9 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.15
+
 - Add `.prediction_error`, `.cutpoints` and `.cut`.
 - Add `bootstrap` and `plot.boot.glmnet`.
-- Add `predict.arcv.glmnet`.
+- Add `which.min.error`.
 
 ## Changes in 0.0.14
 
