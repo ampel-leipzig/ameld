@@ -56,13 +56,13 @@ test_that("arcv.glmnet", {
     expect_equal(arcv, arcv.mc)
 
     expect_warning(
-        .which.min.error(arcv, s = "lambda.min", maxnnzero = 10),
+        which.min.error(arcv, s = "lambda.min", maxnnzero = 10),
         "Lowest number of non-zero coefficients is larger"
     )
-    expect_equal(.which.min.error(arcv, s = "lambda.1se", maxnnzero = 11), 2)
+    expect_equal(which.min.error(arcv, s = "lambda.1se", maxnnzero = 11), 2)
     expect_equal(
         suppressWarnings(
-            .which.min.error(arcv, s = "lambda.1se", maxnnzero = 8)
+            which.min.error(arcv, s = "lambda.1se", maxnnzero = 8)
         ),
         2
     )
