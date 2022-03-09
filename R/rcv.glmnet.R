@@ -40,7 +40,7 @@
 #' @importFrom glmnet cv.glmnet
 #' @usage rcv.glmnet(
 #'     x, y,
-#'     lambda = NULL,
+#'     lambda = NULL, alpha = 1,
 #'     nrepcv = 100L, nfolds = 10L, foldid = NULL, balanced = FALSE,
 #'     ...,
 #'     trace.it = interactive()
