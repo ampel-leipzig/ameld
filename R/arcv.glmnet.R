@@ -104,6 +104,7 @@ arcv.glmnet <- function(x, y, lambda = NULL,
         nrepcv = nrepcv,
         nfolds = nfolds
     )
+
     class(out) <- c("arcv.glmnet", class(arcv[[1L]]))
     out
 }
@@ -136,7 +137,7 @@ arcv.glmnet <- function(x, y, lambda = NULL,
     ), c("lambda.min", "lambda.1se"))
 }
 
-#' Find Minimal Measurement Error
+#' Find Model with Minimal Measurement Error
 #'
 #' @param x `arcv.glmnet` object.
 #' @param s `character`/`numeric`, value(s) of the penality parameter `lambda`.
@@ -149,9 +150,10 @@ arcv.glmnet <- function(x, y, lambda = NULL,
 #' is chosen (also based on the given `s`, as described above). If no model has
 #' less than `maxnnzero` coefficients the simplest model is chosen and a warning
 #' given.
+#' @rdname arcv.glmnet
 #' @return `numeric` index of model with minimal error.
-#' @noRd
-.which.min.error <- function(x, s = c("lambda.1se", "lambda.min"),
+#' @export
+which.min.error <- function(x, s = c("lambda.1se", "lambda.min"),
                              maxnnzero = Inf) {
     s <- match.arg(s)
     m <- .collect.measures.arcv.glmnet(x)[[s]]
