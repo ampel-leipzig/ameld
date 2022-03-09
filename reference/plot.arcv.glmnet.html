@@ -18,7 +18,7 @@ arcv.glmnet()."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.15.99</span>
       </span>
     </div>
 
@@ -76,6 +76,7 @@ arcv.glmnet()."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
   <span class="va">x</span>,
   col <span class="op">=</span> <span class="fu">viridisLite</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html" class="external-link">cividis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">alpha</span><span class="op">)</span><span class="op">)</span>,
   what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"lambda.min"</span>, <span class="st">"lambda.1se"</span><span class="op">)</span>,
+  main <span class="op">=</span> <span class="cn">NULL</span>,
   pch <span class="op">=</span> <span class="fl">20L</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
@@ -91,6 +92,8 @@ arcv.glmnet()."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
 <dd><p><code>character(1)</code>, what to plot: <code>"all"</code> plot all cross-validated
 loss errors vs lambda of all alpha values, <code>"lambda.min"</code>/<code>"lambda.1se"</code>
 plots the "best" lambda for each alpha.</p></dd>
+<dt>main</dt>
+<dd><p><code>character(1)</code>, title.</p></dd>
 <dt>pch</dt>
 <dd><p><code>character/numeric</code>, point character/symbol.</p></dd>
 <dt>...</dt>
