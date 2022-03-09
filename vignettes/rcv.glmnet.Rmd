@@ -88,7 +88,15 @@ plot(arcvob)
 Alternatively we could just look at the "best" *lambda*.
 
 ```{r arcv-plot-lambda.1se}
+plot(arcvob, what = "lambda.min")
 plot(arcvob, what = "lambda.1se")
+```
+
+Next we selecting the best autotuned *alpha*:
+
+```{r arcv-sel-rcv-plot-min.error}
+i <- which.min.error(arcvob)
+plot(arcvob$models[[i]])
 ```
 
 # Acknowledgment
