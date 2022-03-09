@@ -7,6 +7,8 @@
 #' @param y response as in `cv.glmnet`.
 #' @param lambda `numeric`, optional user-supplied lambda sequence; default is
 #' `NULL` and `glmnet` chooses its own sequence.
+#' @param alpha `numeric(1)`, the elasticnet mixing parameter, default is `1`
+#' (lasso penality); see [`glmnet::glmnet()`] for details.
 #' @param nrepcv `integer(1)`, number of repeated cross-validations (outer
 #' loop).
 #' @param nfolds `integer`, number of folds, same as in `cv.glmnet`.
@@ -63,7 +65,7 @@
 #' title("Gaussian Family", line = 2.5)
 #' coef(rcvob)
 #' predict(rcvob, newx = x[1:5, ], s = "lambda.min")
-rcv.glmnet <- function(x, y, lambda = NULL,
+rcv.glmnet <- function(x, y, lambda = NULL, alpha = 1,
                        nrepcv = 100L, nfolds = 10L, foldid = NULL,
                        balanced = FALSE,
                        ...,
@@ -89,7 +91,8 @@ rcv.glmnet <- function(x, y, lambda = NULL,
         function(i) {
             doFuture::registerDoFuture()
             cv <- cv.glmnet(
-                x = x, y = y, lambda = lambda, foldid = foldid[i, ], ...,
+                x = x, y = y, lambda = lambda, alpha = alpha,
+                foldid = foldid[i, ], ...,
                 parallel = TRUE
             )
             p()
@@ -118,6 +121,7 @@ rcv.glmnet <- function(x, y, lambda = NULL,
 
     out <- list(
         call = match.call(),
+        alpha = alpha,
         cvm = cvm,
         cvsd = cvsd,
         cvup = cvm + cvsd,

@@ -20,6 +20,9 @@ rcv.glmnet(
 \item{lambda}{\code{numeric}, optional user-supplied lambda sequence; default is
 \code{NULL} and \code{glmnet} chooses its own sequence.}
 
+\item{alpha}{\code{numeric(1)}, the elasticnet mixing parameter, default is \code{1}
+(lasso penality); see \code{\link[glmnet:glmnet]{glmnet::glmnet()}} for details.}
+
 \item{nrepcv}{\code{integer(1)}, number of repeated cross-validations (outer
 loop).}
 
