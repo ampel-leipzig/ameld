@@ -3,7 +3,6 @@
 S3method(plot,arcv.glmnet)
 S3method(plot,boot.glmnet)
 S3method(plot,rcv.glmnet)
-S3method(predict,arcv.glmnet)
 S3method(predict,rcv.glmnet)
 S3method(print,arcv.glmnet)
 S3method(print,boot.glmnet)

@@ -173,40 +173,6 @@ arcv.glmnet <- function(x, y, lambda = NULL,
     unname(m[which.min(m[, "Measure"]), "Index"])
 }
 
-#' Predictions for a `arcv.glmnet` object
-#'
-#' Compute fitted values for a model fitted by `arcv.glmnet`.
-#'
-#' @param object `arcv.glmnet` object.
-#' @param newx `matrix`, of new values for `x` at which predictions are to be
-#' made.
-#' @param s `character`/`numeric`, value(s) of the penality parameter `lambda`.
-#' See [`glmnet::predict.cv.glmnet()`] for details.
-#' @param maxnnzero `numeric(1)`, maximum number of allowed non-zero beta
-#' coefficients. Default is `Inf` which selects the model with the minimal error
-#' (the measurement error is chosen from all `"lambda.min"` or `"lambda.1se"`
-#' results depending on `s`). If a number is given the model with the lowest
-#' (local) error that has at the most `maxnnzero` non-zero beta coefficents
-#' is chosen (also based on the given `s`, as described above). If no model has
-#' less than `maxnnzero` coefficients the simplest model is chosen and a warning
-#' given.
-#' @param \dots further arguments passed to `predict.rcv.glmnet`.
-#'
-#' @return The object returned depends on the \dots arguments.
-#' See [`predict.rcv.glmnet()`] for details.
-#' @author Sebastian Gibb
-#' @seealso [`predict.rcv.glmnet()`], [`glmnet::predict.cv.glmnet()`],
-#' @method predict arcv.glmnet
-#' @rdname arcv.glmnet
-#' @export
-predict.arcv.glmnet <- function(object,
-                                newx,
-                                s = c("lambda.1se", "lambda.min"),
-                                maxnnzero = Inf, ...) {
-    sel <- .which.min.error(object, s = s, maxnnzero = maxnnzero)
-    predict(object$models[[sel]], newx = newx, s = s, ...)
-}
-
 #' @rdname arcv.glmnet
 #' @method print arcv.glmnet
 #' @param digits `integer(1)`, number of digits shown in table.
