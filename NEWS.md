@@ -2,6 +2,8 @@
 
 ## Changes in development
 
+- Add `main` to `plot.arcv.glmnet`.
+
 ## Changes in 0.0.15
 
 - Add `.prediction_error`, `.cutpoints` and `.cut`.

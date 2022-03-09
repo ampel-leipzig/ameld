@@ -205,6 +205,7 @@ print.arcv.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
 #' @param what `character(1)`, what to plot: `"all"` plot all cross-validated
 #' loss errors vs lambda of all alpha values, `"lambda.min"`/`"lambda.1se"`
 #' plots the "best" lambda for each alpha.
+#' @param main `character(1)`, title.
 #' @param pch `character/numeric`, point character/symbol.
 #' @param \dots further arguments passed to `plot`.
 #'
@@ -215,7 +216,7 @@ print.arcv.glmnet <- function(x, digits = max(3L, getOption("digits") - 3L),
 #' @export
 plot.arcv.glmnet <- function(x, col = viridisLite::cividis(length(x$alpha)),
                              what = c("all", "lambda.min", "lambda.1se"),
-                             pch = 20L, ...) {
+                             main = NULL, pch = 20L, ...) {
     cvm <- lapply(x$models, "[[", "cvm")
     lmbd <- lapply(x$models, "[[", "lambda")
     ylim <- range(cvm)
@@ -238,8 +239,10 @@ plot.arcv.glmnet <- function(x, col = viridisLite::cividis(length(x$alpha)),
         p <- mapply(function(w, m, l) {
             m[w == l]
         }, w = w, m = cvm, l = lmbd)
+        if (is.null(main))
+            main <- what
         plot(
-            x$alpha, p,
+            x$alpha, p, main = main,
             xlab = "Alpha", ylab = paste("CV", x$models[[1L]]$name),
             col = col[1L], pch = pch, type = "b", ...
         )

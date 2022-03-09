@@ -51,6 +51,7 @@
 <text transform='translate(41.76,310.22) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>25.5</text>
 <text transform='translate(41.76,183.20) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>26.0</text>
 <polygon points='59.04,502.56 689.76,502.56 689.76,59.04 59.04,59.04 ' style='stroke-width: 0.75; fill: none;' />
+<text x='374.40' y='34.48' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: sans;' textLength='74.44px' lengthAdjust='spacingAndGlyphs'>lambda.min</text>
 <text x='374.40' y='557.28' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='30.69px' lengthAdjust='spacingAndGlyphs'>Alpha</text>
 <text transform='translate(12.96,280.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='129.41px' lengthAdjust='spacingAndGlyphs'>CV Mean-Squared Error</text>
 <text x='59.04' y='571.68' style='font-size: 12.00px; font-family: sans;' textLength='339.57px' lengthAdjust='spacingAndGlyphs'>Averaged across 2 repeated cross-validations each with 3 folds.</text>

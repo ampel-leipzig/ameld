@@ -8,6 +8,7 @@
   x,
   col = viridisLite::cividis(length(x$alpha)),
   what = c("all", "lambda.min", "lambda.1se"),
+  main = NULL,
   pch = 20L,
   ...
 )
@@ -20,6 +21,8 @@
 \item{what}{\code{character(1)}, what to plot: \code{"all"} plot all cross-validated
 loss errors vs lambda of all alpha values, \code{"lambda.min"}/\code{"lambda.1se"}
 plots the "best" lambda for each alpha.}
+
+\item{main}{\code{character(1)}, title.}
 
 \item{pch}{\code{character/numeric}, point character/symbol.}
 
