@@ -70,6 +70,9 @@
     <loc>/reference/plot_surv.html</loc>
   </url>
   <url>
+    <loc>/reference/plot_surv_roc.html</loc>
+  </url>
+  <url>
     <loc>/reference/plot_table.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>/reference/rcv.glmnet.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rjlegend.html</loc>
   </url>
   <url>
     <loc>/reference/si.html</loc>
