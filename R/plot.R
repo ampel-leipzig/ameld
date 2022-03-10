@@ -107,6 +107,73 @@ plot_surv <- function(
     invisible(p)
 }
 
+#' Plot survival ROC curves
+#'
+#' Generate ROC plots for a single timepoint for  [`timeROC::timeROC()`] objects.
+#'
+#' @param x `list` of `timeROC::ipcwsurvivalROC` objects.
+#' @param timepoint `numeric(1)`, timepoints for ROC prediction
+#' @param col `character`, colours
+#' @param lty `numeric`, line type
+#' @param main `character(1)`, title
+#' @param xlab `character(1)`, label x-axis
+#' @param ylab `character(1)`, label y-axis
+#' @return `double`, AUC
+#'
+#' @importFrom graphics abline
+#' @importFrom methods is
+#' @importFrom survival Surv
+#' @export
+plot_surv_roc <- function(x,
+                          timepoint,
+                          col = setNames(
+                              palette.colors(length(x)), names(x)
+                          ),
+                          lty = setNames(
+                              rep.int(1, length(x)), names(x)
+                          ),
+                          main = paste0("ROC at day ", timepoint),
+                          xlab = "1 - Specificity",
+                          ylab = "Sensitivity") {
+    requireNamespace("timeROC")
+    stopifnot(
+        all(vapply(x, is, NA, class2 = "ipcwsurvivalROC")),
+        all(vapply(x, function(xx)timepoint %in% xx$times, NA)),
+        as.logical(length(names(x))),
+        length(col) == length(x),
+        length(lty) == length(x),
+        length(timepoint) == 1,
+        length(main) == 1
+    )
+
+    auc <- setNames(double(length(x)), names(x))
+
+    plot(
+        NA,
+        xlim = c(0L, 1L), ylim = c(0L, 1L),
+        axes = FALSE, ann = FALSE, asp = TRUE
+    )
+    title(main = main, adj = 0L)
+    title(xlab = xlab, adj = 1L)
+    title(ylab = ylab, adj = 0L)
+
+    abline(0L, 1L, col = "#808080", lty = 2L)
+    axis(1L, lwd.ticks = 0L, col = "#808080")
+    axis(2L, lwd.ticks = 0L, col = "#808080")
+
+    for (i in seq(along = x)) {
+        j <- which(timepoint == x[[i]]$times)
+        auc[i] <- x[[i]]$AUC[j]
+        lines(x[[i]]$FP[, j], x[[i]]$TP[, j], col = col[i], lty = lty[i])
+    }
+    o <- order(auc, decreasing = TRUE)
+    rjlegend(
+        legend = sprintf("AUC %s: %0.3f", names(x)[o], auc[o]),
+        col = col[o], lty = lty
+    )
+    auc
+}
+
 #' Plot a table
 #'
 #' Plot a table on the current graphic device. Useful for risk tables.
@@ -190,6 +257,31 @@ plot_table <- function(
         at, rep(seq_len(nc) - 1L, each = length(at)), pos = 3L,
         labels = x, cex = cex.text
     )
+}
+
+#' Legend with right justified text
+#'
+#' Plots a legend similar to [`legend()`] but with right justified text.
+#'
+#' @param x position, see [`legend()`].
+#' @param y position, see [`legend()`].
+#' @param legend legend text, see [`legend()`].
+#' @param col colours, see [`legend()`].
+#' @param lwd line width, see [`legend()`].
+#' @param bty border type, see [`legend()`].
+#' @param ... params passed to [`legend()`].
+#' @return see [`legend()`]
+#' @importFrom graphics legend strwidth text
+#' @export
+rjlegend <- function(x = "bottomright", y = NULL, legend, col,
+                     lwd = 1, bty = "n", ...) {
+    lgd <- legend(
+        x = x, y = y, col = col, lwd = lwd, bty = bty,
+        legend = rep(" ", length(legend)), text.width = max(strwidth(legend)),
+        yjust = 1, xjust = 1, ...
+    )
+    text(lgd$rect$left + lgd$rect$w, lgd$text$y, labels = legend, pos = 2L)
+    invisible(lgd)
 }
 
 #' helper function to plot error bars

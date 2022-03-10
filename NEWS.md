@@ -2,7 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.16
+
 - Add `main` to `plot.arcv.glmnet`.
+- Add `plot_surv_roc`.
+- Add `rjlegend`.
 
 ## Changes in 0.0.15
 
