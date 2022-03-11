@@ -1,6 +1,7 @@
 #' Calculate MELD scores
 #'
-#' Calculate MELD, MELD-Na and MELD-Plus scores.
+#' Calculate MELD, MELD-Na scores and MELD or MELD-Plus score based survival
+#' probabilities.
 #'
 #' @param creatinine `numeric`, \[mg/dl\]
 #' @param bilirubin `numeric`, \[mg/dl\]
@@ -12,11 +13,13 @@
 #' `"cholestatic"`, `"unos"` and `"other"` are supported.
 #' Use `"unos"` for the United Network for Organ Sharing definition of the score.
 #' @param round `logical`, round to nearest integer?
-#' @return `numeric`
+#' @return `numeric`, MELD or MELD-Na score for `meld` and `meld_na`
+#' respectively. `pmeld` and `pmeld_plus7` return the survival probability based
+#' on the MELD and MELD-Plus7 score.
 #'
 #' @details
 #' Laboratory values (creatinine, bilirubin, INR) below 1.0 are set to 1.0 and
-#' creatinine above 4.0 is set to 4.0.
+#' creatinine above 4.0 is set to 4.0 as described in Wiesner et al. 2003.
 #'
 #' @references
 #' Michael Malinchoc et al. 2000.
@@ -132,9 +135,6 @@ pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
 #' @param albumin `numeric`, \[g/dl\]
 #' @param wbc `numeric`, \[Gpt/l\]
 #' @param age `numeric`, \[years\]
-#'
-#' @details
-#' In contrast to `meld` and `meldNa`, `meldPlus7` returns a probability.
 #'
 #' @references
 #' Kartoun et al. 2017.
