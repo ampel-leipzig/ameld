@@ -3,7 +3,8 @@
 \name{meld}
 \alias{meld}
 \alias{meld_na}
-\alias{meld_plus7}
+\alias{pmeld}
+\alias{pmeld_plus7}
 \title{Calculate MELD scores}
 \usage{
 meld(
@@ -26,7 +27,16 @@ meld_na(
   round = FALSE
 )
 
-meld_plus7(
+pmeld(
+  meld = NULL,
+  creatinine,
+  bilirubin,
+  inr,
+  dialysis = FALSE,
+  cause = "other"
+)
+
+pmeld_plus7(
   creatinine,
   bilirubin,
   inr,
@@ -58,6 +68,9 @@ Use \code{"unos"} for the United Network for Organ Sharing definition of the sco
 
 \item{type}{\code{character(1)}, type of implementation}
 
+\item{meld}{\code{numeric}, MELD/MELD-Na score as calculated by \code{meld} or
+\code{meld-na}.}
+
 \item{albumin}{\code{numeric}, [g/dl]}
 
 \item{wbc}{\code{numeric}, [Gpt/l]}
@@ -65,16 +78,17 @@ Use \code{"unos"} for the United Network for Organ Sharing definition of the sco
 \item{age}{\code{numeric}, [years]}
 }
 \value{
-\code{numeric}
+\code{numeric}, MELD or MELD-Na score for \code{meld} and \code{meld_na}
+respectively. \code{pmeld} and \code{pmeld_plus7} return the survival probability based
+on the MELD and MELD-Plus7 score.
 }
 \description{
-Calculate MELD, MELD-Na and MELD-Plus scores.
+Calculate MELD, MELD-Na scores and MELD or MELD-Plus score based survival
+probabilities.
 }
 \details{
 Laboratory values (creatinine, bilirubin, INR) below 1.0 are set to 1.0 and
-creatinine above 4.0 is set to 4.0.
-
-In contrast to \code{meld} and \code{meldNa}, \code{meldPlus7} returns a probability.
+creatinine above 4.0 is set to 4.0 as described in Wiesner et al. 2003.
 }
 \examples{
 meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
@@ -82,7 +96,10 @@ meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
 meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
         type = "unos")
-meld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
+
+pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
+pmeld(meld = 20)
+pmeld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 }
 \references{
 Michael Malinchoc et al. 2000.
@@ -101,6 +118,11 @@ Kim et al. 2008.
 List"
 N Engl J Med 2008; 359: 1018-1026
 \doi{10.1056/NEJMoa0801209}
+
+Wiesner et al. 2003.
+"Model for end-stage liver disease (MELD) and allocation of donor livers"
+Gastroentrology, 124 (1): 91-96
+\doi{10.1053/gast.2003.50016}
 
 Kartoun et al. 2017.
 "The MELD-Plus: A generalizable prediction risk score in cirrhosis"
