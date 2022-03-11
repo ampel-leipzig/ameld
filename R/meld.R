@@ -117,8 +117,8 @@ meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
 #' \doi{10.1371/journal.pone.0186301}
 #' @export
 #' @examples
-#' meld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
-meld_plus7 <- function(creatinine, bilirubin, inr, sodium, albumin, wbc, age,
+#' pmeld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
+pmeld_plus7 <- function(creatinine, bilirubin, inr, sodium, albumin, wbc, age,
                        round = FALSE) {
     score <- 8.53499496 + 2.59679650 * log10(1 + creatinine) +
         2.06503238 * log10(1 + bilirubin) + 2.99724802 * log10(1 + inr) -
