@@ -117,9 +117,17 @@ test_that("meld_na", {
     )
 })
 
-test_that("meld_plus7", {
+test_that("pmeld", {
+    expect_equal(pmeld(20), 0.9237, tolerance = 1e-4)
     expect_equal(
-        meld_plus7(
+        pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other"),
+        0.9232, tolerance = 1e-4
+    )
+})
+
+test_that("pmeld_plus7", {
+    expect_equal(
+        pmeld_plus7(
             creatinine = 1.37, bilirubin = 2.49, inr = 1.5, sodium = 136.5,
             albumin = 2.89, wbc = 6.67, age = 60, round = TRUE
         ), 0.16
