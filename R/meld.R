@@ -103,6 +103,32 @@ meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
 
 #' @rdname meld
 #'
+#' @param meld `numeric`, MELD/MELD-Na score as calculated by `meld` or
+#' `meld-na`.
+#'
+#' @references
+#' Wiesner et al. 2003.
+#' "Model for end-stage liver disease (MELD) and allocation of donor livers"
+#' Gastroentrology, 124 (1): 91-96
+#' \doi{10.1053/gast.2003.50016}
+#' @export
+#' @examples
+#'
+#' pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
+#' pmeld(meld = 20)
+pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
+                  dialysis = FALSE, cause = "other") {
+    if (is.null(meld))
+        meld <- meld(
+            creatinine = creatinine, bilirubin = bilirubin, inr = inr,
+            dialysis = dialysis, cause = cause, round = FALSE
+        )
+
+    0.98465^exp((meld - 10) * 0.1635)
+}
+
+#' @rdname meld
+#'
 #' @param albumin `numeric`, \[g/dl\]
 #' @param wbc `numeric`, \[Gpt/l\]
 #' @param age `numeric`, \[years\]

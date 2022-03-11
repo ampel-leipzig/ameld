@@ -3,6 +3,7 @@
 ## Changes in development
 
 - Rename `meld_plus7` into `pmeld_plus7`.
+- Add `pmeld`.
 
 ## Changes in 0.0.16
 
