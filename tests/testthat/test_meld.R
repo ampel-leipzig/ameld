@@ -130,6 +130,6 @@ test_that("pmeld_plus7", {
         pmeld_plus7(
             creatinine = 1.37, bilirubin = 2.49, inr = 1.5, sodium = 136.5,
             albumin = 2.89, wbc = 6.67, age = 60, round = TRUE
-        ), 0.16
+        ), 1 - 0.16
     )
 })

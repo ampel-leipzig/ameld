@@ -89,6 +89,10 @@ probabilities.
 \details{
 Laboratory values (creatinine, bilirubin, INR) below 1.0 are set to 1.0 and
 creatinine above 4.0 is set to 4.0 as described in Wiesner et al. 2003.
+
+The original MELD-Plus risk score reports a mortality probability. To provide
+a common interface with \code{pmeld} \code{pmeld_plus7} returns a survival probabilitiy
+instead.
 }
 \examples{
 meld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
@@ -99,6 +103,7 @@ meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
 
 pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 pmeld(meld = 20)
+
 pmeld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 }
 \references{

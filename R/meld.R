@@ -136,6 +136,11 @@ pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
 #' @param wbc `numeric`, \[Gpt/l\]
 #' @param age `numeric`, \[years\]
 #'
+#' @details
+#' The original MELD-Plus risk score reports a mortality probability. To provide
+#' a common interface with `pmeld` `pmeld_plus7` returns a survival probabilitiy
+#' instead.
+#'
 #' @references
 #' Kartoun et al. 2017.
 #' "The MELD-Plus: A generalizable prediction risk score in cirrhosis"
@@ -143,6 +148,7 @@ pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
 #' \doi{10.1371/journal.pone.0186301}
 #' @export
 #' @examples
+#'
 #' pmeld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 pmeld_plus7 <- function(creatinine, bilirubin, inr, sodium, albumin, wbc, age,
                        round = FALSE) {
@@ -155,5 +161,5 @@ pmeld_plus7 <- function(creatinine, bilirubin, inr, sodium, albumin, wbc, age,
     if (round)
         score <- round(score, 2L)
 
-    unname(score)
+    unname(1 - score)
 }

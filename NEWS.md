@@ -2,6 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.18
+
+- Return a survival instead of a mortality probability for `pmeld_plus7`.
+
 ## Changes in 0.0.17
 
 - Rename `meld_plus7` into `pmeld_plus7`.
