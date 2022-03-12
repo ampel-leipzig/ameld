@@ -2,6 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.19
+
+- Fix *ylab* position and *lty* order in legend in `plot_surv_roc`.
+- Add `plot_surv_roc_trend`.
+
 ## Changes in 0.0.18
 
 - Return a survival instead of a mortality probability for `pmeld_plus7`.

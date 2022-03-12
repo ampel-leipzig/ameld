@@ -42,6 +42,30 @@ test_that("plot_surv_roc", {
     )
 })
 
+test_that("plot_surv_roc_trend", {
+    d <- data.frame(
+        time = c(5, 7, 7, 14, 30),
+        event = c(1, 0, 1, 0, 1),
+        marker = c(30, 1, 25, 26, 10)
+    )
+    tr <- timeROC::timeROC(
+        d$time, d$event, d$marker, time = c(7, 30), cause = 1
+    )
+    expect_error(plot_surv_roc_trend(1:10))
+    expect_error(plot_surv_roc_trend(list(foo = tr), 5, col = 1:2))
+    expect_error(plot_surv_roc_trend(list(foo = tr), 5, col = 1, lty = 1:2))
+    expect_error(plot_surv_roc_trend(list(foo = tr), 5, main = c("foo", "bar")))
+
+    tr2 <- timeROC::timeROC(
+        d$time, d$event, rev(d$marker), time = c(7, 30), cause = 1
+    )
+    vdiffr::expect_doppelganger(
+        "plot_surv_roc_trend", function() {
+            plot_surv_roc_trend(list(foo = tr, bar = tr2))
+        }
+    )
+})
+
 test_that("plot_table", {
     m <- matrix(
         1:8, nrow = 4,

@@ -109,7 +109,8 @@ plot_surv <- function(
 
 #' Plot survival ROC curves
 #'
-#' Generate ROC plots for a single timepoint for  [`timeROC::timeROC()`] objects.
+#' Generate ROC plots for a single timepoint for  [`timeROC::timeROC()`] objects
+#' or for multiple timepoints.
 #'
 #' @param x `list` of `timeROC::ipcwsurvivalROC` objects.
 #' @param timepoint `numeric(1)`, timepoints for ROC prediction
@@ -123,6 +124,7 @@ plot_surv <- function(
 #' @importFrom graphics abline
 #' @importFrom methods is
 #' @importFrom survival Surv
+#' @rdname plot_surv_roc
 #' @export
 plot_surv_roc <- function(x,
                           timepoint,
@@ -172,6 +174,53 @@ plot_surv_roc <- function(x,
         col = col[o], lty = lty[o]
     )
     auc
+}
+
+#' @rdname plot_surv_roc
+#' @export
+plot_surv_roc_trend <- function(x,
+                                col = setNames(
+                                    palette.colors(length(x)), names(x)
+                                ),
+                                lty = setNames(
+                                    rep.int(1, length(x)), names(x)
+                                ),
+                                main = "AUROC over time",
+                                xlab = "time t",
+                                ylab = "AUC (t)") {
+    requireNamespace("timeROC")
+    stopifnot(
+        all(vapply(x, is, NA, class2 = "ipcwsurvivalROC")),
+        as.logical(length(names(x))),
+        length(col) == length(x),
+        length(lty) == length(x),
+        length(main) == 1
+    )
+
+    xlim <- range(
+        vapply(
+            x,
+            function(xx)xx$times[c(1, length(xx$times))],
+            c(NA_real_, NA_real_)
+        )
+    )
+
+    plot(
+        NA,
+        xlim = xlim, ylim = c(0.5, 1),
+        axes = FALSE, ann = FALSE, asp = FALSE
+    )
+    title(main = main, adj = 0L)
+    title(xlab = xlab, adj = 1L)
+    title(ylab = ylab, adj = 1L)
+
+    axis(1L, lwd.ticks = 0L, col = "#808080")
+    axis(2L, lwd.ticks = 0L, col = "#808080")
+
+    for (i in seq(along = x)) {
+        lines(x[[i]]$times, x[[i]]$AUC, lwd = 2, col = col[i])
+    }
+    legend("bottomright", legend = names(x), col = col, lty = lty, bty = "n")
 }
 
 #' Plot a table

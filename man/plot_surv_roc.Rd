@@ -2,6 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot_surv_roc}
 \alias{plot_surv_roc}
+\alias{plot_surv_roc_trend}
 \title{Plot survival ROC curves}
 \usage{
 plot_surv_roc(
@@ -12,6 +13,15 @@ plot_surv_roc(
   main = paste0("ROC at day ", timepoint),
   xlab = "1 - Specificity",
   ylab = "Sensitivity"
+)
+
+plot_surv_roc_trend(
+  x,
+  col = setNames(palette.colors(length(x)), names(x)),
+  lty = setNames(rep.int(1, length(x)), names(x)),
+  main = "AUROC over time",
+  xlab = "time t",
+  ylab = "AUC (t)"
 )
 }
 \arguments{
@@ -33,5 +43,6 @@ plot_surv_roc(
 \code{double}, AUC
 }
 \description{
-Generate ROC plots for a single timepoint for  \code{\link[timeROC:timeROC]{timeROC::timeROC()}} objects.
+Generate ROC plots for a single timepoint for  \code{\link[timeROC:timeROC]{timeROC::timeROC()}} objects
+or for multiple timepoints.
 }
