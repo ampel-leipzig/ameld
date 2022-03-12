@@ -155,7 +155,7 @@ plot_surv_roc <- function(x,
     )
     title(main = main, adj = 0L)
     title(xlab = xlab, adj = 1L)
-    title(ylab = ylab, adj = 0L)
+    title(ylab = ylab, adj = 1L)
 
     abline(0L, 1L, col = "#808080", lty = 2L)
     axis(1L, lwd.ticks = 0L, col = "#808080")
@@ -169,7 +169,7 @@ plot_surv_roc <- function(x,
     o <- order(auc, decreasing = TRUE)
     rjlegend(
         legend = sprintf("AUC %s: %0.3f", names(x)[o], auc[o]),
-        col = col[o], lty = lty
+        col = col[o], lty = lty[o]
     )
     auc
 }
