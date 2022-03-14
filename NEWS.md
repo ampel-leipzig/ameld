@@ -2,6 +2,8 @@
 
 ## Changes in development
 
+- Add grouping variable `f` to bootstrap output.
+
 ## Changes in 0.0.19
 
 - Fix *ylab* position and *lty* order in legend in `plot_surv_roc`.
