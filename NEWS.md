@@ -2,7 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.20
+
 - Add grouping variable `f` to bootstrap output.
+- Export `cutpoints`.
 
 ## Changes in 0.0.19
 

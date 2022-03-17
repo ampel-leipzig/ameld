@@ -35,11 +35,11 @@
 #' @param n `integer(1)` number of patients/observation per interval
 #' @return `double`, cutpoints
 #' @importFrom stats quantile
-#' @noRd
+#' @export
 #' @examples
 #' x <- seq(0, 1, length.out = 10)
-#' .cutpoints(x, n = 2)
-.cutpoints <- function(x, n = 50L) {
+#' cutpoints(x, n = 2)
+cutpoints <- function(x, n = 50L) {
     unique(
         quantile(
             c(0L, x, 1L),
