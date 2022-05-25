@@ -44,7 +44,7 @@ bootstrap <- function(x, y, fun = rcv.glmnet,
     ps <- predict(
         fit, x = x, y = y, newx = x, type = "survival", times = times, s = s
     )
-    ctpnts <- .cutpoints(ps, n = m)
+    ctpnts <- cutpoints(ps, n = m)
     f <- .cut(ps, ctpnts)
     apparent.err <- .prediction_error(
         x = x, y = y, fit = fit, cutpoints = ctpnts, times = times, s = s

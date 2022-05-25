@@ -2,6 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.21
+
+- Fix `bootstrap`: adapt to exported `cutpoint` function
+  (error was missing `.cutpoint`).
+
 ## Changes in 0.0.20
 
 - Add grouping variable `f` to bootstrap output.
