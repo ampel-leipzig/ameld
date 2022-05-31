@@ -28,7 +28,13 @@
     <loc>/reference/arcv.glmnet.html</loc>
   </url>
   <url>
+    <loc>/reference/basehaz.html</loc>
+  </url>
+  <url>
     <loc>/reference/boot.glmnet.html</loc>
+  </url>
+  <url>
+    <loc>/reference/cutpoints.html</loc>
   </url>
   <url>
     <loc>/reference/eldd.html</loc>

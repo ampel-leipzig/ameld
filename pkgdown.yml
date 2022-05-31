@@ -1,9 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 2.0.2
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   ameld: ameld.html
   boot: boot.html
   rcv.glmnet: rcv.glmnet.html
-last_built: 2022-03-15T07:16Z
+last_built: 2022-05-31T19:12Z
 
