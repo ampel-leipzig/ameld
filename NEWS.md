@@ -2,6 +2,8 @@
 
 ## Changes in development
 
+- Add `basehaz` for `cv.glmnet` class.
+
 ## Changes in 0.0.21
 
 - Fix `bootstrap`: adapt to exported `cutpoint` function
