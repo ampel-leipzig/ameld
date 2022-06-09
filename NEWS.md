@@ -2,7 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.22
+
 - Add `basehaz` for `cv.glmnet` class.
+- Add `legend` argument to `plot.boot.glmnet`.
 
 ## Changes in 0.0.21
 

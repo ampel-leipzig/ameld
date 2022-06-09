@@ -173,7 +173,7 @@ plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
         .plot.sel.var(x, col = col, pch = pch, ...)
 }
 
-.plot.cal <- function(x, col, pch, ...) {
+.plot.cal <- function(x, col, pch, legend = TRUE, ...) {
     plot(NA, xlim = c(0L, 1L), ylim = c(0L, 1L), axes = FALSE, ann = FALSE)
     title(main = "90 Day Survival", adj = 0L)
     title(ylab = "Observed", adj = 1L)
@@ -194,17 +194,19 @@ plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
     .errorbars(
         x$predicted.survival, se[, "lower"], se[, "upper"], col = col[1L]
     )
-    legend(
-        "bottomright",
-        col = col[1L:2L],
-        pch = c(pch[1L], 4L),
-        legend = c(
-            "observed",
-            paste0("resampling optimism error added ",
-                   "(based on ", length(x$models), " bootstrap samples)")
-        ),
-        bty = "n"
-    )
+    if (legend) {
+        legend(
+            "bottomright",
+            col = col[1L:2L],
+            pch = c(pch[1L], 4L),
+            legend = c(
+                "observed",
+                paste0("resampling optimism error added ",
+                       "(based on ", length(x$models), " bootstrap samples)")
+            ),
+            bty = "n"
+        )
+    }
     abline(0L, 1L, col = "#808080", lty = 2L, lwd = 1L)
 }
 
