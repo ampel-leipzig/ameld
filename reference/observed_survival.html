@@ -18,7 +18,7 @@ mortality rate)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -82,18 +82,27 @@ mortality rate).</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p><code>Surv</code>, object</p></dd>
+
+
 <dt>f</dt>
 <dd><p><code>factor</code>, strata/splitting factor</p></dd>
+
+
 <dt>times</dt>
 <dd><p><code>numeric</code>, information at times</p></dd>
+
+
 <dt>cumulative</dt>
 <dd><p><code>logical</code>, if <code>TRUE</code> (default <code>FALSE</code>) and multiple <code>times</code>
 are given the cumulative events are reported instead of the events in the
 time periods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>double</code>, with an element for each level in <code>f</code>,
+    
+
+<p><code>double</code>, with an element for each level in <code>f</code>,
 if times is a <code>numeric</code> of length 1;  or a <code>matrix</code> with
 as much rows as elements in <code>times</code> and a column for each level in <code>f</code>.</p>
     </div>
@@ -152,7 +161,7 @@ empty strata (e.g. important for bootstrapping).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

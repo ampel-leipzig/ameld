@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -72,33 +72,59 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S3 method for coxph</span>
-<span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, centered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, centered <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S3 method for cv.glmnet</span>
-<span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, <span class="va">x</span>, <span class="va">y</span>, s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lambda.1se"</span>, <span class="st">"lambda.min"</span><span class="op">)</span>, centered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">basehaz</span><span class="op">(</span>
+  <span class="va">fit</span>,
+  <span class="va">x</span>,
+  <span class="va">y</span>,
+  s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lambda.1se"</span>, <span class="st">"lambda.min"</span><span class="op">)</span>,
+  times <span class="op">=</span> <span class="cn">NULL</span>,
+  centered <span class="op">=</span> <span class="cn">TRUE</span>,
+  <span class="va">...</span>
+<span class="op">)</span>
 
 <span class="co"># S3 method for coxnet</span>
-<span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, <span class="va">x</span>, <span class="va">y</span>, s <span class="op">=</span> <span class="cn">NULL</span>, centered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu">basehaz</span><span class="op">(</span><span class="va">fit</span>, <span class="va">x</span>, <span class="va">y</span>, s <span class="op">=</span> <span class="cn">NULL</span>, times <span class="op">=</span> <span class="cn">NULL</span>, centered <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>fit</dt>
 <dd><p>fitted model.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to <code>basehaz</code>.</p></dd>
+
+
 <dt>centered</dt>
 <dd><p><code>logical(1)</code>, see <code><a href="https://rdrr.io/pkg/survival/man/basehaz.html" class="external-link">survival::basehaz()</a></code>.</p></dd>
+
+
 <dt>x</dt>
 <dd><p><code>matrix</code>, model matrix used to fit <code>fit</code>.</p></dd>
+
+
 <dt>y</dt>
 <dd><p><code>Surv</code>, Survival object used to fit <code>fit</code>.</p></dd>
+
+
 <dt>s</dt>
 <dd><p><code>numeric(1)</code>, lambda penality parameter.</p></dd>
+
+
+<dt>times</dt>
+<dd><p><code>numeric</code>, estimate baseline hazard for times. If <code>NULL</code> all
+times are returned.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>data.frame</code> with variable names <code>hazard</code>, <code>time</code> and optionally
+    
+
+<p><code>data.frame</code> with variable names <code>hazard</code>, <code>time</code> and optionally
 <code>strata</code>.</p>
     </div>
     <div id="see-also">
@@ -110,12 +136,6 @@
     <p>Sebastian Gibb</p>
     </div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -128,7 +148,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

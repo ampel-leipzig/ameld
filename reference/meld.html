@@ -18,7 +18,7 @@ probabilities."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -116,37 +116,65 @@ probabilities.</p>
     <h2>Arguments</h2>
     <dl><dt>creatinine</dt>
 <dd><p><code>numeric</code>, [mg/dl]</p></dd>
+
+
 <dt>bilirubin</dt>
 <dd><p><code>numeric</code>, [mg/dl]</p></dd>
+
+
 <dt>inr</dt>
 <dd><p><code>numeric</code></p></dd>
+
+
 <dt>dialysis</dt>
 <dd><p><code>logical</code>, had dialysis twice, or 24 hours of CVVHD, within
 a week prior to the serum creatinine test?</p></dd>
+
+
 <dt>cause</dt>
 <dd><p><code>character</code>, cause of cirrhosis. Has to be of the same length as
 <code>creatinine</code>, <code>bilirubin</code>, <code>inr</code> and <code>dialysis</code>. Just <code>"ethyltoxic"</code>,
 <code>"cholestatic"</code>, <code>"unos"</code> and <code>"other"</code> are supported.
 Use <code>"unos"</code> for the United Network for Organ Sharing definition of the score.</p></dd>
+
+
 <dt>round</dt>
 <dd><p><code>logical</code>, round to nearest integer?</p></dd>
+
+
 <dt>sodium</dt>
 <dd><p><code>numeric</code>, [mmol/l]</p></dd>
+
+
 <dt>type</dt>
 <dd><p><code>character(1)</code>, type of implementation</p></dd>
+
+
 <dt>meld</dt>
 <dd><p><code>numeric</code>, MELD/MELD-Na score as calculated by <code>meld</code> or
 <code>meld-na</code>.</p></dd>
+
+
 <dt>albumin</dt>
 <dd><p><code>numeric</code>, [g/dl]</p></dd>
+
+
 <dt>wbc</dt>
 <dd><p><code>numeric</code>, [Gpt/l]</p></dd>
+
+
 <dt>age</dt>
 <dd><p><code>numeric</code>, [years]</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>numeric</code>, MELD or MELD-Na score for <code>meld</code> and <code>meld_na</code>respectively. <code>pmeld</code> and <code>pmeld_plus7</code> return the survival probability based
+    
+
+<p><code>numeric</code>, MELD or MELD-Na score for <code>meld</code> and <code>meld_na</code></p>
+
+
+<p>respectively. <code>pmeld</code> and <code>pmeld_plus7</code> return the survival probability based
 on the MELD and MELD-Plus7 score.</p>
     </div>
     <div id="details">
@@ -215,7 +243,7 @@ PloS one, 12 (10): e0186301
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

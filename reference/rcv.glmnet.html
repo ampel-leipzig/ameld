@@ -18,7 +18,7 @@ calls."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -84,35 +84,59 @@ calls.</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p><code>matrix</code>, as in <code>cv.glmnet</code>.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>response as in <code>cv.glmnet</code>.</p></dd>
+
+
 <dt>lambda</dt>
 <dd><p><code>numeric</code>, optional user-supplied lambda sequence; default is
 <code>NULL</code> and <code>glmnet</code> chooses its own sequence.</p></dd>
+
+
 <dt>alpha</dt>
 <dd><p><code>numeric(1)</code>, the elasticnet mixing parameter, default is <code>1</code>
 (lasso penality); see <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet::glmnet()</a></code> for details.</p></dd>
+
+
 <dt>nrepcv</dt>
 <dd><p><code>integer(1)</code>, number of repeated cross-validations (outer
 loop).</p></dd>
+
+
 <dt>nfolds</dt>
 <dd><p><code>integer</code>, number of folds, same as in <code>cv.glmnet</code>.</p></dd>
+
+
 <dt>foldid</dt>
 <dd><p><code>matrix</code>, an optional matrix with <code>nrepcv</code> rows and
 <code>nrow(x)</code> columns containing ids from 1 to <code>nfolds</code> identifying what fold
 each observation is in. If given <code>nrepcv</code> and <code>nfolds</code> are ignored.</p></dd>
+
+
 <dt>balanced</dt>
 <dd><p><code>logical</code>, should classes/status be balanced in the folds
 (default: FALSE)?</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to <code>cv.glmnet</code>.</p></dd>
+
+
 <dt>trace.it</dt>
 <dd><p><code>integer</code>, if <code>trace.it = 1</code>, then a progress bar is
 displayed.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code>rcv.glmnet</code> that extends the <code>cv.glmnet</code>class.</p>
+    
+
+<p>An object of class <code>rcv.glmnet</code> that extends the <code>cv.glmnet</code></p>
+
+
+<p>class.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -278,7 +302,7 @@ Coordinate Descent. Journal of Statistical Software, 39(5), 1-13. URL
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

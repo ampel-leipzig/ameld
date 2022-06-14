@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -84,26 +84,39 @@
     <h2>Arguments</h2>
     <dl><dt>object</dt>
 <dd><p><code>rcv.glmnet</code> object.</p></dd>
+
+
 <dt>newx</dt>
 <dd><p><code>matrix</code>, of new values for <code>x</code> at which predictions are to be
 made.</p></dd>
+
+
 <dt>s</dt>
 <dd><p><code>character</code>/<code>numeric</code>, value(s) of the penality parameter <code>lambda</code>.
 See <code><a href="https://glmnet.stanford.edu/reference/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code> for details.</p></dd>
+
+
 <dt>type</dt>
 <dd><p><code>character</code>, type of prediction. For <code>"survival"</code>
 the predicted survival is returned for each timepoint in <code>times</code>. All other
 types are passed to <code>predict.cv.glmnet</code>
 See <code><a href="https://glmnet.stanford.edu/reference/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code> for details.</p></dd>
+
+
 <dt>times</dt>
 <dd><p><code>numeric</code>, vector of times, the returned matrix will contain one
 row for each time. See <code><a href="https://rdrr.io/pkg/survival/man/summary.survfit.html" class="external-link">survival::summary.survfit()</a></code> for details.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to <code>predict.cv.glmnet</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The object returned depends on the ... arguments.
+    
+
+<p>The object returned depends on the ... arguments.
 See <code><a href="https://glmnet.stanford.edu/reference/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code> for details. For <code>type = "survival"</code> the
 returned value is a <code>matrix</code> with one row per <code>times</code> element and one column
 for each row in <code>newx</code>.</p>
@@ -158,7 +171,7 @@ for each row in <code>newx</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

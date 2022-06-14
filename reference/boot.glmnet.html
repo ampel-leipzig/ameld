@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.23</span>
       </span>
     </div>
 
@@ -89,29 +89,50 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p><code>matrix</code>, data/feature matrix.</p></dd>
+
+
 <dt>y</dt>
 <dd><p><code>Surv</code>, survival time and status as <code>Surv</code> object.</p></dd>
+
+
 <dt>fun</dt>
 <dd><p>model function, e.g. <code><a href="rcv.glmnet.html">rcv.glmnet()</a></code>.</p></dd>
+
+
 <dt>nboot</dt>
 <dd><p><code>integer</code> number of bootstrap samples</p></dd>
+
+
 <dt>m</dt>
 <dd><p><code>integer</code>, individuals/observations per interval</p></dd>
+
+
 <dt>times</dt>
 <dd><p><code>numeric</code> predict survival at <code>times</code>.</p></dd>
+
+
 <dt>s</dt>
 <dd><p><code>character</code>/<code>numeric</code>, value(s) of the penality parameter <code>lambda</code>.
 See <code><a href="https://glmnet.stanford.edu/reference/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code> for details.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p><code>logical</code>, if <code>TRUE</code> a progressbar is shown.</p></dd>
+
+
 <dt>digits</dt>
 <dd><p><code>integer(1)</code>, number of digits shown in table.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further params passed to <code>fun</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>list</code>, with the fitted model <code>fit</code> and the over-optimistic error.</p>
+    
+
+<p>A <code>list</code>, with the fitted model <code>fit</code> and the over-optimistic error.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -165,7 +186,7 @@ Statistics in medicine 15.4 (1996): 361-387.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
