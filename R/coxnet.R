@@ -12,7 +12,6 @@
 #' @rdname basehaz
 #' @export
 #' @examples
-#'
 basehaz <- function(fit, ...)UseMethod("basehaz")
 
 #' @param fit fitted model.
@@ -21,31 +20,37 @@ basehaz <- function(fit, ...)UseMethod("basehaz")
 #' @importFrom survival basehaz
 #' @method basehaz coxph
 #' @export
-basehaz.default <- basehaz.coxph <- function(fit, centered = TRUE) {
+basehaz.default <- basehaz.coxph <- function(fit, centered = TRUE, ...) {
     survival::basehaz(fit, centered = centered)
 }
 
 #' @param x `matrix`, model matrix used to fit `fit`.
 #' @param y `Surv`, Survival object used to fit `fit`.
 #' @param s `numeric(1)`, lambda penality parameter.
+#' @param times `numeric`, estimate baseline hazard for times. If `NULL` all
+#' times are returned.
 #' @rdname basehaz
 #' @method basehaz cv.glmnet
 #' @export
 basehaz.cv.glmnet <- function(fit, x, y,
                               s = c("lambda.1se", "lambda.min"),
-                              centered = TRUE) {
-    basehaz(
+                              times = NULL,
+                              centered = TRUE, ...) {
+    basehaz.coxnet(
         fit$glmnet.fit,
         x = x, y = y,
-        s = .s2numeric(fit, s),
+        s = .s2numeric(fit, match.arg(s)),
+        times = times,
         centered = centered
     )
 }
 
 #' @rdname basehaz
+#' @aliases basehaz
 #' @method basehaz coxnet
 #' @export
-basehaz.coxnet <- function(fit, x, y, s = NULL, centered = TRUE) {
+basehaz.coxnet <- function(fit, x, y, s = NULL, times = NULL, centered = TRUE,
+                           ...) {
     if (is.null(s))
         stop("'s' has to be a valid `numeric` lambda value.")
 
@@ -63,6 +68,21 @@ basehaz.coxnet <- function(fit, x, y, s = NULL, centered = TRUE) {
     if (!is.null(strata)) {
         nms <- names(strata)
         d$strata <- factor(rep(nms, strata), levels = nms)
+    }
+    if (!is.null(times)) {
+        if (!is.null(strata)) {
+            d <- do.call(rbind, lapply(split(d, d$strata), function(dd) {
+                i <- findInterval(times, dd$time)
+                dd <- dd[i, ]
+                dd$time <- times
+                dd
+            }))
+            rownames(d) <- NULL
+        } else {
+            i <- findInterval(times, d$time)
+            d <- d[i, ]
+            d$time <- times
+        }
     }
     d
 }

@@ -19,4 +19,5 @@ test_that("basehaz", {
     expect_snapshot(basehaz(cp, centered = TRUE))
     expect_snapshot(basehaz(cn, x = x, y = y))
     expect_snapshot(basehaz(cn, x = x, y = y, centered = TRUE))
+    expect_snapshot(basehaz(cn, x = x, y = y, times = c(3, 5)))
 })

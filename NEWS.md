@@ -2,6 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.23
+
+- Add `"times"` argument to `basehaz`.
+
 ## Changes in 0.0.22
 
 - Add `basehaz` for `cv.glmnet` class.

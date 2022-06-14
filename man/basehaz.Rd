@@ -9,11 +9,19 @@
 \usage{
 basehaz(fit, ...)
 
-\method{basehaz}{coxph}(fit, centered = TRUE)
+\method{basehaz}{coxph}(fit, centered = TRUE, ...)
 
-\method{basehaz}{cv.glmnet}(fit, x, y, s = c("lambda.1se", "lambda.min"), centered = TRUE)
+\method{basehaz}{cv.glmnet}(
+  fit,
+  x,
+  y,
+  s = c("lambda.1se", "lambda.min"),
+  times = NULL,
+  centered = TRUE,
+  ...
+)
 
-\method{basehaz}{coxnet}(fit, x, y, s = NULL, centered = TRUE)
+\method{basehaz}{coxnet}(fit, x, y, s = NULL, times = NULL, centered = TRUE, ...)
 }
 \arguments{
 \item{fit}{fitted model.}
@@ -27,6 +35,9 @@ basehaz(fit, ...)
 \item{y}{\code{Surv}, Survival object used to fit \code{fit}.}
 
 \item{s}{\code{numeric(1)}, lambda penality parameter.}
+
+\item{times}{\code{numeric}, estimate baseline hazard for times. If \code{NULL} all
+times are returned.}
 }
 \value{
 \code{data.frame} with variable names \code{hazard}, \code{time} and optionally
@@ -34,9 +45,6 @@ basehaz(fit, ...)
 }
 \description{
 Make \verb{[survival::basehaz()]} available for \code{coxnet} objects.
-}
-\examples{
-
 }
 \seealso{
 \code{\link[survival:basehaz]{survival::basehaz()}}
