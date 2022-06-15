@@ -24,7 +24,8 @@ test_that("bootstrap", {
 #' # use `testthat::snapshot_review()` to add new/verify changed plots
 #' testthat::snapshot_review()
     vdiffr::expect_doppelganger(
-        "boot.glmnet-plot-cal", function()plot(b, what = "calibration")
+        "boot.glmnet-plot-cal",
+        function()plot(b, what = "calibration", main = "Title")
     )
     vdiffr::expect_doppelganger(
         "boot.glmnet-plot-sel", function()plot(b, what = "selected")

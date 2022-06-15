@@ -2,6 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.24
+
+- Pass `main` argument to `.plot.cal`, affected function: `plot.boot.glmnet`.
+
 ## Changes in 0.0.23
 
 - Add `"times"` argument to `basehaz`.

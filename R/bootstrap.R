@@ -173,9 +173,9 @@ plot.boot.glmnet <- function(x, col = head(viridisLite::viridis(3L), 2L),
         .plot.sel.var(x, col = col, pch = pch, ...)
 }
 
-.plot.cal <- function(x, col, pch, legend = TRUE, ...) {
+.plot.cal <- function(x, col, pch, legend = TRUE, main = NULL, ...) {
     plot(NA, xlim = c(0L, 1L), ylim = c(0L, 1L), axes = FALSE, ann = FALSE)
-    title(main = "90 Day Survival", adj = 0L)
+    title(main = main, adj = 0L)
     title(ylab = "Observed", adj = 1L)
     title(xlab = "Predicted", adj = 1L)
     abline(0L, 1L, col = "#808080", lty = 2L, lwd = 1L)
