@@ -57,6 +57,8 @@ set.seed(1011)
 # we choose 2 here
 rcvob <- rcv.glmnet(x, y, nrepcv = 2, nfolds = 3)
 plot(rcvob)
+
+plot(rcvob, what = "path")
 ```
 
 Accessing coefficients or predicting works exactly as with `cv.glmnet`:

@@ -137,28 +137,78 @@ rcv.glmnet <- function(x, y, lambda = NULL, alpha = 1,
     out
 }
 
-#' Plot the cross-validation curve
+#' Plot the cross-validation curve/lambda path
 #'
 #' This functions plots the aggregated cross-validation curve produced by
-#' [`rcv.glmnet()`].
+#' [`rcv.glmnet()`] or the lambda path for the averaged glmnet.fit object.
 #'
-#' @param x `rcv.glmnet` object.
-#' @param \dots further arguments passed to `plot.cv.glmnet`.
+#' @param x `rcv.glmnet`, object.
+#' @param what `character`, uses [`glmnet::plot.cv.glmnet()`] for "cv" and
+#' [`glmnet::plot.glmnet()`] for "path".
+#' @param \dots further arguments passed to `plot.cv.glmnet` or `plot.glmnet`.
+#'
+#' @details
+#' For `what = "path"` the original `plot.glmnet` is extended by labelling the
+#' top `nlabel` (default: 9) labels on the right side of the plot.
 #'
 #' @author Sebastian Gibb
-#' @seealso [`glmnet::cv.glmnet()`]
-#' @importFrom graphics title
+#' @seealso [`glmnet::cv.glmnet()`], [`glmnet::plot.cv.glmnet()`],
+#' [`glmnet::plot.glmnet()`]
+#' @importFrom graphics title strheight
 #' @method plot rcv.glmnet
 #' @export
-plot.rcv.glmnet <- function(x, ...) {
-    NextMethod()
-    title(
-        sub = paste(
-            "Averaged across", x$nrepcv, "repeated cross-validations",
-            "each with", x$nfolds, "folds."
-        ),
-        adj = 0L
-    )
+plot.rcv.glmnet <- function(x, what = c("cv", "path"), ...) {
+
+    what <- match.arg(what)
+    if (what == "path") {
+        .plot.glmnet(x, ...)
+    } else {
+        NextMethod()
+        title(
+            sub = paste(
+                "Averaged across", x$nrepcv, "repeated cross-validations",
+                "each with", x$nfolds, "folds."
+            ),
+            adj = 0L
+        )
+    }
+}
+
+.plot.glmnet <- function(x, nlabel = 9, cex.lab = 1,
+                         col = viridisLite::cividis(nlabel),
+                         ...) {
+    beta <- x$glmnet.fit$beta
+    nr <- nrow(beta)
+    col <- rep_len(col, nrow(beta))
+    beta <- beta[.nonzero(beta), ncol(beta)]
+    o <- order(-abs(beta))
+    o <- o[seq_len(min(c(nlabel, length(o))))]
+    beta <- beta[o]
+
+    old.par <- par(no.readonly = TRUE)
+    on.exit(par(old.par))
+
+    mai <- par("mai")
+    w <- max(strwidth(names(beta), "inch") * cex.lab, na.rm = TRUE) + 1/8
+    if (mai[4L] < w)
+        mai[4L] <- mai[4L] + w # taken from dotchart
+    old.par <- par(mai = mai, no.readonly = TRUE)
+
+    plot(x$glmnet.fit, col = col, label = FALSE, ...)
+
+    abline(h = 0, lty = "dotted", col = "#808080")
+
+    beta <- .avoid_ylab_overlap(beta, strheight("X") * cex.lab)
+
+    for (i in seq_along(beta))
+        axis(
+            4L,
+            at = beta[i], labels = names(beta)[i],
+            las = 1,
+            cex.axis = cex.lab,
+            col.axis = col[o[i]],
+            col = col[o[i]]
+        )
 }
 
 #' Predictions for a `rcv.glmnet` object

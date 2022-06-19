@@ -18,6 +18,7 @@ basehaz <- function(fit, ...)UseMethod("basehaz")
 #' @param centered `logical(1)`, see [`survival::basehaz()`].
 #' @rdname basehaz
 #' @importFrom survival basehaz
+#' @aliases basehaz.coxph
 #' @method basehaz coxph
 #' @export
 basehaz.default <- basehaz.coxph <- function(fit, centered = TRUE, ...) {

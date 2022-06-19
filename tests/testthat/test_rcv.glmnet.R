@@ -36,6 +36,12 @@ test_that("rcv.glmnet", {
 #' # use `testthat::snapshot_review()` to add new/verify changed plots
 #' testthat::snapshot_review()
     vdiffr::expect_doppelganger("rcv.glmnet-plot", function()plot(rcv))
+    vdiffr::expect_doppelganger("rcv.glmnet-plot-path9", function()
+        plot(rcv, what = "path")
+    )
+    vdiffr::expect_doppelganger("rcv.glmnet-plot-path12", function()
+        plot(rcv, what = "path", nlabel = 12, col = 1:6)
+    )
 
     future::plan(tweak(multicore, workers = 2L))
     set.seed(1011)

@@ -1,3 +1,9 @@
+test_that(".avoid_ylab_overlap", {
+    y <- c(1:2, 5:6)
+    expect_equal(.avoid_ylab_overlap(y, h = 0.5), y)
+    expect_equal(.avoid_ylab_overlap(y, h = 2), c(0.5, 2.5, 4.5, 6.5))
+})
+
 test_that(".bfolds", {
     expect_error(.bfolds(1:3, nfolds = 2), ">= 3")
     expect_warning(
@@ -35,6 +41,11 @@ test_that(".mfolds", {
     set.seed(1)
     cl <- factor(rep(c("a", "b"), c(8, 4)))
     expect_equal(.mfolds(cl, 4, 5),  r)
+})
+
+test_that(".nonzero", {
+    m <- matrix(c(1, 0, 3, 4, 0, 6), 3)
+    expect_identical(.nonzero(m), c(1L, 3L))
 })
 
 test_that(".s2numeric", {

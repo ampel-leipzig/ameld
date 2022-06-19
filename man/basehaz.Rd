@@ -3,6 +3,7 @@
 \name{basehaz}
 \alias{basehaz}
 \alias{basehaz.default}
+\alias{basehaz.coxph}
 \alias{basehaz.cv.glmnet}
 \alias{basehaz.coxnet}
 \title{Baseline hazard}

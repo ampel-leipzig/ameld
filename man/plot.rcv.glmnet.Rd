@@ -2,21 +2,29 @@
 % Please edit documentation in R/rcv.glmnet.R
 \name{plot.rcv.glmnet}
 \alias{plot.rcv.glmnet}
-\title{Plot the cross-validation curve}
+\title{Plot the cross-validation curve/lambda path}
 \usage{
-\method{plot}{rcv.glmnet}(x, ...)
+\method{plot}{rcv.glmnet}(x, what = c("cv", "path"), ...)
 }
 \arguments{
-\item{x}{\code{rcv.glmnet} object.}
+\item{x}{\code{rcv.glmnet}, object.}
 
-\item{\dots}{further arguments passed to \code{plot.cv.glmnet}.}
+\item{what}{\code{character}, uses \code{\link[glmnet:plot.cv.glmnet]{glmnet::plot.cv.glmnet()}} for "cv" and
+\code{\link[glmnet:plot.glmnet]{glmnet::plot.glmnet()}} for "path".}
+
+\item{\dots}{further arguments passed to \code{plot.cv.glmnet} or \code{plot.glmnet}.}
 }
 \description{
 This functions plots the aggregated cross-validation curve produced by
-\code{\link[=rcv.glmnet]{rcv.glmnet()}}.
+\code{\link[=rcv.glmnet]{rcv.glmnet()}} or the lambda path for the averaged glmnet.fit object.
+}
+\details{
+For \code{what = "path"} the original \code{plot.glmnet} is extended by labelling the
+top \code{nlabel} (default: 9) labels on the right side of the plot.
 }
 \seealso{
-\code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
+\code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}, \code{\link[glmnet:plot.cv.glmnet]{glmnet::plot.cv.glmnet()}},
+\code{\link[glmnet:plot.glmnet]{glmnet::plot.glmnet()}}
 }
 \author{
 Sebastian Gibb
