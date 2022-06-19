@@ -2,6 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.26
+
+- Add CITATION file.
+
 ## Changes in 0.0.25
 
 - Add `plot.rcvglmnet(..., what = "path")` to plot lambda path
