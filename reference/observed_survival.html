@@ -18,7 +18,7 @@ mortality rate)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.27</span>
       </span>
     </div>
 
@@ -71,11 +71,11 @@ mortality rate).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">observed_survival</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span><span class="op">)</span>
-
-<span class="fu">observed_mortality</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span><span class="op">)</span>
-
-<span class="fu">observed_events</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span>, cumulative <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">observed_survival</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">observed_mortality</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">observed_events</span><span class="op">(</span><span class="va">x</span>, <span class="va">f</span>, <span class="va">times</span>, cumulative <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -114,34 +114,34 @@ empty strata (e.g. important for bootstrapping).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sv</span> <span class="op">&lt;-</span> <span class="fu">Surv</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"c"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sv</span> <span class="op">&lt;-</span> <span class="fu">Surv</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"c"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3333333</span>
-<span class="r-in"><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a   b   c </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.0  NA 0.5 </span>
-<span class="r-in"><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">observed_survival</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a  b   c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 1 NA 1.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 1 NA 0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 0 NA 0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 0 NA 0.5</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">observed_mortality</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">observed_mortality</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a   b   c </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.0  NA 0.5 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  a  b  c </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 NA  1 </span>
-<span class="r-in"><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a  b c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 0 NA 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 0 NA 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 1 NA 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 0 NA 0</span>
-<span class="r-in"><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, cumulative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">observed_events</span><span class="op">(</span><span class="va">sv</span>, f <span class="op">=</span> <span class="va">f</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, cumulative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a  b c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 0 NA 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 0 NA 1</span>
@@ -161,7 +161,7 @@ empty strata (e.g. important for bootstrapping).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

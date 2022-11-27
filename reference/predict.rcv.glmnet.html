@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.27</span>
       </span>
     </div>
 
@@ -69,15 +69,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for rcv.glmnet</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span>
-  <span class="va">object</span>,
-  <span class="va">newx</span>,
-  s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lambda.1se"</span>, <span class="st">"lambda.min"</span><span class="op">)</span>,
-  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"link"</span>, <span class="st">"response"</span>, <span class="st">"coefficients"</span>, <span class="st">"nonzero"</span>, <span class="st">"class"</span>, <span class="st">"survival"</span><span class="op">)</span>,
-  <span class="va">times</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for rcv.glmnet</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">newx</span>,</span>
+<span>  s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lambda.1se"</span>, <span class="st">"lambda.min"</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"link"</span>, <span class="st">"response"</span>, <span class="st">"coefficients"</span>, <span class="st">"nonzero"</span>, <span class="st">"class"</span>, <span class="st">"survival"</span><span class="op">)</span>,</span>
+<span>  <span class="va">times</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -133,27 +133,27 @@ for each row in <code>newx</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Example adapted from ?"glmnet::cv.glmnet"</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">10101</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">500</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
-<span class="r-in"><span class="va">nzc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc</a></span><span class="op">(</span><span class="va">p</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">p</span><span class="op">)</span>, <span class="va">n</span>, <span class="va">p</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">nzc</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">fx</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">nzc</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">beta</span> <span class="op">/</span> <span class="fl">3</span></span>
-<span class="r-in"><span class="va">hx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">fx</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ty</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">hx</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">tcens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="fl">0.3</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># censoring indicator</span></span>
-<span class="r-in"><span class="co"># y &lt;- Surv(ty, 1-tcens) with library("survival")</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>time <span class="op">=</span> <span class="va">ty</span>, status <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">tcens</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># nrepcv should usually be higher but to keep the runtime of the example low</span></span>
-<span class="r-in"><span class="co"># we choose 2 here</span></span>
-<span class="r-in"><span class="va">rcvob</span> <span class="op">&lt;-</span> <span class="fu"><a href="rcv.glmnet.html">rcv.glmnet</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, family <span class="op">=</span> <span class="st">"cox"</span>, nrepcv <span class="op">=</span> <span class="fl">2</span>, nfolds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">rcvob</span>,</span>
-<span class="r-in">    newx <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="op">]</span>, x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fu">survival</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span>, <span class="st">"time"</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span>, <span class="st">"status"</span><span class="op">]</span><span class="op">)</span>,</span>
-<span class="r-in">    type <span class="op">=</span> <span class="st">"survival"</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">7</span><span class="op">)</span>, s <span class="op">=</span> <span class="st">"lambda.1se"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example adapted from ?"glmnet::cv.glmnet"</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">10101</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">500</span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">30</span></span></span>
+<span class="r-in"><span><span class="va">nzc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc</a></span><span class="op">(</span><span class="va">p</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">p</span><span class="op">)</span>, <span class="va">n</span>, <span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">nzc</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fx</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">nzc</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">beta</span> <span class="op">/</span> <span class="fl">3</span></span></span>
+<span class="r-in"><span><span class="va">hx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">fx</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ty</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">hx</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tcens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="fl">0.3</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># censoring indicator</span></span></span>
+<span class="r-in"><span><span class="co"># y &lt;- Surv(ty, 1-tcens) with library("survival")</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>time <span class="op">=</span> <span class="va">ty</span>, status <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">tcens</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># nrepcv should usually be higher but to keep the runtime of the example low</span></span></span>
+<span class="r-in"><span><span class="co"># we choose 2 here</span></span></span>
+<span class="r-in"><span><span class="va">rcvob</span> <span class="op">&lt;-</span> <span class="fu"><a href="rcv.glmnet.html">rcv.glmnet</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, family <span class="op">=</span> <span class="st">"cox"</span>, nrepcv <span class="op">=</span> <span class="fl">2</span>, nfolds <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">rcvob</span>,</span></span>
+<span class="r-in"><span>    newx <span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="op">]</span>, x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="fu">survival</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span>, <span class="st">"time"</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span>, <span class="st">"status"</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    type <span class="op">=</span> <span class="st">"survival"</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">7</span><span class="op">)</span>, s <span class="op">=</span> <span class="st">"lambda.1se"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              1          2           3           4          5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.0000000 1.00000000 1.000000000 1.000000000 1.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.1447802 0.04872118 0.001133545 0.006851513 0.01952228</span>
@@ -171,7 +171,7 @@ for each row in <code>newx</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

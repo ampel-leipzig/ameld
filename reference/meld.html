@@ -18,7 +18,7 @@ probabilities."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ameld</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.27</span>
       </span>
     </div>
 
@@ -71,45 +71,55 @@ probabilities.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meld</span><span class="op">(</span>
-  <span class="va">creatinine</span>,
-  <span class="va">bilirubin</span>,
-  <span class="va">inr</span>,
-  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,
-  cause <span class="op">=</span> <span class="st">"other"</span>,
-  round <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">meld_na</span><span class="op">(</span>
-  <span class="va">creatinine</span>,
-  <span class="va">bilirubin</span>,
-  <span class="va">inr</span>,
-  <span class="va">sodium</span>,
-  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,
-  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kim2008"</span>, <span class="st">"unos"</span><span class="op">)</span>,
-  cause <span class="op">=</span> <span class="st">"other"</span>,
-  round <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">pmeld</span><span class="op">(</span>
-  meld <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">creatinine</span>,
-  <span class="va">bilirubin</span>,
-  <span class="va">inr</span>,
-  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,
-  cause <span class="op">=</span> <span class="st">"other"</span>
-<span class="op">)</span>
-
-<span class="fu">pmeld_plus7</span><span class="op">(</span>
-  <span class="va">creatinine</span>,
-  <span class="va">bilirubin</span>,
-  <span class="va">inr</span>,
-  <span class="va">sodium</span>,
-  <span class="va">albumin</span>,
-  <span class="va">wbc</span>,
-  <span class="va">age</span>,
-  round <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meld</span><span class="op">(</span></span>
+<span>  <span class="va">creatinine</span>,</span>
+<span>  <span class="va">bilirubin</span>,</span>
+<span>  <span class="va">inr</span>,</span>
+<span>  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cause <span class="op">=</span> <span class="st">"other"</span>,</span>
+<span>  round <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">meld_na</span><span class="op">(</span></span>
+<span>  <span class="va">creatinine</span>,</span>
+<span>  <span class="va">bilirubin</span>,</span>
+<span>  <span class="va">inr</span>,</span>
+<span>  <span class="va">sodium</span>,</span>
+<span>  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kim2008"</span>, <span class="st">"unos"</span><span class="op">)</span>,</span>
+<span>  cause <span class="op">=</span> <span class="st">"other"</span>,</span>
+<span>  round <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">meld3</span><span class="op">(</span></span>
+<span>  <span class="va">creatinine</span>,</span>
+<span>  <span class="va">bilirubin</span>,</span>
+<span>  <span class="va">inr</span>,</span>
+<span>  <span class="va">sodium</span>,</span>
+<span>  <span class="va">albumin</span>,</span>
+<span>  female <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  round <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmeld</span><span class="op">(</span></span>
+<span>  meld <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">creatinine</span>,</span>
+<span>  <span class="va">bilirubin</span>,</span>
+<span>  <span class="va">inr</span>,</span>
+<span>  dialysis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cause <span class="op">=</span> <span class="st">"other"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmeld_plus7</span><span class="op">(</span></span>
+<span>  <span class="va">creatinine</span>,</span>
+<span>  <span class="va">bilirubin</span>,</span>
+<span>  <span class="va">inr</span>,</span>
+<span>  <span class="va">sodium</span>,</span>
+<span>  <span class="va">albumin</span>,</span>
+<span>  <span class="va">wbc</span>,</span>
+<span>  <span class="va">age</span>,</span>
+<span>  round <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -150,13 +160,17 @@ Use <code>"unos"</code> for the United Network for Organ Sharing definition of t
 <dd><p><code>character(1)</code>, type of implementation</p></dd>
 
 
+<dt>albumin</dt>
+<dd><p><code>numeric</code>, [g/dl]</p></dd>
+
+
+<dt>female</dt>
+<dd><p><code>logical</code></p></dd>
+
+
 <dt>meld</dt>
 <dd><p><code>numeric</code>, MELD/MELD-Na score as calculated by <code>meld</code> or
 <code>meld-na</code>.</p></dd>
-
-
-<dt>albumin</dt>
-<dd><p><code>numeric</code>, [g/dl]</p></dd>
 
 
 <dt>wbc</dt>
@@ -201,6 +215,10 @@ Accessed: September 11, 2019.</p>
 List"
 N Engl J Med 2008; 359: 1018-1026
 <a href="https://doi.org/10.1056/NEJMoa0801209" class="external-link">doi:10.1056/NEJMoa0801209</a></p>
+<p>Kim et al. 2021.
+"MELD 3.0: The Model for End-Stage Liver Disease Updated for the Modern Era"
+Gastroenterology 2021; 161: 1887-1895.e4
+<a href="https://doi.org/10.1053/j.gastro.2021.08.050" class="external-link">doi:10.1053/j.gastro.2021.08.050</a></p>
 <p>Wiesner et al. 2003.
 "Model for end-stage liver disease (MELD) and allocation of donor livers"
 Gastroentrology, 124 (1): 91-96
@@ -213,21 +231,24 @@ PloS one, 12 (10): e0186301
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">meld</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, cause <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">meld</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, cause <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.03916</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">meld_na</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, sodium <span class="op">=</span> <span class="fl">135</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">meld_na</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, sodium <span class="op">=</span> <span class="fl">135</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22.53427</span>
-<span class="r-in"><span class="fu">meld_na</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, sodium <span class="op">=</span> <span class="fl">135</span>,</span>
-<span class="r-in">        type <span class="op">=</span> <span class="st">"unos"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">meld_na</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, sodium <span class="op">=</span> <span class="fl">135</span>,</span></span>
+<span class="r-in"><span>        type <span class="op">=</span> <span class="st">"unos"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21.35658</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">pmeld</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, cause <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">meld3</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, sodium <span class="op">=</span> <span class="fl">135</span>, albumin <span class="op">=</span> <span class="fl">3.5</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 23.6327</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">pmeld</span><span class="op">(</span>creatinine <span class="op">=</span> <span class="fl">1.9</span>, bilirubin <span class="op">=</span> <span class="fl">4.2</span>, inr <span class="op">=</span> <span class="fl">1.2</span>, cause <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.923248</span>
-<span class="r-in"><span class="fu">pmeld</span><span class="op">(</span>meld <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">pmeld</span><span class="op">(</span>meld <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9237187</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">pmeld_plus7</span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">4.1</span>, <span class="fl">1.2</span>, <span class="fl">137</span>, <span class="fl">24</span>, <span class="fl">6.7</span>, <span class="fl">56</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">pmeld_plus7</span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">4.1</span>, <span class="fl">1.2</span>, <span class="fl">137</span>, <span class="fl">24</span>, <span class="fl">6.7</span>, <span class="fl">56</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9981954</span>
 </code></pre></div>
     </div>
@@ -243,7 +264,7 @@ PloS one, 12 (10): e0186301
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
