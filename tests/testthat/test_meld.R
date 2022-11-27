@@ -136,6 +136,19 @@ test_that("meld3", {
             sodium = 140, female = TRUE, round = TRUE
         ), 24
     )
+    ## Kim 2021, Table 4
+    expect_equal(
+        meld3(
+            female = c(FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE),
+            bilirubin = rep(c(2.5, 6, 12), c(2, 3, 3)),
+            sodium = rep(c(131, 128), c(5, 3)),
+            inr = rep(c(1, 1.5, 2.2), c(2, 3, 3)),
+            creatinine = rep(c(1.2, 1.5, 1.8, 2.8), c(2, 3, 1, 2)),
+            albumin = rep(c(3.8, 3.5, 2.2, 2.0), c(2, 1, 2, 3)),
+            round = TRUE
+        ),
+        c(16, 17, 25:27, 34, 38, 39)
+    )
 })
 
 test_that("pmeld", {
