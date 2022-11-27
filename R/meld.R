@@ -166,6 +166,22 @@ pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
 }
 
 #' @rdname meld
+#' @export
+#' @examples
+#'
+#' pmeld3(meld = 20)
+pmeld3 <- function(meld = NULL, creatinine, bilirubin, inr,
+                   sodium, albumin, female) {
+    if (is.null(meld))
+        meld <- meld3(
+            creatinine = creatinine, bilirubin = bilirubin, inr = inr,
+            sodium = sodium, albumin = albumin, female = female, round = FALSE
+        )
+
+    0.946^exp(0.17698 * meld - 3.56)
+}
+
+#' @rdname meld
 #'
 #' @param wbc `numeric`, \[Gpt/l\]
 #' @param age `numeric`, \[years\]

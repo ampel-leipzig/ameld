@@ -159,6 +159,15 @@ test_that("pmeld", {
     )
 })
 
+test_that("pmeld3", {
+    ## Kim 2021, Supplementary Table 5:
+    expect_equal(
+        pmeld3(c(14, 15, 26, 28)),
+        c(0.981, 0.977, 0.855, 0.791),
+        tolerance = 1e-2
+    )
+})
+
 test_that("pmeld_plus7", {
     expect_equal(
         pmeld_plus7(

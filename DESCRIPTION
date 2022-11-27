@@ -1,6 +1,6 @@
 Package: ameld
 Title: Data and Model of End-Stage Liver Disease used in the AMPEL Project
-Version: 0.0.27
+Version: 0.0.28
 Date: 2022-11-27
 Description:
     A dataset of patients evaluated for liver transplantation at the

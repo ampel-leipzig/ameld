@@ -5,6 +5,7 @@
 \alias{meld_na}
 \alias{meld3}
 \alias{pmeld}
+\alias{pmeld3}
 \alias{pmeld_plus7}
 \title{Calculate MELD scores}
 \usage{
@@ -46,6 +47,8 @@ pmeld(
   dialysis = FALSE,
   cause = "other"
 )
+
+pmeld3(meld = NULL, creatinine, bilirubin, inr, sodium, albumin, female)
 
 pmeld_plus7(
   creatinine,
@@ -118,6 +121,8 @@ meld3(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135, albumin = 3.5)
 
 pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 pmeld(meld = 20)
+
+pmeld3(meld = 20)
 
 pmeld_plus7(2.5, 4.1, 1.2, 137, 24, 6.7, 56)
 }
