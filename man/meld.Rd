@@ -3,6 +3,7 @@
 \name{meld}
 \alias{meld}
 \alias{meld_na}
+\alias{meld3}
 \alias{pmeld}
 \alias{pmeld_plus7}
 \title{Calculate MELD scores}
@@ -24,6 +25,16 @@ meld_na(
   dialysis = FALSE,
   type = c("kim2008", "unos"),
   cause = "other",
+  round = FALSE
+)
+
+meld3(
+  creatinine,
+  bilirubin,
+  inr,
+  sodium,
+  albumin,
+  female = TRUE,
   round = FALSE
 )
 
@@ -68,10 +79,12 @@ Use \code{"unos"} for the United Network for Organ Sharing definition of the sco
 
 \item{type}{\code{character(1)}, type of implementation}
 
+\item{albumin}{\code{numeric}, [g/dl]}
+
+\item{female}{\code{logical}}
+
 \item{meld}{\code{numeric}, MELD/MELD-Na score as calculated by \code{meld} or
 \code{meld-na}.}
-
-\item{albumin}{\code{numeric}, [g/dl]}
 
 \item{wbc}{\code{numeric}, [Gpt/l]}
 
@@ -101,6 +114,8 @@ meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135)
 meld_na(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135,
         type = "unos")
 
+meld3(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135, albumin = 3.5)
+
 pmeld(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, cause = "other")
 pmeld(meld = 20)
 
@@ -123,6 +138,11 @@ Kim et al. 2008.
 List"
 N Engl J Med 2008; 359: 1018-1026
 \doi{10.1056/NEJMoa0801209}
+
+Kim et al. 2021.
+"MELD 3.0: The Model for End-Stage Liver Disease Updated for the Modern Era"
+Gastroenterology 2021; 161: 1887-1895.e4
+\doi{10.1053/j.gastro.2021.08.050}
 
 Wiesner et al. 2003.
 "Model for end-stage liver disease (MELD) and allocation of donor livers"

@@ -2,6 +2,10 @@
 
 ## Changes in development
 
+## Changes in 0.0.27
+
+- Add `meld3`.
+
 ## Changes in 0.0.26
 
 - Add CITATION file.

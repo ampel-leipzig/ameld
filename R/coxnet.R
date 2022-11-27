@@ -11,7 +11,6 @@
 #' @seealso [`survival::basehaz()`]
 #' @rdname basehaz
 #' @export
-#' @examples
 basehaz <- function(fit, ...)UseMethod("basehaz")
 
 #' @param fit fitted model.

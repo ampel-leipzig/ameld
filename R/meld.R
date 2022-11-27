@@ -106,6 +106,41 @@ meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
 
 #' @rdname meld
 #'
+#' @param albumin `numeric`, \[g/dl\]
+#' @param female `logical`
+#' @references
+#' Kim et al. 2021.
+#' "MELD 3.0: The Model for End-Stage Liver Disease Updated for the Modern Era"
+#' Gastroenterology 2021; 161: 1887-1895.e4
+#' \doi{10.1053/j.gastro.2021.08.050}
+#' @export
+#' @examples
+#'
+#' meld3(creatinine = 1.9, bilirubin = 4.2, inr = 1.2, sodium = 135, albumin = 3.5)
+meld3 <- function(creatinine, bilirubin, inr, sodium, albumin,
+                  female = TRUE, round = FALSE) {
+
+    lcreatinine <- log(pmax(creatinine, 1))
+    lbilirubin <- log(pmax(bilirubin, 1))
+    linr <- log(pmax(inr, 1))
+    sodium <- 137 - pmax(pmin(sodium, 137), 125)
+    albumin <- 3.5 - pmax(pmin(albumin, 3.5), 1.5)
+
+    score <- 1.33 * as.integer(female) +
+             4.56 * lbilirubin +
+             0.82 * sodium - 0.24 * sodium * lbilirubin +
+             9.09 * linr +
+             11.14 * lcreatinine +
+             1.85 * albumin - 1.83 * albumin * lcreatinine + 6
+
+    if (round)
+        score <- round(score, 0L)
+
+    unname(score)
+}
+
+#' @rdname meld
+#'
 #' @param meld `numeric`, MELD/MELD-Na score as calculated by `meld` or
 #' `meld-na`.
 #'
@@ -132,7 +167,6 @@ pmeld <- function(meld = NULL, creatinine, bilirubin, inr,
 
 #' @rdname meld
 #'
-#' @param albumin `numeric`, \[g/dl\]
 #' @param wbc `numeric`, \[Gpt/l\]
 #' @param age `numeric`, \[years\]
 #'

@@ -117,6 +117,27 @@ test_that("meld_na", {
     )
 })
 
+test_that("meld3", {
+    expect_equal(
+        meld3(
+            creatinine = 1.9, bilirubin = 4.2, inr = 1.2, albumin = 3.5,
+            sodium = 140, female = TRUE, round = TRUE
+        ), 23
+    )
+    expect_equal(
+        meld3(
+            creatinine = 1.9, bilirubin = 4.2, inr = 1.2, albumin = 3.5,
+            sodium = 140, female = FALSE, round = TRUE
+        ), 21
+    )
+    expect_equal(
+        meld3(
+            creatinine = 1.9, bilirubin = 4.2, inr = 1.2, albumin = 1.5,
+            sodium = 140, female = TRUE, round = TRUE
+        ), 24
+    )
+})
+
 test_that("pmeld", {
     expect_equal(pmeld(20), 0.9237, tolerance = 1e-4)
     expect_equal(
