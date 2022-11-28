@@ -120,7 +120,7 @@ meld_na <- function(creatinine, bilirubin, inr, sodium, dialysis = FALSE,
 meld3 <- function(creatinine, bilirubin, inr, sodium, albumin,
                   female = TRUE, round = FALSE) {
 
-    lcreatinine <- log(pmax(creatinine, 1))
+    lcreatinine <- log(pmax(pmin(creatinine, 3), 1))
     lbilirubin <- log(pmax(bilirubin, 1))
     linr <- log(pmax(inr, 1))
     sodium <- 137 - pmax(pmin(sodium, 137), 125)
