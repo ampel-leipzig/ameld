@@ -149,6 +149,7 @@ plot_surv_roc <- function(x,
     )
 
     auc <- setNames(double(length(x)), names(x))
+    ci <- setNames(character(length(x)), names(x))
 
     plot(
         NA,
@@ -166,11 +167,20 @@ plot_surv_roc <- function(x,
     for (i in seq(along = x)) {
         j <- which(timepoint == x[[i]]$times)
         auc[i] <- x[[i]]$AUC[j]
+        if (!is.null(x[[i]]$confint)) {
+            ci[i] <- sprintf(
+                "(%s CI, %0.3f-%0.3f)",
+                names(x[[i]]$confint$C.alpha),
+                x[[i]]$confint$CI[j, 1L] / 100,
+                x[[i]]$confint$CI[j, 2L] / 100
+            )
+        }
         lines(x[[i]]$FP[, j], x[[i]]$TP[, j], col = col[i], lty = lty[i])
     }
+    attr(auc, "CI") <- ci
     o <- order(auc, decreasing = TRUE)
     rjlegend(
-        legend = sprintf("AUC %s: %0.3f", names(x)[o], auc[o]),
+        legend = sprintf("AUC %s: %0.3f %s", names(x)[o], auc[o], ci[o]),
         col = col[o], lty = lty[o]
     )
     auc
