@@ -229,8 +229,31 @@ plot_surv_roc_trend <- function(x,
 
     for (i in seq(along = x)) {
         lines(x[[i]]$times, x[[i]]$AUC, lwd = 2, col = col[i])
+        if (!is.null(x[[i]]$confint)) {
+            lines(
+                x[[i]]$times, x[[i]]$confint$CB_AUC[, 1L] / 100,
+                lwd = 2, lty = 2, col = col[i]
+            )
+            lines(
+                x[[i]]$times, x[[i]]$confint$CB_AUC[, 2L] / 100,
+                lwd = 2, lty = 2, col = col[i]
+            )
+        }
     }
-    legend("bottomright", legend = names(x), col = col, lty = lty, bty = "n")
+
+    if (!is.null(x[[1L]]$confint))
+        legend(
+            "bottomright",
+            legend = c(
+                names(x),
+                paste(names(x[[1L]]$confint$C.alpha), "confidence bands")
+            ),
+            col = c(col, "#808080"), lty = c(lty, 2), bty = "n"
+        )
+    else
+        legend(
+            "bottomright", legend = names(x), col = col, lty = lty, bty = "n"
+        )
 }
 
 #' Plot a table

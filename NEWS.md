@@ -2,6 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.30
+
+- Print confidence intervals in `plot_surv_roc` legend.
+- Plot confidence bands in `plot_surv_roc_trend`.
+
 ## Changes in 0.0.29
 
 - Fix upper creatinine bound in `meld3`.

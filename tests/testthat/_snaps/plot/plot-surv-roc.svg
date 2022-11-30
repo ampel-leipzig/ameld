@@ -51,11 +51,11 @@
 <g clip-path='url(#cpNTkuMDR8Njg5Ljc2fDU5LjA0fDUwMi41Ng==)'>
 <polyline points='169.07,486.13 169.07,75.47 374.40,75.47 374.40,75.47 579.73,75.47 579.73,75.47 ' style='stroke-width: 0.75;' />
 <polyline points='169.07,486.13 374.40,486.13 374.40,486.13 374.40,486.13 374.40,75.47 579.73,75.47 ' style='stroke-width: 0.75; stroke: #E69F00;' />
-<line x1='569.24' y1='473.76' x2='590.84' y2='473.76' style='stroke-width: 0.75;' />
-<line x1='569.24' y1='488.16' x2='590.84' y2='488.16' style='stroke-width: 0.75; stroke: #E69F00;' />
-<text x='601.64' y='477.89' style='font-size: 12.00px; font-family: sans;' textLength='3.33px' lengthAdjust='spacingAndGlyphs'> </text>
-<text x='601.64' y='492.29' style='font-size: 12.00px; font-family: sans;' textLength='3.33px' lengthAdjust='spacingAndGlyphs'> </text>
-<text x='682.56' y='476.51' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='82.06px' lengthAdjust='spacingAndGlyphs'>AUC foo: 1.000</text>
-<text x='682.56' y='490.91' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='82.72px' lengthAdjust='spacingAndGlyphs'>AUC bar: 0.500</text>
+<line x1='565.91' y1='473.76' x2='587.51' y2='473.76' style='stroke-width: 0.75;' />
+<line x1='565.91' y1='488.16' x2='587.51' y2='488.16' style='stroke-width: 0.75; stroke: #E69F00;' />
+<text x='598.31' y='477.89' style='font-size: 12.00px; font-family: sans;' textLength='3.33px' lengthAdjust='spacingAndGlyphs'> </text>
+<text x='598.31' y='492.29' style='font-size: 12.00px; font-family: sans;' textLength='3.33px' lengthAdjust='spacingAndGlyphs'> </text>
+<text x='682.56' y='476.51' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='85.39px' lengthAdjust='spacingAndGlyphs'>AUC foo: 1.000 </text>
+<text x='682.56' y='490.91' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='86.05px' lengthAdjust='spacingAndGlyphs'>AUC bar: 0.500 </text>
 </g>
 </svg>
