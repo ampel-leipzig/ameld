@@ -12,7 +12,8 @@ plot_surv_roc(
   lty = setNames(rep.int(1, length(x)), names(x)),
   main = paste0("ROC at day ", timepoint),
   xlab = "1 - Specificity",
-  ylab = "Sensitivity"
+  ylab = "Sensitivity",
+  legend = TRUE
 )
 
 plot_surv_roc_trend(
@@ -38,6 +39,8 @@ plot_surv_roc_trend(
 \item{xlab}{\code{character(1)}, label x-axis}
 
 \item{ylab}{\code{character(1)}, label y-axis}
+
+\item{legend}{\code{logical(1)}, plot legend?}
 }
 \value{
 \code{double}, AUC

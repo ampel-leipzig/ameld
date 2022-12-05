@@ -2,6 +2,11 @@
 
 ## Changes in development
 
+## Changes in 0.0.31
+
+- Add `confidencebands`.
+- Add `legend` argument to `plot_surv_roc`.
+
 ## Changes in 0.0.30
 
 - Print confidence intervals in `plot_surv_roc` legend.

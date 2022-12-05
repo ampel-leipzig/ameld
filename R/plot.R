@@ -119,6 +119,7 @@ plot_surv <- function(
 #' @param main `character(1)`, title
 #' @param xlab `character(1)`, label x-axis
 #' @param ylab `character(1)`, label y-axis
+#' @param legend `logical(1)`, plot legend?
 #' @return `double`, AUC
 #'
 #' @importFrom graphics abline
@@ -136,7 +137,8 @@ plot_surv_roc <- function(x,
                           ),
                           main = paste0("ROC at day ", timepoint),
                           xlab = "1 - Specificity",
-                          ylab = "Sensitivity") {
+                          ylab = "Sensitivity",
+                          legend = TRUE) {
     requireNamespace("timeROC")
     stopifnot(
         all(vapply(x, is, NA, class2 = "ipcwsurvivalROC")),
@@ -178,11 +180,14 @@ plot_surv_roc <- function(x,
         lines(x[[i]]$FP[, j], x[[i]]$TP[, j], col = col[i], lty = lty[i])
     }
     attr(auc, "CI") <- ci
-    o <- order(auc, decreasing = TRUE)
-    rjlegend(
-        legend = sprintf("AUC %s: %0.3f %s", names(x)[o], auc[o], ci[o]),
-        col = col[o], lty = lty[o]
-    )
+
+    if (legend) {
+        o <- order(auc, decreasing = TRUE)
+        rjlegend(
+            legend = sprintf("AUC %s: %0.3f %s", names(x)[o], auc[o], ci[o]),
+            col = col[o], lty = lty[o]
+        )
+    }
     auc
 }
 
