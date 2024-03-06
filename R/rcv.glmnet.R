@@ -178,7 +178,6 @@ plot.rcv.glmnet <- function(x, what = c("cv", "path"), ...) {
                          col = viridisLite::cividis(nlabel),
                          ...) {
     beta <- x$glmnet.fit$beta
-    nr <- nrow(beta)
     col <- rep_len(col, nrow(beta))
     beta <- beta[.nonzero(beta), ncol(beta)]
     o <- order(-abs(beta))
