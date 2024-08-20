@@ -1,7 +1,7 @@
 Package: ameld
 Title: Data and Model of End-Stage Liver Disease used in the AMPEL Project
-Version: 0.0.31
-Date: 2022-12-05
+Version: 0.0.32
+Date: 2024-08-20
 Description:
     A dataset of patients evaluated for liver transplantation at the
     University Hospital Leipzig from November 2012 to June 2015.
@@ -38,7 +38,7 @@ LazyData: yes
 URL: https://github.com/ampel-leipzig/ameld/
 BugReports: https://github.com/ampel-leipzig/ameld/issues/
 Roxygen: list(markdown=TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Encoding: UTF-8
 Config/testthat/edition: 3

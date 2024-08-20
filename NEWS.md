@@ -2,6 +2,12 @@
 
 ## Changes in development
 
+## Changes in 0.0.32
+
+- Internal `.plot.glmnet`: code cleanup, no user-visible changes.
+- Internal `arcv.glmnet`, `rcv.glmnet`, `plot.glmnet`: replace `seq(..., along)`
+  with `seq_along` (avoid warning about partial argument matching).
+
 ## Changes in 0.0.31
 
 - Add `confidencebands`.
