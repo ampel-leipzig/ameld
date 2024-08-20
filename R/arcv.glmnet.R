@@ -231,7 +231,7 @@ plot.arcv.glmnet <- function(x, col = viridisLite::cividis(length(x$alpha)),
             xlab = expression(Log(lambda)), ylab = x$models[[1L]]$name,
             type = "n", ...
         )
-        for (i in seq(along = cvm))
+        for (i in seq_along(cvm))
             lines(log(lmbd[[i]]), cvm[[i]], col = col[i])
         legend("bottomright", legend = x$alpha, col = col, lty = 1L, bty = "n")
     } else {

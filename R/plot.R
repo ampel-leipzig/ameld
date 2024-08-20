@@ -166,7 +166,7 @@ plot_surv_roc <- function(x,
     axis(1L, lwd.ticks = 0L, col = "#808080")
     axis(2L, lwd.ticks = 0L, col = "#808080")
 
-    for (i in seq(along = x)) {
+    for (i in seq_along(x)) {
         j <- which(timepoint == x[[i]]$times)
         auc[i] <- x[[i]]$AUC[j]
         if (!is.null(x[[i]]$confint)) {
@@ -232,7 +232,7 @@ plot_surv_roc_trend <- function(x,
     axis(1L, lwd.ticks = 0L, col = "#808080")
     axis(2L, lwd.ticks = 0L, col = "#808080")
 
-    for (i in seq(along = x)) {
+    for (i in seq_along(x)) {
         lines(x[[i]]$times, x[[i]]$AUC, lwd = 2, col = col[i])
         if (!is.null(x[[i]]$confint)) {
             lines(

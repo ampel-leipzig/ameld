@@ -105,7 +105,7 @@ rcv.glmnet <- function(x, y, lambda = NULL, alpha = 1,
         NA_real_, nrow = length(rcv[[1L]]$lambda), ncol = nrepcv
     )
 
-    for (i in seq(along=rcv)) {
+    for (i in seq_along(rcv)) {
         cvm[, i] <- rcv[[i]]$cvm
         cvsd[, i] <- rcv[[i]]$cvsd
     }
